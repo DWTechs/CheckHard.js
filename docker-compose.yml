@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+
+  checkhard:
+    build: ./
+    container_name: checkhard
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules

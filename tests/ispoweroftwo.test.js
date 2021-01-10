@@ -4,6 +4,15 @@ test("sends null to isPowerOfTwo", () => {
   expect(isPowerOfTwo(null)).toBe(false);
 });
 
+test("sends undefined to isPowerOfTwo", () => {
+  expect(isPowerOfTwo(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isPowerOfTwo", () => {
+  expect(isPowerOfTwo(s1)).toBe(false);
+});
+
 test("sends true to isPowerOfTwo", () => {
   expect(isPowerOfTwo(true)).toBe(false);
 });

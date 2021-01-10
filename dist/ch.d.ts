@@ -24,6 +24,8 @@
 */
 
 declare function isBoolean(bool: any): boolean;
+declare function isNil(nil: any): boolean;
+declare function isSymbol(sym: any): boolean;
 declare function isJson(str: any): boolean;
 declare function isFunction(func: any): boolean;
 declare function isObject(object: any): boolean;
@@ -45,4 +47,4 @@ declare function isNegative(number: any, typeCheck?: boolean): boolean;
 declare function isPowerOfTwo(number: any, typeCheck?: boolean): boolean;
 declare function isEmail(email: any): boolean;
 declare function isIpAddress(ipAddress: any): boolean;
-export { isBoolean, isJson, isFunction, isObject, isArray, isAscii, isInteger, isFloat, isNumber, isString, isHtmlElement, isHtmlEventAttribute, isNode, isEven, isOdd, isOrigin, isPositive, isNegative, isPowerOfTwo, isRegex, isEmail, isIpAddress };
+export { isBoolean, isNil, isSymbol, isJson, isFunction, isObject, isArray, isAscii, isInteger, isFloat, isNumber, isString, isHtmlElement, isHtmlEventAttribute, isNode, isEven, isOdd, isOrigin, isPositive, isNegative, isPowerOfTwo, isRegex, isEmail, isIpAddress };

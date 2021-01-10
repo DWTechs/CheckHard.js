@@ -4,6 +4,15 @@ test("sends null to isOrigin", () => {
   expect(isOrigin(null)).toBe(false);
 });
 
+test("sends undefined to isOrigin", () => {
+  expect(isOrigin(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isOrigin", () => {
+  expect(isOrigin(s1)).toBe(false);
+});
+
 test("sends true to isOrigin", () => {
   expect(isOrigin(true)).toBe(false);
 });

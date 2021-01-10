@@ -4,6 +4,15 @@ test("sends null to isInteger", () => {
   expect(isInteger(null)).toBe(false);
 });
 
+test("sends undefined to isInteger", () => {
+  expect(isInteger(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isInteger", () => {
+  expect(isInteger(s1)).toBe(false);
+});
+
 test("sends true to isInteger", () => {
   expect(isInteger(true)).toBe(false);
 });

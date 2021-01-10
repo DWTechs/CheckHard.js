@@ -1,3 +1,5 @@
+import { isNumber, isSymbol } from './primitive';
+
 function isAscii(code: any, extended: boolean = true): boolean {
   if (isInteger(code, false)) {
     return (extended && code >= 0 && code <= 255) || (code >= 0 && code <= 127);
@@ -6,22 +8,19 @@ function isAscii(code: any, extended: boolean = true): boolean {
 }
 
 function isInteger(number: any, typeCheck: boolean = true): boolean {
+  if (isSymbol(number)) {
+    return false;
+  }
   const int = parseInt(<string>number, 10);
   return typeCheck ? number === int : number == int;
 }
 
 function isFloat(number: any, typeCheck: boolean = true): boolean {
+  if (isSymbol(number)) {
+    return false;
+  }
   const moduloCheck = number % 1 !== 0;
   return typeCheck ? (Number(number) === number && moduloCheck) : (Number(number) == number && moduloCheck);
-}
-
-// // No type checking. Works with '8e4', '+true', '0x44' etc
-function isNumeric(number: any): boolean {
-  return !isNaN(number - parseFloat(number));
-}
-
-function isNumber(number: any, typeCheck: boolean = true): boolean {
-  return typeCheck ? Number(number) === number : isNumeric(number);
 }
 
 function isEven(number: any, typeCheck: boolean = true): boolean {
@@ -52,7 +51,6 @@ export {
   isAscii,
   isInteger,
   isFloat,
-  isNumber,
   isEven,
   isOdd,
   isOrigin,

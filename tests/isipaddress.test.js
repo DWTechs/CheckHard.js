@@ -4,6 +4,15 @@ test("sends null to isIpAddress", () => {
   expect(isIpAddress(null)).toBe(false);
 });
 
+test("sends undefined to isIpAddress", () => {
+  expect(isIpAddress(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isIpAddress", () => {
+  expect(isIpAddress(s1)).toBe(false);
+});
+
 test("sends true to isIpAddress", () => {
   expect(isIpAddress(true)).toBe(false);
 });

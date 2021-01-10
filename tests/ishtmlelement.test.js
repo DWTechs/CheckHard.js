@@ -4,6 +4,15 @@ test("sends null to isHtmlElement", () => {
   expect(isHtmlElement(null)).toBe(false);
 });
 
+test("sends undefined to isHtmlElement", () => {
+  expect(isHtmlElement(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isHtmlElement", () => {
+  expect(isHtmlElement(s1)).toBe(false);
+});
+
 test("sends true to isHtmlElement", () => {
   expect(isHtmlElement(true)).toBe(false);
 });

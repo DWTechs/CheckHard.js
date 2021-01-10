@@ -83,23 +83,41 @@ if (!CH.isArray(variable)) {
 
 ## API Reference
 
+
+### Primitive
+
 ```javascript
 
-// Basic 
 isBoolean(bool: any): boolean {}
+
+isString(string: any): boolean {}
+
+// Check if a variable is a numeric value,
+// If typeCheck = false values like '8e4', '+true', '0x44' return true
+isNumber(number: any, typeCheck: boolean = true): boolean {}
+
+isSymbol(sym: any): boolean {}
+
+```
+
+
+### Structural
+
+```javascript
 
 isFunction(func: any): boolean {}
 
-isObject(object: any): boolean {}
+isObject(obj: any): boolean {}
 
-isArray(array: any): boolean {}
+//Check whether val is null or undefined
+isNil(val: any): boolean {}
+
+```
 
 
-// Numbers
+### Numbers
 
-// Find out if a variable is a numeric value,
-// including exponential notation, hexadecimal value, etc
-isNumber(number: any, typeCheck: boolean = true): boolean {}
+```javascript
 
 isInteger(number: any, typeCheck: boolean = true): boolean {}
 
@@ -119,9 +137,12 @@ isPowerOfTwo(number: any, typeCheck: boolean = true): boolean {}
 
 isAscii(code: any, extended: boolean = false): boolean {}
 
+```
 
-// strings
-isString(string: any): boolean {}
+
+### strings
+
+```javascript
 
 isJson(string: any): boolean {}
 
@@ -131,8 +152,20 @@ isEmail(email: any): boolean {}
 
 isIpAddress(ipAddress: any): boolean {}
 
+```
 
-// html
+### Array
+
+```javascript
+
+isArray(array: any): boolean {}
+
+```
+
+### html
+
+```javascript
+
 isHtmlElement(htmlElement: any): boolean {}
 
 isHtmlEventAttribute(htmlEventAttribute: any): boolean {}
@@ -140,6 +173,7 @@ isHtmlEventAttribute(htmlEventAttribute: any): boolean {}
 isNode(node: any): boolean {}
 
 ```
+
 
 ## Contributors
 

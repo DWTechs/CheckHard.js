@@ -181,9 +181,6 @@ isNode(node: any): boolean {}
 CheckHard.js is still in development and we would be glad to get all the help you can provide.
 To contribute please read **[contributor.md](https://github.com/DWTechs/CheckHard.js/blob/main/contributor.md)** for detailed installation guide.
 
-## License
-
-**[MIT](https://github.com/DWTechs/CheckHard.js/blob/main/LICENSE)**
 
 ## Stack
 

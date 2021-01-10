@@ -4,6 +4,15 @@ test("sends null to isObject", () => {
   expect(isObject(null)).toBe(false);
 });
 
+test("sends undefined to isObject", () => {
+  expect(isObject(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isObject", () => {
+  expect(isObject(s1)).toBe(false);
+});
+
 test("sends true to isObject", () => {
   expect(isObject(true)).toBe(false);
 });

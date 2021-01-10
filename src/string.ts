@@ -1,4 +1,6 @@
 
+import { isString, isSymbol } from './primitive';
+
 function isJson(str: any): boolean /*Object|SyntaxError|TypeError*/ {
   if (!isString(str)) {
     return false;
@@ -12,11 +14,6 @@ function isJson(str: any): boolean /*Object|SyntaxError|TypeError*/ {
     //return e;
   }
   return true;
-}
-
-
-function isString(string: any): boolean {
-  return typeof string === "string";
 }
 
 function isRegex(regex: any, typeCheck: boolean = true): boolean {
@@ -33,18 +30,23 @@ function isRegex(regex: any, typeCheck: boolean = true): boolean {
 }
 
 function isEmail(email: any): boolean {
-  var regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+  if (isSymbol(email)) {
+    return false;
+  }
+  const regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
   return regex.test(String(email).toLowerCase());
 }
 
 function isIpAddress(ipAddress: any): boolean {
-  var regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+  if (isSymbol(ipAddress)) {
+    return false;
+  }
+  const regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
   return regex.test(ipAddress);
 }
 
 export {
   isJson,
-  isString,
   isRegex,
   isEmail,
   isIpAddress

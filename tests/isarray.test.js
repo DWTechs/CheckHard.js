@@ -4,6 +4,15 @@ test("sends null to isArray", () => {
   expect(isArray(null)).toBe(false);
 });
 
+test("sends undefined to isArray", () => {
+  expect(isArray(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isArray", () => {
+  expect(isArray(s1)).toBe(false);
+});
+
 test("sends true to isArray", () => {
   expect(isArray(true)).toBe(false);
 });

@@ -27,21 +27,48 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+function isNumeric(number) {
+    return !isNaN(number - parseFloat(number));
+}
+function getTag(tag) {
+    if (tag == null) {
+        return tag === undefined ? '[object Undefined]' : '[object Null]';
+    }
+    return toString.call(tag);
+}
+
 function isBoolean(bool) {
     return typeof bool === "boolean";
 }
+function isString(string) {
+    return typeof string === "string";
+}
+function isNumber(number, typeCheck = true) {
+    if (isSymbol(number)) {
+        return false;
+    }
+    return typeCheck ? Number(number) === number : isNumeric(number);
+}
+function isSymbol(sym) {
+    const type = typeof sym;
+    return type == 'symbol' || (type === 'object' && sym != null && getTag(sym) == '[object Symbol]');
+}
+
+function isArray(array) {
+    return !isNil(array) && array.constructor === Array;
+}
+
 function isFunction(func) {
     if (func) {
-        const getType = {};
-        return func && getType.toString.call(func) === "[object Function]";
+        return func && getTag(func) === "[object Function]";
     }
     return false;
 }
 function isObject(object) {
     return object !== null && typeof object === "object" && !isArray(object);
 }
-function isArray(array) {
-    return array !== null && array.constructor === Array;
+function isNil(nil) {
+    return nil == null;
 }
 
 function isAscii(code, extended = true) {
@@ -51,18 +78,18 @@ function isAscii(code, extended = true) {
     return false;
 }
 function isInteger(number, typeCheck = true) {
+    if (isSymbol(number)) {
+        return false;
+    }
     const int = parseInt(number, 10);
     return typeCheck ? number === int : number == int;
 }
 function isFloat(number, typeCheck = true) {
+    if (isSymbol(number)) {
+        return false;
+    }
     const moduloCheck = number % 1 !== 0;
     return typeCheck ? (Number(number) === number && moduloCheck) : (Number(number) == number && moduloCheck);
-}
-function isNumeric(number) {
-    return !isNaN(number - parseFloat(number));
-}
-function isNumber(number, typeCheck = true) {
-    return typeCheck ? Number(number) === number : isNumeric(number);
 }
 function isEven(number, typeCheck = true) {
     return isInteger(number, typeCheck) && !(number & 1);
@@ -95,9 +122,6 @@ function isJson(str) {
     }
     return true;
 }
-function isString(string) {
-    return typeof string === "string";
-}
 function isRegex(regex, typeCheck = true) {
     if (typeCheck) {
         return regex instanceof RegExp ? true : false;
@@ -113,11 +137,17 @@ function isRegex(regex, typeCheck = true) {
     }
 }
 function isEmail(email) {
-    var regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    if (isSymbol(email)) {
+        return false;
+    }
+    const regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     return regex.test(String(email).toLowerCase());
 }
 function isIpAddress(ipAddress) {
-    var regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    if (isSymbol(ipAddress)) {
+        return false;
+    }
+    const regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
     return regex.test(ipAddress);
 }
 
@@ -237,6 +267,7 @@ exports.isInteger = isInteger;
 exports.isIpAddress = isIpAddress;
 exports.isJson = isJson;
 exports.isNegative = isNegative;
+exports.isNil = isNil;
 exports.isNode = isNode;
 exports.isNumber = isNumber;
 exports.isObject = isObject;
@@ -246,3 +277,4 @@ exports.isPositive = isPositive;
 exports.isPowerOfTwo = isPowerOfTwo;
 exports.isRegex = isRegex;
 exports.isString = isString;
+exports.isSymbol = isSymbol;

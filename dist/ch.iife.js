@@ -26,14 +26,50 @@
 var CH = (function (exports) {
     'use strict';
 
+    function isNumeric(number) {
+      return !isNaN(number - parseFloat(number));
+    }
+
+    function getTag(tag) {
+      if (tag == null) {
+        return tag === undefined ? '[object Undefined]' : '[object Null]';
+      }
+
+      return toString.call(tag);
+    }
+
     function isBoolean(bool) {
       return typeof bool === "boolean";
     }
 
+    function isString(string) {
+      return typeof string === "string";
+    }
+
+    function isNumber(number, typeCheck) {
+      if (typeCheck === void 0) {
+        typeCheck = true;
+      }
+
+      if (isSymbol(number)) {
+        return false;
+      }
+
+      return typeCheck ? Number(number) === number : isNumeric(number);
+    }
+
+    function isSymbol(sym) {
+      var type = typeof sym;
+      return type == 'symbol' || type === 'object' && sym != null && getTag(sym) == '[object Symbol]';
+    }
+
+    function isArray(array) {
+      return !isNil(array) && array.constructor === Array;
+    }
+
     function isFunction(func) {
       if (func) {
-        var getType = {};
-        return func && getType.toString.call(func) === "[object Function]";
+        return func && getTag(func) === "[object Function]";
       }
 
       return false;
@@ -43,8 +79,8 @@ var CH = (function (exports) {
       return object !== null && typeof object === "object" && !isArray(object);
     }
 
-    function isArray(array) {
-      return array !== null && array.constructor === Array;
+    function isNil(nil) {
+      return nil == null;
     }
 
     function isAscii(code, extended) {
@@ -64,6 +100,10 @@ var CH = (function (exports) {
         typeCheck = true;
       }
 
+      if (isSymbol(number)) {
+        return false;
+      }
+
       var _int = parseInt(number, 10);
 
       return typeCheck ? number === _int : number == _int;
@@ -74,20 +114,12 @@ var CH = (function (exports) {
         typeCheck = true;
       }
 
-      var moduloCheck = number % 1 !== 0;
-      return typeCheck ? Number(number) === number && moduloCheck : Number(number) == number && moduloCheck;
-    }
-
-    function isNumeric(number) {
-      return !isNaN(number - parseFloat(number));
-    }
-
-    function isNumber(number, typeCheck) {
-      if (typeCheck === void 0) {
-        typeCheck = true;
+      if (isSymbol(number)) {
+        return false;
       }
 
-      return typeCheck ? Number(number) === number : isNumeric(number);
+      var moduloCheck = number % 1 !== 0;
+      return typeCheck ? Number(number) === number && moduloCheck : Number(number) == number && moduloCheck;
     }
 
     function isEven(number, typeCheck) {
@@ -152,10 +184,6 @@ var CH = (function (exports) {
       return true;
     }
 
-    function isString(string) {
-      return typeof string === "string";
-    }
-
     function isRegex(regex, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
@@ -175,11 +203,19 @@ var CH = (function (exports) {
     }
 
     function isEmail(email) {
+      if (isSymbol(email)) {
+        return false;
+      }
+
       var regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
       return regex.test(String(email).toLowerCase());
     }
 
     function isIpAddress(ipAddress) {
+      if (isSymbol(ipAddress)) {
+        return false;
+      }
+
       var regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
       return regex.test(ipAddress);
     }
@@ -294,6 +330,7 @@ var CH = (function (exports) {
     exports.isIpAddress = isIpAddress;
     exports.isJson = isJson;
     exports.isNegative = isNegative;
+    exports.isNil = isNil;
     exports.isNode = isNode;
     exports.isNumber = isNumber;
     exports.isObject = isObject;
@@ -303,6 +340,7 @@ var CH = (function (exports) {
     exports.isPowerOfTwo = isPowerOfTwo;
     exports.isRegex = isRegex;
     exports.isString = isString;
+    exports.isSymbol = isSymbol;
 
     return exports;
 

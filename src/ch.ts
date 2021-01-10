@@ -1,12 +1,17 @@
 export {  isBoolean,
-          isFunction,
-          isObject,
-          isArray } from './basic';
+          isNumber,
+          isString,
+          isSymbol } from './primitive';
+
+export {  isFunction,
+          isObject, 
+          isNil } from './structural';
+
+export {  isArray } from './array';
 
 export {  isAscii,
           isInteger,
           isFloat,
-          isNumber,
           isEven,
           isOdd,
           isOrigin,
@@ -15,7 +20,6 @@ export {  isAscii,
           isPowerOfTwo } from './number';
 
 export {  isJson,
-          isString,
           isRegex,
           isEmail,
           isIpAddress } from './string';
@@ -23,29 +27,3 @@ export {  isJson,
 export {  isHtmlElement,
           isHtmlEventAttribute,
           isNode } from './html';
-
-
-// export {
-//   isBoolean,
-//   isJson,
-//   isFunction,
-//   isObject,
-//   isArray,
-//   isAscii,
-//   isInteger,
-//   isFloat,
-//   isNumber,
-//   isString,
-//   isHtmlElement,
-//   isHtmlEventAttribute,
-//   isNode,
-//   isEven,
-//   isOdd,
-//   isOrigin,
-//   isPositive,
-//   isNegative,
-//   isPowerOfTwo,
-//   isRegex,
-//   isEmail,
-//   isIpAddress
-// };

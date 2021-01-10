@@ -4,6 +4,15 @@ test("sends null to isAscii extended", () => {
   expect(isAscii(null)).toBe(false);
 });
 
+test("sends undefined to isAscii", () => {
+  expect(isAscii(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isAscii", () => {
+  expect(isAscii(s1)).toBe(false);
+});
+
 test("sends true to isAscii extended", () => {
   expect(isAscii(true)).toBe(false);
 });

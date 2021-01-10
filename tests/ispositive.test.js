@@ -4,6 +4,15 @@ test("sends null to isPositive", () => {
   expect(isPositive(null)).toBe(false);
 });
 
+test("sends undefined to isPositive", () => {
+  expect(isPositive(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isPositive", () => {
+  expect(isPositive(s1)).toBe(false);
+});
+
 test("sends true to isPositive", () => {
   expect(isPositive(true)).toBe(false);
 });

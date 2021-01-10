@@ -4,6 +4,15 @@ test("sends null to isJson", () => {
   expect(isJson(null)).toBe(false);
 });
 
+test("sends undefined to isJson", () => {
+  expect(isJson(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isJson", () => {
+  expect(isJson(s1)).toBe(false);
+});
+
 test("sends true to isJson", () => {
   expect(isJson(true)).toBe(false);
 });

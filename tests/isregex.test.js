@@ -4,6 +4,15 @@ test("sends null to isRegex", () => {
   expect(isRegex(null)).toBe(false);
 });
 
+test("sends undefined to isRegex", () => {
+  expect(isRegex(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isRegex", () => {
+  expect(isRegex(s1)).toBe(false);
+});
+
 test("sends true to isRegex", () => {
   expect(isRegex(true)).toBe(false);
 });

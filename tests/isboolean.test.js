@@ -4,6 +4,15 @@ test("sends null to isBoolean", () => {
   expect(isBoolean(null)).toBe(false);
 });
 
+test("sends undefined to isBoolean", () => {
+  expect(isBoolean(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isBoolean", () => {
+  expect(isBoolean(s1)).toBe(false);
+});
+
 test("sends true to isBoolean", () => {
   expect(isBoolean(true)).toBe(true);
 });

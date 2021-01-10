@@ -4,6 +4,15 @@ test("sends null to isHtmlEventAttribute", () => {
   expect(isHtmlEventAttribute(null)).toBe(false);
 });
 
+test("sends undefined to isHtmlEventAttribute", () => {
+  expect(isHtmlEventAttribute(undefined)).toBe(false);
+});
+
+const s1 = Symbol();
+test("sends symbol to isHtmlEventAttribute", () => {
+  expect(isHtmlEventAttribute(s1)).toBe(false);
+});
+
 test("sends true to isHtmlEventAttribute", () => {
   expect(isHtmlEventAttribute(true)).toBe(false);
 });

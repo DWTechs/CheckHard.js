@@ -1,7 +1,7 @@
 # 2.15.0 (January 11th 2021)
 
 - Add isNil() method to test null and undefined values 
-- Add isSymbol() to pimitive checkers 
+- Add isSymbol() to primitive checkers 
 
 # 2.14.0 (January 10th 2021)
 

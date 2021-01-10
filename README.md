@@ -1,7 +1,7 @@
-[![License: MIT](https://img.shields.io/npm/l/@dwtechs/checkhard.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/npm/l/@dwtechs/checkhard.svg?color=brightgreen)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/%40dwtechs%2Fcheckhard.svg)](https://www.npmjs.com/package/@dwtechs/checkhard)
 ![Jest:coverage](https://img.shields.io/badge/Jest:coverage-100%25-brightgreen.svg)
-[![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/checkhard)](https://www.npmjs.com/package/@dwtechs/checkhard)
+[![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/checkhard?color=brightgreen)](https://www.npmjs.com/package/@dwtechs/checkhard)
 
 - [Synopsis](#synopsis)
 - [Installation](#installation)

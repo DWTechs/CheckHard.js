@@ -141,7 +141,7 @@ isAscii(code: any, extended: boolean = false): boolean {}
 ```
 
 
-### strings
+### Strings
 
 ```javascript
 
@@ -163,7 +163,7 @@ isArray(array: any): boolean {}
 
 ```
 
-### html
+### Html
 
 ```javascript
 

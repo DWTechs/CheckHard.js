@@ -116,7 +116,7 @@ isNil(val: any): boolean {}
 ```
 
 
-### Numbers
+### Number
 
 ```javascript
 
@@ -141,7 +141,7 @@ isAscii(code: any, extended: boolean = false): boolean {}
 ```
 
 
-### Strings
+### String
 
 ```javascript
 

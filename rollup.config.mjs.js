@@ -25,7 +25,7 @@ module.exports = {
       // exclude: "node_modules/**" // only transpile our source code
     }),
     progress({
-      clearLine: false // default: true
+      clearLine: true// default: true
     }),
     sizes(),
     sizeSnapshot(),

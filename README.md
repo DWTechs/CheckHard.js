@@ -95,16 +95,15 @@ isObject(object: any): boolean {}
 isArray(array: any): boolean {}
 
 
-// Number
-isAscii(code: any, extended: boolean = false): boolean {}
-
-isInteger(number: any, typeCheck: boolean = true): boolean {}
-
-isFloat(number: any, typeCheck: boolean = true): boolean {}
+// Numbers
 
 // Find out if a variable is a numeric value,
 // including exponential notation, hexadecimal value, etc
 isNumber(number: any, typeCheck: boolean = true): boolean {}
+
+isInteger(number: any, typeCheck: boolean = true): boolean {}
+
+isFloat(number: any, typeCheck: boolean = true): boolean {}
 
 isEven(number: any, typeCheck: boolean = true): boolean {}
 
@@ -118,11 +117,13 @@ isNegative(number: any, typeCheck: boolean = true): boolean {}
 
 isPowerOfTwo(number: any, typeCheck: boolean = true): boolean {}
 
+isAscii(code: any, extended: boolean = false): boolean {}
 
-// string
-isJson(string: any): boolean {}
 
+// strings
 isString(string: any): boolean {}
+
+isJson(string: any): boolean {}
 
 isRegex(regex: any, typeCheck: boolean = true): boolean {}
 

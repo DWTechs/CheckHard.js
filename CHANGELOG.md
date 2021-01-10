@@ -1,7 +1,7 @@
 # 2.14.0 (January 9th 2021)
 
 - Ch.js becomes CheckHard.js 
-- Project transfered to DWTechs
+- Project transfered from LCluber to DWTechs
 
 # 2.13.0 (December 6th 2020)
 

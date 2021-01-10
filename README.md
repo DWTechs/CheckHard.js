@@ -102,7 +102,8 @@ isInteger(number: any, typeCheck: boolean = true): boolean {}
 
 isFloat(number: any, typeCheck: boolean = true): boolean {}
 
-// Find out if a variable is a numeric value, including exponential notation, hexadecimal value, etc
+// Find out if a variable is a numeric value,
+// including exponential notation, hexadecimal value, etc
 isNumber(number: any, typeCheck: boolean = true): boolean {}
 
 isEven(number: any, typeCheck: boolean = true): boolean {}

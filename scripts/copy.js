@@ -29,7 +29,7 @@ const files   = [
 
 fs.mkdir(dest, { recursive: false },(err) => {
   if (err) throw err;
-  fs.readFile(`${rel}license.js`, (err, license) => {
+  fs.readFile(`${rel}scripts/license.js`, (err, license) => {
     if (err) throw err;
     for (let file of files) {
       fs.readFile(file.src, (err, fileContent) => {

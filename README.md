@@ -21,7 +21,11 @@
 
 **[CheckHard.js](https://github.com/DWTechs/CheckHard.js)** is an open source dynamic type checking library for Javascript and Node.js to test if a given variable is what it is supposed to be.\
 Function, object, ascii, boolean, integer, string, json, email...\
-It has no dependency, is very lightweight and is thoroughly tested.
+
+- No dependency
+- Very lightweight
+- Thoroughly tested
+- Old browsers support (IE9)
 
 ## Installation
 
@@ -39,7 +43,7 @@ $ yarn add @dwtechs/checkhard
 
 ## Usage
 
-### ES6
+### ES6 / TypeScript
 
 ```javascript
 import { isFunction, isArray } from "@dwtechs/checkhard";

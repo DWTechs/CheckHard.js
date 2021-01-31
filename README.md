@@ -25,6 +25,7 @@ Function, object, ascii, boolean, integer, string, json, email...\
 - No dependency
 - Very lightweight
 - Thoroughly tested
+- Works in browsers and Node.js
 - Old browsers support (IE9)
 
 ## Installation

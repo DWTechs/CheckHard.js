@@ -53,8 +53,8 @@ if (isFunction(variable)) {
   //variable is a function
 }
 
-if (!isArray(variable)) {
-  //variable is not an array
+if (!isArray(variable, 2)) {
+  //variable is not an array of length 2
 }
 ```
 
@@ -67,8 +67,8 @@ if (ch.isFunction(variable)) {
   //variable is a function
 }
 
-if (!ch.isArray(variable)) {
-  //variable is not an array
+if (!ch.isArray(variable, 2)) {
+  //variable is not an array of length 2
 }
 ```
 
@@ -83,8 +83,8 @@ if (CH.isFunction(variable)) {
   //variable is a function
 }
 
-if (!CH.isArray(variable)) {
-  //variable is not an array
+if (!CH.isArray(variable, 2)) {
+  //variable is not an array of length 2
 }
 ```
 
@@ -165,7 +165,8 @@ isIpAddress(ipAddress: any): boolean {}
 
 ```javascript
 
-isArray(array: any): boolean {}
+// Check if 'array' is an array and if it is of length 'length'
+isArray(array: any, length?: number|null): boolean {}
 
 ```
 

@@ -61,8 +61,8 @@ function isSymbol(sym) {
   return type == 'symbol' || type === 'object' && sym != null && getTag(sym) == '[object Symbol]';
 }
 
-function isArray(array) {
-  return !isNil(array) && array.constructor === Array;
+function isArray(array, length) {
+  return !isNil(array) && array.constructor === Array && (length ? array.length === length : true);
 }
 
 function isFunction(func) {

@@ -65,6 +65,18 @@ test("sends array to isArray", () => {
   expect(isArray(["white", "grey", "black"])).toBe(true);
 });
 
+test("sends array of length 3 to isArray(2)", () => {
+  expect(isArray(["white", "grey", "black"],2)).toBe(false);
+});
+
+test("sends array of length 3 to isArray(3)", () => {
+  expect(isArray(["white", "grey", "black"],3)).toBe(true);
+});
+
+test("sends array of length 3 to isArray(4)", () => {
+  expect(isArray(["white", "grey", "black"],4)).toBe(false);
+});
+
 var json = `{
   "actor": {
     "name": "Tom Cruise",

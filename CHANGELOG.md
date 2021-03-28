@@ -1,3 +1,7 @@
+# 2.16.0 (March 28th 2021)
+
+- Add 'length' parameter to isArray() method to check the length of the array
+
 # 2.15.0 (January 11th 2021)
 
 - Add isNil() method to test null and undefined values 

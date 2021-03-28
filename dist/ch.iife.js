@@ -64,8 +64,8 @@ var CH = (function (exports) {
       return type == 'symbol' || type === 'object' && sym != null && getTag(sym) == '[object Symbol]';
     }
 
-    function isArray(array) {
-      return !isNil(array) && array.constructor === Array;
+    function isArray(array, length) {
+      return !isNil(array) && array.constructor === Array && (length ? array.length === length : true);
     }
 
     function isFunction(func) {
@@ -342,6 +342,8 @@ var CH = (function (exports) {
     exports.isRegex = isRegex;
     exports.isString = isString;
     exports.isSymbol = isSymbol;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
     return exports;
 

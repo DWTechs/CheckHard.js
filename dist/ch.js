@@ -56,6 +56,22 @@ function isNumber(number, typeCheck) {
   return typeCheck ? Number(number) === number : isNumeric(number);
 }
 
+function isValidNumber(number, min, max, typeCheck) {
+  if (min === void 0) {
+    min = -999999999;
+  }
+
+  if (max === void 0) {
+    max = 999999999;
+  }
+
+  if (typeCheck === void 0) {
+    typeCheck = true;
+  }
+
+  return isNumber(number, typeCheck) && number >= min && number <= max ? true : false;
+}
+
 function isSymbol(sym) {
   var type = typeof sym;
   return type == 'symbol' || type === 'object' && sym != null && getTag(sym) == '[object Symbol]';
@@ -168,6 +184,16 @@ function isPowerOfTwo(number, typeCheck) {
   return isInteger(number, typeCheck) && !isOrigin(number, typeCheck) && (number & number - 1) === 0;
 }
 
+var numberRegex = /[0-9]+/g;
+
+function containsNumber(number) {
+  if (!number) {
+    return false;
+  }
+
+  return numberRegex.test(number);
+}
+
 function isJson(str) {
   if (!isString(str)) {
     return false;
@@ -216,6 +242,36 @@ function isIpAddress(ipAddress) {
 
   var regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
   return regex.test(ipAddress);
+}
+
+var slugRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
+
+function isSlug(slug) {
+  return isString(slug) ? slugRegex.test(slug) : false;
+}
+
+var upperCaseRegex = /[A-Z]+/g;
+
+function containsUpperCase(string) {
+  return isString(string) ? upperCaseRegex.test(string) : false;
+}
+
+var lowerCaseRegex = /[a-z]+/g;
+
+function containsLowerCase(string) {
+  return isString(string) ? lowerCaseRegex.test(string) : false;
+}
+
+var specialRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?°`€£§]+/;
+
+function containsSpecialCharacter(string) {
+  return isString(string) ? specialRegex.test(string) : false;
+}
+
+var hexadecimal = /^(#|0x|0h)?[0-9A-F]+$/i;
+
+function isHexadecimal(string) {
+  return isString(string) ? hexadecimal.test(string) : false;
 }
 
 function isHtmlElement(htmlElement) {
@@ -315,4 +371,44 @@ function isNode(node) {
   return false;
 }
 
-export { isArray, isAscii, isBoolean, isEmail, isEven, isFloat, isFunction, isHtmlElement, isHtmlEventAttribute, isInteger, isIpAddress, isJson, isNegative, isNil, isNode, isNumber, isObject, isOdd, isOrigin, isPositive, isPowerOfTwo, isRegex, isString, isSymbol };
+function isDate(date) {
+  return !isNaN(date) && date instanceof Date;
+}
+
+var minDate = new Date('1/1/1900').getTime();
+var maxDate = new Date('1/1/2200').getTime();
+
+function isValidDate(date, min, max) {
+  if (min === void 0) {
+    min = minDate;
+  }
+
+  if (max === void 0) {
+    max = maxDate;
+  }
+
+  return isDate(date) && date >= min && date <= max ? true : false;
+}
+
+function isTimestamp(timestamp) {
+  if (isInteger(timestamp, false)) {
+    var newTimestamp = new Date(timestamp).getTime();
+    return isNumeric(newTimestamp);
+  }
+
+  return false;
+}
+
+function isValidTimestamp(timestamp, min, max) {
+  if (min === void 0) {
+    min = -2208988800000;
+  }
+
+  if (max === void 0) {
+    max = 7258118400000;
+  }
+
+  return isTimestamp(timestamp) && timestamp >= min && timestamp <= max ? true : false;
+}
+
+export { containsLowerCase, containsNumber, containsSpecialCharacter, containsUpperCase, isArray, isAscii, isBoolean, isDate, isEmail, isEven, isFloat, isFunction, isHexadecimal, isHtmlElement, isHtmlEventAttribute, isInteger, isIpAddress, isJson, isNegative, isNil, isNode, isNumber, isObject, isOdd, isOrigin, isPositive, isPowerOfTwo, isRegex, isSlug, isString, isSymbol, isTimestamp, isValidDate, isValidNumber, isValidTimestamp };

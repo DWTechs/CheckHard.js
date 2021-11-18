@@ -103,6 +103,11 @@ isString(string: any): boolean {}
 // If typeCheck = false values like '8e4', '+true', '0x44' return true
 isNumber(number: any, typeCheck: boolean = true): boolean {}
 
+isValidNumber(number: any, 
+              min: number = -999999999, 
+              max: number = 999999999, 
+              typeCheck: boolean = true ): boolean {}
+
 isSymbol(sym: any): boolean {}
 
 ```
@@ -144,6 +149,8 @@ isPowerOfTwo(number: any, typeCheck: boolean = true): boolean {}
 
 isAscii(code: any, extended: boolean = false): boolean {}
 
+containsNumber(number: any): boolean {}
+
 ```
 
 
@@ -158,6 +165,32 @@ isRegex(regex: any, typeCheck: boolean = true): boolean {}
 isEmail(email: any): boolean {}
 
 isIpAddress(ipAddress: any): boolean {}
+
+isSlug(slug: any): boolean {}
+
+isHexadecimal(string: any): boolean {}
+
+containsUpperCase(string: any): boolean {}
+
+containsLowerCase(string: any): boolean {}
+
+containsSpecialCharacter(string: any): boolean {}
+
+```
+
+### Date
+
+```javascript
+
+isDate(date: any): boolean {}
+
+isValidDate(date: any, min: string = '1/1/1900', max: string = '1/1/2200'): boolean {}
+
+isTimestamp(number: any): boolean {}
+
+// default min = 1/1/1900 (month/day/year)
+// default max = 1/1/2200 (month/day/year)
+isValidTimestamp(number: any, min: number = -2208988800000, max: number = 7258118400000): boolean {}
 
 ```
 

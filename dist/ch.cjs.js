@@ -50,6 +50,9 @@ function isNumber(number, typeCheck = true) {
     }
     return typeCheck ? Number(number) === number : isNumeric(number);
 }
+function isValidNumber(number, min = -999999999, max = 999999999, typeCheck = true) {
+    return isNumber(number, typeCheck) && number >= min && number <= max ? true : false;
+}
 function isSymbol(sym) {
     const type = typeof sym;
     return type == 'symbol' || (type === 'object' && sym != null && getTag(sym) == '[object Symbol]');
@@ -110,6 +113,13 @@ function isNegative(number, typeCheck = true) {
 function isPowerOfTwo(number, typeCheck = true) {
     return isInteger(number, typeCheck) && !isOrigin(number, typeCheck) && (number & (number - 1)) === 0;
 }
+const numberRegex = /[0-9]+/g;
+function containsNumber(number) {
+    if (!number) {
+        return false;
+    }
+    return numberRegex.test(number);
+}
 
 function isJson(str) {
     if (!isString(str)) {
@@ -150,6 +160,26 @@ function isIpAddress(ipAddress) {
     }
     const regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
     return regex.test(ipAddress);
+}
+const slugRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
+function isSlug(slug) {
+    return isString(slug) ? slugRegex.test(slug) : false;
+}
+const upperCaseRegex = /[A-Z]+/g;
+function containsUpperCase(string) {
+    return isString(string) ? upperCaseRegex.test(string) : false;
+}
+const lowerCaseRegex = /[a-z]+/g;
+function containsLowerCase(string) {
+    return isString(string) ? lowerCaseRegex.test(string) : false;
+}
+const specialRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?°`€£§]+/;
+function containsSpecialCharacter(string) {
+    return isString(string) ? specialRegex.test(string) : false;
+}
+const hexadecimal = /^(#|0x|0h)?[0-9A-F]+$/i;
+function isHexadecimal(string) {
+    return isString(string) ? hexadecimal.test(string) : false;
 }
 
 function isHtmlElement(htmlElement) {
@@ -255,13 +285,38 @@ function isNode(node) {
     return false;
 }
 
+function isDate(date) {
+    return !isNaN(date) && date instanceof Date;
+}
+const minDate = new Date('1/1/1900').getTime();
+const maxDate = new Date('1/1/2200').getTime();
+function isValidDate(date, min = minDate, max = maxDate) {
+    return isDate(date) && date >= min && date <= max ? true : false;
+}
+function isTimestamp(timestamp) {
+    if (isInteger(timestamp, false)) {
+        const newTimestamp = new Date(timestamp).getTime();
+        return isNumeric(newTimestamp);
+    }
+    return false;
+}
+function isValidTimestamp(timestamp, min = -2208988800000, max = 7258118400000) {
+    return isTimestamp(timestamp) && timestamp >= min && timestamp <= max ? true : false;
+}
+
+exports.containsLowerCase = containsLowerCase;
+exports.containsNumber = containsNumber;
+exports.containsSpecialCharacter = containsSpecialCharacter;
+exports.containsUpperCase = containsUpperCase;
 exports.isArray = isArray;
 exports.isAscii = isAscii;
 exports.isBoolean = isBoolean;
+exports.isDate = isDate;
 exports.isEmail = isEmail;
 exports.isEven = isEven;
 exports.isFloat = isFloat;
 exports.isFunction = isFunction;
+exports.isHexadecimal = isHexadecimal;
 exports.isHtmlElement = isHtmlElement;
 exports.isHtmlEventAttribute = isHtmlEventAttribute;
 exports.isInteger = isInteger;
@@ -277,5 +332,10 @@ exports.isOrigin = isOrigin;
 exports.isPositive = isPositive;
 exports.isPowerOfTwo = isPowerOfTwo;
 exports.isRegex = isRegex;
+exports.isSlug = isSlug;
 exports.isString = isString;
 exports.isSymbol = isSymbol;
+exports.isTimestamp = isTimestamp;
+exports.isValidDate = isValidDate;
+exports.isValidNumber = isValidNumber;
+exports.isValidTimestamp = isValidTimestamp;

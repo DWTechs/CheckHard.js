@@ -1,7 +1,8 @@
 export {  isBoolean,
           isNumber,
           isString,
-          isSymbol } from './primitive';
+          isSymbol,
+          isValidNumber } from './primitive';
 
 export {  isFunction,
           isObject, 
@@ -17,13 +18,24 @@ export {  isAscii,
           isOrigin,
           isPositive,
           isNegative,
-          isPowerOfTwo } from './number';
+          isPowerOfTwo,
+          containsNumber } from './number';
 
 export {  isJson,
           isRegex,
           isEmail,
-          isIpAddress } from './string';
+          isIpAddress,
+          isSlug,
+          containsUpperCase,
+          containsLowerCase,
+          containsSpecialCharacter,
+          isHexadecimal } from './string';
 
 export {  isHtmlElement,
           isHtmlEventAttribute,
           isNode } from './html';
+
+export {  isDate,
+          isValidDate,
+          isTimestamp,
+          isValidTimestamp } from './date';

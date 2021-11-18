@@ -1,3 +1,17 @@
+# 2.17.0 (November 20th 2021)
+
+- Add isDate() method
+- Add isValidDate() method
+- Add isSlug() method
+- Add isHexadecimal() method
+- Add isTimestamp() method
+- Add isValidTimestamp() method
+- Add isValidNumber() method
+- Add containsUpperCase() method
+- Add containsLowerCase() method
+- Add containsSpecialCharacter() method
+- Add containsNumber() method
+
 # 2.16.0 (March 28th 2021)
 
 - Add 'length' parameter to isArray() method to check the length of the array

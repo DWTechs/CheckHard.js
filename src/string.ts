@@ -37,6 +37,14 @@ function isEmail(email: any): boolean {
   return regex.test(String(email).toLowerCase());
 }
 
+// function isURL(url: any): boolean {
+
+// }
+
+// function isLocale(locale: any): boolean {
+
+// }
+
 function isIpAddress(ipAddress: any): boolean {
   if (isSymbol(ipAddress)) {
     return false;
@@ -45,9 +53,43 @@ function isIpAddress(ipAddress: any): boolean {
   return regex.test(ipAddress);
 }
 
+// function isJWT(jwt: any): boolean {
+
+// }
+
+const slugRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
+function isSlug(slug: any): boolean {
+  return isString(slug) ? slugRegex.test(slug) : false;
+}
+
+const upperCaseRegex = /[A-Z]+/g;
+function containsUpperCase(string: any): boolean {
+  return isString(string) ? upperCaseRegex.test(string) : false;
+}
+
+const lowerCaseRegex = /[a-z]+/g;
+function containsLowerCase(string: any): boolean {
+  return isString(string) ? lowerCaseRegex.test(string) : false;
+}
+
+const specialRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?°`€£§]+/;
+function containsSpecialCharacter(string: any): boolean {
+  return isString(string) ? specialRegex.test(string) : false;
+}
+
+const hexadecimal = /^(#|0x|0h)?[0-9A-F]+$/i;
+function isHexadecimal(string: any): boolean {
+  return isString(string) ? hexadecimal.test(string) : false;
+}
+
 export {
   isJson,
   isRegex,
   isEmail,
-  isIpAddress
+  isIpAddress,
+  isSlug,
+  isHexadecimal,
+  containsUpperCase,
+  containsLowerCase,
+  containsSpecialCharacter
 };

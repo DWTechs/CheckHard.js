@@ -18,8 +18,7 @@ export {  isAscii,
           isOrigin,
           isPositive,
           isNegative,
-          isPowerOfTwo,
-          containsNumber } from './number';
+          isPowerOfTwo } from './number';
 
 export {  isJson,
           isRegex,
@@ -29,7 +28,8 @@ export {  isJson,
           containsUpperCase,
           containsLowerCase,
           containsSpecialCharacter,
-          isHexadecimal } from './string';
+          isHexadecimal,
+          containsNumber } from './string';
 
 export {  isHtmlElement,
           isHtmlEventAttribute,

@@ -59,7 +59,7 @@ function isSymbol(sym) {
 }
 
 function isArray(array, length) {
-    return !isNil(array) && array.constructor === Array && (length ? array.length === length : true);
+    return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? array.length === length : true);
 }
 
 function isFunction(func) {
@@ -112,13 +112,6 @@ function isNegative(number, typeCheck = true) {
 }
 function isPowerOfTwo(number, typeCheck = true) {
     return isInteger(number, typeCheck) && !isOrigin(number, typeCheck) && (number & (number - 1)) === 0;
-}
-const numberRegex = /[0-9]+/g;
-function containsNumber(number) {
-    if (!number) {
-        return false;
-    }
-    return numberRegex.test(number);
 }
 
 function isJson(str) {
@@ -180,6 +173,10 @@ function containsSpecialCharacter(string) {
 const hexadecimal = /^(#|0x|0h)?[0-9A-F]+$/i;
 function isHexadecimal(string) {
     return isString(string) ? hexadecimal.test(string) : false;
+}
+const numberRegex = /\d/;
+function containsNumber(number) {
+    return numberRegex.test(number);
 }
 
 function isHtmlElement(htmlElement) {
@@ -288,8 +285,8 @@ function isNode(node) {
 function isDate(date) {
     return !isNaN(date) && date instanceof Date;
 }
-const minDate = new Date('1/1/1900').getTime();
-const maxDate = new Date('1/1/2200').getTime();
+const minDate = new Date('1/1/1900');
+const maxDate = new Date('1/1/2200');
 function isValidDate(date, min = minDate, max = maxDate) {
     return isDate(date) && date >= min && date <= max ? true : false;
 }

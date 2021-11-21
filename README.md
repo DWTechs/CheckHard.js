@@ -149,8 +149,6 @@ isPowerOfTwo(number: any, typeCheck: boolean = true): boolean {}
 
 isAscii(code: any, extended: boolean = false): boolean {}
 
-containsNumber(number: any): boolean {}
-
 ```
 
 
@@ -176,6 +174,8 @@ containsLowerCase(string: any): boolean {}
 
 containsSpecialCharacter(string: any): boolean {}
 
+containsNumber(string: any): boolean {}
+
 ```
 
 ### Date
@@ -184,7 +184,7 @@ containsSpecialCharacter(string: any): boolean {}
 
 isDate(date: any): boolean {}
 
-isValidDate(date: any, min: string = '1/1/1900', max: string = '1/1/2200'): boolean {}
+isValidDate(date: any, min: Date = new Date('1/1/1900'), max: Date = new Date('1/1/2200')): boolean {}
 
 isTimestamp(number: any): boolean {}
 

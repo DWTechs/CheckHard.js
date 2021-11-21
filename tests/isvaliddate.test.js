@@ -11,12 +11,24 @@ test("sends invalid timestamp to isValidDate", () => {
   expect(isValidDate(7258118400001)).toBe(false);
 });
 
-test("sends invalid date to isValidDate with min & max", () => {
+test("sends invalid date as string to isValidDate with min & max", () => {
   expect(isValidDate('1/5/1800', '1/1/1900', '1/1/1901')).toBe(false);
 });
 
-test("sends valid date to isValidDate with min & max", () => {
+test("sends invalid date to isValidDate with min & max", () => {
+  expect(isValidDate(new Date('1/5/1800'), '1/1/1900', '1/1/1901')).toBe(false);
+});
+
+test("sends valid date as string to isValidDate with min & max", () => {
   expect(isValidDate('1/5/1900', '1/1/1900', '1/1/1901')).toBe(false);
+});
+
+test("sends valid date as string to isValidDate", () => {
+  expect(isValidDate(new Date('1/5/1900'))).toBe(true);
+});
+
+test("sends valid date as string to isValidDate with min & max", () => {
+  expect(isValidDate(new Date('1/5/1900'), new Date('1/1/1900'), new Date('1/1/1901'))).toBe(true);
 });
 
 test("sends date in string format to isValidDate", () => {

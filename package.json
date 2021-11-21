@@ -1,6 +1,6 @@
 {
   "name": "@dwtechs/checkhard",
-  "version": "2.17.0",
+  "version": "2.17.1",
   "description": "is an open source dynamic type checking library for Javascript and Node.js to test if a given variable is what it is supposed to be.",
   "keywords": [
     "type checking",

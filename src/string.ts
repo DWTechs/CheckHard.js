@@ -82,6 +82,11 @@ function isHexadecimal(string: any): boolean {
   return isString(string) ? hexadecimal.test(string) : false;
 }
 
+const numberRegex = /\d/;
+function containsNumber(number: any): boolean {
+  return numberRegex.test(number);
+}
+
 export {
   isJson,
   isRegex,
@@ -91,5 +96,6 @@ export {
   isHexadecimal,
   containsUpperCase,
   containsLowerCase,
-  containsSpecialCharacter
+  containsSpecialCharacter,
+  containsNumber
 };

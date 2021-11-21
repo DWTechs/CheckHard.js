@@ -47,14 +47,6 @@ function isPowerOfTwo(number: any, typeCheck: boolean = true): boolean {
   return isInteger(number, typeCheck) && !isOrigin(number, typeCheck) && (number & (number - 1)) === 0;
 }
 
-const numberRegex = /[0-9]+/g;
-function containsNumber(number: any): boolean {
-  if (!number) {
-    return false;
-  }
-  return numberRegex.test(number);
-}
-
 export {
   isAscii,
   isInteger,
@@ -64,6 +56,5 @@ export {
   isOrigin,
   isPositive,
   isNegative,
-  isPowerOfTwo,
-  containsNumber
+  isPowerOfTwo
 };

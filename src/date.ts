@@ -5,9 +5,9 @@ function isDate(date: any): boolean {
   return !isNaN(date) && date instanceof Date;
 }
 
-const minDate = new Date('1/1/1900').getTime();
-const maxDate = new Date('1/1/2200').getTime();
-function isValidDate(date: any, min: number = minDate, max: number = maxDate): boolean {
+const minDate = new Date('1/1/1900');
+const maxDate = new Date('1/1/2200');
+function isValidDate(date: any, min: Date = minDate, max: Date = maxDate): boolean {
   return isDate(date) && date >= min && date <= max ? true : false;
 }
 

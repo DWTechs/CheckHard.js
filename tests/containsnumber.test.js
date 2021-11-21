@@ -1,165 +1,125 @@
-import { isNumber } from "../dist/ch";
+import { containsNumber } from "../dist/ch";
 
-test("sends null to isNumber", () => {
-  expect(isNumber(null)).toBe(false);
+test("sends null to containsNumber", () => {
+  expect(containsNumber(null)).toBe(false);
 });
 
-test("sends undefined to isNumber", () => {
-  expect(isNumber(undefined)).toBe(false);
+test("sends undefined to containsNumber", () => {
+  expect(containsNumber(undefined)).toBe(false);
 });
 
-const s1 = Symbol();
-test("sends symbol to isNumber", () => {
-  expect(isNumber(s1)).toBe(false);
+// const s1 = Symbol();
+// test("sends symbol to containsNumber", () => {
+//   expect(containsNumber(s1)).toBe(false);
+// });
+
+test("sends true to containsNumber", () => {
+  expect(containsNumber(true)).toBe(false);
 });
 
-test("sends true to isNumber", () => {
-  expect(isNumber(true)).toBe(false);
+test("sends 1+true to containsNumber", () => {
+  expect(containsNumber(1+true)).toBe(true);
 });
 
-test("sends 1+true to isNumber", () => {
-  expect(isNumber(1+true)).toBe(true);
+test("sends +true to containsNumber", () => {
+  expect(containsNumber(+true)).toBe(true);
 });
 
-test("sends +true to isNumber", () => {
-  expect(isNumber(+true)).toBe(true);
+test("sends '+true' to containsNumber", () => {
+  expect(containsNumber('+true')).toBe(false);
 });
 
-test("sends '+true' to isNumber", () => {
-  expect(isNumber('+true')).toBe(false);
+test("sends false to containsNumber", () => {
+  expect(containsNumber(false)).toBe(false);
 });
 
-test("sends '+true' without type checking to isNumber", () => {
-  expect(isNumber('+true', false)).toBe(false);
+test("sends string to containsNumber", () => {
+  expect(containsNumber("string")).toBe(false);
 });
 
-test("sends false to isNumber", () => {
-  expect(isNumber(false)).toBe(false);
+test("sends positive even integer to containsNumber", () => {
+  expect(containsNumber(2)).toBe(true);
 });
 
-test("sends string to isNumber", () => {
-  expect(isNumber("string")).toBe(false);
+test("sends positive odd integer to containsNumber", () => {
+  expect(containsNumber(1)).toBe(true);
 });
 
-test("sends positive even integer to isNumber", () => {
-  expect(isNumber(2)).toBe(true);
+test("sends zero to containsNumber", () => {
+  expect(containsNumber(0)).toBe(true);
 });
 
-test("sends positive odd integer to isNumber", () => {
-  expect(isNumber(1)).toBe(true);
+test("sends positive float to containsNumber", () => {
+  expect(containsNumber(1.1)).toBe(true);
 });
 
-test("sends zero to isNumber", () => {
-  expect(isNumber(0)).toBe(true);
+test("sends negative odd integer to containsNumber", () => {
+  expect(containsNumber(-1)).toBe(true);
 });
 
-test("sends positive float to isNumber", () => {
-  expect(isNumber(1.1)).toBe(true);
+test("sends negative even integer to containsNumber", () => {
+  expect(containsNumber(-2)).toBe(true);
 });
 
-test("sends negative odd integer to isNumber", () => {
-  expect(isNumber(-1)).toBe(true);
-});
-
-test("sends negative even integer to isNumber", () => {
-  expect(isNumber(-2)).toBe(true);
-});
-
-test("sends negative float to isNumber", () => {
-  expect(isNumber(-1.1)).toBe(true);
+test("sends negative float to containsNumber", () => {
+  expect(containsNumber(-1.1)).toBe(true);
 });
 
 
-test("sends positive even integer in string format to isNumber", () => {
-  expect(isNumber('2')).toBe(false);
+test("sends positive even integer in string format to containsNumber", () => {
+  expect(containsNumber('2')).toBe(true);
 });
 
-test("sends positive odd integer in string format to isNumber", () => {
-  expect(isNumber('1')).toBe(false);
+test("sends positive odd integer in string format to containsNumber", () => {
+  expect(containsNumber('1')).toBe(true);
 });
 
-test("sends zero in string format to isNumber", () => {
-  expect(isNumber('0')).toBe(false);
+test("sends zero in string format to containsNumber", () => {
+  expect(containsNumber('0')).toBe(true);
 });
 
-test("sends positive float in string format to isNumber", () => {
-  expect(isNumber('1.1')).toBe(false);
+test("sends positive float in string format to containsNumber", () => {
+  expect(containsNumber('1.1')).toBe(true);
 });
 
-test("sends negative odd integer in string format to isNumber", () => {
-  expect(isNumber('-1')).toBe(false);
+test("sends negative odd integer in string format to containsNumber", () => {
+  expect(containsNumber('-1')).toBe(true);
 });
 
-test("sends negative even integer in string format to isNumber", () => {
-  expect(isNumber('-2')).toBe(false);
+test("sends negative even integer in string format to containsNumber", () => {
+  expect(containsNumber('-2')).toBe(true);
 });
 
-test("sends negative float in string format to isNumber", () => {
-  expect(isNumber('-1.1')).toBe(false);
+test("sends negative float in string format to containsNumber", () => {
+  expect(containsNumber('-1.1')).toBe(true);
 });
 
-test("sends positive even integer in string format without type checking to isNumber", () => {
-  expect(isNumber('2', false)).toBe(true);
+test("sends '8e5' to containsNumber", () => {
+  expect(containsNumber('8e5')).toBe(true);
 });
 
-test("sends positive odd integer in string format without type checking to isNumber", () => {
-  expect(isNumber('1', false)).toBe(true);
+test("sends '0x44' to containsNumber", () => {
+  expect(containsNumber('0x44')).toBe(true);
 });
 
-test("sends zero in string format without type checking to isNumber", () => {
-  expect(isNumber('0', false)).toBe(true);
+test("sends 8e5 to containsNumber", () => {
+  expect(containsNumber(8e5)).toBe(true);
 });
 
-test("sends positive float in string format without type checking to isNumber", () => {
-  expect(isNumber('1.1', false)).toBe(true);
+test("sends 0x44 to containsNumber", () => {
+  expect(containsNumber(0x44)).toBe(true);
 });
 
-test("sends negative odd integer in string format without type checking to isNumber", () => {
-  expect(isNumber('-1', false)).toBe(true);
+test("sends object to containsNumber", () => {
+  expect(containsNumber({})).toBe(false);
 });
 
-test("sends negative even integer in string format without type checking to isNumber", () => {
-  expect(isNumber('-2', false)).toBe(true);
+test("sends empty array to containsNumber", () => {
+  expect(containsNumber([])).toBe(false);
 });
 
-test("sends negative float in string format without type checking to isNumber", () => {
-  expect(isNumber('-1.1', false)).toBe(true);
-});
-
-test("sends '8e5' to isNumber", () => {
-  expect(isNumber('8e5')).toBe(false);
-});
-
-test("sends '0x44' to isNumber", () => {
-  expect(isNumber('0x44')).toBe(false);
-});
-
-test("sends '8e5' without type checking to isNumber", () => {
-  expect(isNumber('8e5', false)).toBe(true);
-});
-
-test("sends '0x44' without type checking to isNumber", () => {
-  expect(isNumber('0x44', false)).toBe(true);
-});
-
-test("sends 8e5 to isNumber", () => {
-  expect(isNumber(8e5)).toBe(true);
-});
-
-test("sends 0x44 to isNumber", () => {
-  expect(isNumber(0x44)).toBe(true);
-});
-
-test("sends object to isNumber", () => {
-  expect(isNumber({})).toBe(false);
-});
-
-test("sends empty array to isNumber", () => {
-  expect(isNumber([])).toBe(false);
-});
-
-test("sends array to isNumber", () => {
-  expect(isNumber(["white", "grey", "black"])).toBe(false);
+test("sends array to containsNumber", () => {
+  expect(containsNumber(["white", "grey", "black"])).toBe(false);
 });
 
 var json = `{
@@ -172,8 +132,8 @@ var json = `{
   }
 }`;
 
-test("sends json to isNumber", () => {
-  expect(isNumber(json)).toBe(false);
+test("sends json to containsNumber", () => {
+  expect(containsNumber(json)).toBe(true);
 });
 
 var invalidjson = `{
@@ -186,30 +146,30 @@ var invalidjson = `{
   }
 }`;
 
-test("sends invalid json to isNumber", () => {
-  expect(isNumber(invalidjson)).toBe(false);
+test("sends invalid json to containsNumber", () => {
+  expect(containsNumber(invalidjson)).toBe(true);
 });
 
 function testFunction() {
   console.log("function");
 }
 
-test("sends function to isNumber", () => {
-  expect(isNumber(testFunction)).toBe(false);
+test("sends function to containsNumber", () => {
+  expect(containsNumber(testFunction)).toBe(false);
 });
 
 var para = document.createElement("p");
 
-test("sends htmlElement to isNumber", () => {
-  expect(isNumber(para)).toBe(false);
+test("sends htmlElement to containsNumber", () => {
+  expect(containsNumber(para)).toBe(false);
 });
 
 var node = document.createTextNode("new node");
 
-test("sends node to isNumber", () => {
-  expect(isNumber(node)).toBe(false);
+test("sends node to containsNumber", () => {
+  expect(containsNumber(node)).toBe(false);
 });
 
-test("sends regex to isNumber", () => {
-  expect(isNumber(/ab+c/i)).toBe(false);
+test("sends regex to containsNumber", () => {
+  expect(containsNumber(/ab+c/i)).toBe(false);
 });

@@ -81,7 +81,7 @@ var CH = (function (exports) {
     }
 
     function isArray(array, length) {
-      return !isNil(array) && array.constructor === Array && (length ? array.length === length : true);
+      return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? array.length === length : true);
     }
 
     function isFunction(func) {
@@ -187,16 +187,6 @@ var CH = (function (exports) {
       return isInteger(number, typeCheck) && !isOrigin(number, typeCheck) && (number & number - 1) === 0;
     }
 
-    var numberRegex = /[0-9]+/g;
-
-    function containsNumber(number) {
-      if (!number) {
-        return false;
-      }
-
-      return numberRegex.test(number);
-    }
-
     function isJson(str) {
       if (!isString(str)) {
         return false;
@@ -275,6 +265,12 @@ var CH = (function (exports) {
 
     function isHexadecimal(string) {
       return isString(string) ? hexadecimal.test(string) : false;
+    }
+
+    var numberRegex = /\d/;
+
+    function containsNumber(number) {
+      return numberRegex.test(number);
     }
 
     function isHtmlElement(htmlElement) {
@@ -378,8 +374,8 @@ var CH = (function (exports) {
       return !isNaN(date) && date instanceof Date;
     }
 
-    var minDate = new Date('1/1/1900').getTime();
-    var maxDate = new Date('1/1/2200').getTime();
+    var minDate = new Date('1/1/1900');
+    var maxDate = new Date('1/1/2200');
 
     function isValidDate(date, min, max) {
       if (min === void 0) {

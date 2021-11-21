@@ -1,3 +1,8 @@
+# 2.17.1 (November 21th 2021)
+
+- Fix isValidDate() method
+- Fix declaration file for Typescript
+
 # 2.17.0 (November 20th 2021)
 
 - Add isDate() method

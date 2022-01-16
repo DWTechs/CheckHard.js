@@ -1,76 +1,92 @@
-import { isString } from "../dist/ch";
+import { containsLowerCase } from "../dist/ch";
 
-test("sends string with uppercase character to isString", () => {
-  expect(isString('salUt')).toBe(true);
+test("sends salUt character to containsLowerCase", () => {
+  expect(containsLowerCase('salUt')).toBe(true);
 });
 
-test("sends string without uppercase character to isString", () => {
-  expect(isString('salut')).toBe(true);
+test("sends SALUT character to containsLowerCase", () => {
+  expect(containsLowerCase('SALUT')).toBe(false);
 });
 
-test("sends null to isString", () => {
-  expect(isString(null)).toBe(false);
+test("sends sALUT character to containsLowerCase", () => {
+  expect(containsLowerCase('sALUT')).toBe(true);
 });
 
-test("sends undefined to isString", () => {
-  expect(isString(undefined)).toBe(false);
+test("sends SaLUT character to containsLowerCase", () => {
+  expect(containsLowerCase('SaLUT')).toBe(true);
+});
+
+test("sends SALUt character to containsLowerCase", () => {
+  expect(containsLowerCase('SALUt')).toBe(true);
+});
+
+test("sends string without uppercase character to containsLowerCase", () => {
+  expect(containsLowerCase('salut')).toBe(true);
+});
+
+test("sends null to containsLowerCase", () => {
+  expect(containsLowerCase(null)).toBe(false);
+});
+
+test("sends undefined to containsLowerCase", () => {
+  expect(containsLowerCase(undefined)).toBe(false);
 });
 
 const s1 = Symbol();
-test("sends symbol to isString", () => {
-  expect(isString(s1)).toBe(false);
+test("sends symbol to containsLowerCase", () => {
+  expect(containsLowerCase(s1)).toBe(false);
 });
 
-test("sends true to isString", () => {
-  expect(isString(true)).toBe(false);
+test("sends true to containsLowerCase", () => {
+  expect(containsLowerCase(true)).toBe(false);
 });
 
-test("sends false to isString", () => {
-  expect(isString(false)).toBe(false);
+test("sends false to containsLowerCase", () => {
+  expect(containsLowerCase(false)).toBe(false);
 });
 
-test("sends string to isString", () => {
-  expect(isString("string")).toBe(true);
+test("sends string to containsLowerCase", () => {
+  expect(containsLowerCase("string")).toBe(true);
 });
 
-test("sends positive even integer to isString", () => {
-  expect(isString(2)).toBe(false);
+test("sends positive even integer to containsLowerCase", () => {
+  expect(containsLowerCase(2)).toBe(false);
 });
 
-test("sends positive odd integer to isString", () => {
-  expect(isString(1)).toBe(false);
+test("sends positive odd integer to containsLowerCase", () => {
+  expect(containsLowerCase(1)).toBe(false);
 });
 
-test("sends zero to isString", () => {
-  expect(isString(0)).toBe(false);
+test("sends zero to containsLowerCase", () => {
+  expect(containsLowerCase(0)).toBe(false);
 });
 
-test("sends positive float to isString", () => {
-  expect(isString(1.1)).toBe(false);
+test("sends positive float to containsLowerCase", () => {
+  expect(containsLowerCase(1.1)).toBe(false);
 });
 
-test("sends negative odd integer to isString", () => {
-  expect(isString(-1)).toBe(false);
+test("sends negative odd integer to containsLowerCase", () => {
+  expect(containsLowerCase(-1)).toBe(false);
 });
 
-test("sends negative even integer to isString", () => {
-  expect(isString(-2)).toBe(false);
+test("sends negative even integer to containsLowerCase", () => {
+  expect(containsLowerCase(-2)).toBe(false);
 });
 
-test("sends negative float to isString", () => {
-  expect(isString(-1.1)).toBe(false);
+test("sends negative float to containsLowerCase", () => {
+  expect(containsLowerCase(-1.1)).toBe(false);
 });
 
-test("sends object to isString", () => {
-  expect(isString({})).toBe(false);
+test("sends object to containsLowerCase", () => {
+  expect(containsLowerCase({})).toBe(false);
 });
 
-test("sends empty array to isString", () => {
-  expect(isString([])).toBe(false);
+test("sends empty array to containsLowerCase", () => {
+  expect(containsLowerCase([])).toBe(false);
 });
 
-test("sends array to isString", () => {
-  expect(isString(["white", "grey", "black"])).toBe(false);
+test("sends array to containsLowerCase", () => {
+  expect(containsLowerCase(["white", "grey", "black"])).toBe(false);
 });
 
 var json = `{
@@ -83,8 +99,8 @@ var json = `{
   }
 }`;
 
-test("sends json to isString", () => {
-  expect(isString(json)).toBe(true);
+test("sends json to containsLowerCase", () => {
+  expect(containsLowerCase(json)).toBe(true);
 });
 
 var invalidjson = `{
@@ -97,30 +113,30 @@ var invalidjson = `{
   }
 }`;
 
-test("sends invalid json to isString", () => {
-  expect(isString(invalidjson)).toBe(true);
+test("sends invalid json to containsLowerCase", () => {
+  expect(containsLowerCase(invalidjson)).toBe(true);
 });
 
 function testFunction() {
   console.log("function");
 }
 
-test("sends function to isString", () => {
-  expect(isString(testFunction)).toBe(false);
+test("sends function to containsLowerCase", () => {
+  expect(containsLowerCase(testFunction)).toBe(false);
 });
 
 var para = document.createElement("p");
 
-test("sends htmlElement to isString", () => {
-  expect(isString(para)).toBe(false);
+test("sends htmlElement to containsLowerCase", () => {
+  expect(containsLowerCase(para)).toBe(false);
 });
 
 var node = document.createTextNode("new node");
 
-test("sends node to isString", () => {
-  expect(isString(node)).toBe(false);
+test("sends node to containsLowerCase", () => {
+  expect(containsLowerCase(node)).toBe(false);
 });
 
-test("sends regex to isString", () => {
-  expect(isString(/ab+c/i)).toBe(false);
+test("sends regex to containsLowerCase", () => {
+  expect(containsLowerCase(/ab+c/i)).toBe(false);
 });

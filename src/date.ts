@@ -21,7 +21,7 @@ function isTimestamp(timestamp:any): boolean {
 
 // default min = 1/1/1900 (month/day/year)
 // default max = 1/1/2200 (month/day/year)
-function isValidTimestamp(timestamp: any, min: number = -2208988800000, max: number = 7258118400000): boolean {
+function isValidTimestamp(timestamp: any, min: number = -2208989361000, max: number = 7258114800000): boolean {
   return isTimestamp(timestamp) && timestamp >= min && timestamp <= max ? true : false;
 }
 

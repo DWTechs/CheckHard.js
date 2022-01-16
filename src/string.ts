@@ -62,12 +62,12 @@ function isSlug(slug: any): boolean {
   return isString(slug) ? slugRegex.test(slug) : false;
 }
 
-const upperCaseRegex = /[A-Z]+/g;
+const upperCaseRegex = /[A-Z]+/;
 function containsUpperCase(string: any): boolean {
   return isString(string) ? upperCaseRegex.test(string) : false;
 }
 
-const lowerCaseRegex = /[a-z]+/g;
+const lowerCaseRegex = /[a-z]+/;
 function containsLowerCase(string: any): boolean {
   return isString(string) ? lowerCaseRegex.test(string) : false;
 }

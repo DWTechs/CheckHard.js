@@ -1,14 +1,14 @@
 import { isValidTimestamp } from "../dist/ch";
 
-// min: number = -2208988800000
-// max: number = 7258118400000
+// min: number = -2208989361000
+// max: number = 7258114800000
 
 test("sends invalid negative timestamp to isValidTimestamp", () => {
-  expect(isValidTimestamp(-2208988800001)).toBe(false);
+  expect(isValidTimestamp(-2208989361001)).toBe(false);
 });
 
 test("sends invalid timestamp to isValidTimestamp", () => {
-  expect(isValidTimestamp(7258118400001)).toBe(false);
+  expect(isValidTimestamp(7258114800001)).toBe(false);
 });
 
 test("sends invalid negative timestamp to isValidTimestamp with min & max", () => {

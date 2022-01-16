@@ -190,7 +190,7 @@ isTimestamp(number: any): boolean {}
 
 // default min = 1/1/1900 (month/day/year)
 // default max = 1/1/2200 (month/day/year)
-isValidTimestamp(number: any, min: number = -2208988800000, max: number = 7258118400000): boolean {}
+isValidTimestamp(number: any, min: number = -2208989361000, max: number = 7258114800000): boolean {}
 
 ```
 

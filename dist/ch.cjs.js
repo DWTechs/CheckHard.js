@@ -158,11 +158,11 @@ const slugRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
 function isSlug(slug) {
     return isString(slug) ? slugRegex.test(slug) : false;
 }
-const upperCaseRegex = /[A-Z]+/g;
+const upperCaseRegex = /[A-Z]+/;
 function containsUpperCase(string) {
     return isString(string) ? upperCaseRegex.test(string) : false;
 }
-const lowerCaseRegex = /[a-z]+/g;
+const lowerCaseRegex = /[a-z]+/;
 function containsLowerCase(string) {
     return isString(string) ? lowerCaseRegex.test(string) : false;
 }
@@ -297,7 +297,7 @@ function isTimestamp(timestamp) {
     }
     return false;
 }
-function isValidTimestamp(timestamp, min = -2208988800000, max = 7258118400000) {
+function isValidTimestamp(timestamp, min = -2208989361000, max = 7258114800000) {
     return isTimestamp(timestamp) && timestamp >= min && timestamp <= max ? true : false;
 }
 

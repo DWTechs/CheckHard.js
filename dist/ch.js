@@ -240,13 +240,13 @@ function isSlug(slug) {
   return isString(slug) ? slugRegex.test(slug) : false;
 }
 
-var upperCaseRegex = /[A-Z]+/g;
+var upperCaseRegex = /[A-Z]+/;
 
 function containsUpperCase(string) {
   return isString(string) ? upperCaseRegex.test(string) : false;
 }
 
-var lowerCaseRegex = /[a-z]+/g;
+var lowerCaseRegex = /[a-z]+/;
 
 function containsLowerCase(string) {
   return isString(string) ? lowerCaseRegex.test(string) : false;
@@ -397,11 +397,11 @@ function isTimestamp(timestamp) {
 
 function isValidTimestamp(timestamp, min, max) {
   if (min === void 0) {
-    min = -2208988800000;
+    min = -2208989361000;
   }
 
   if (max === void 0) {
-    max = 7258118400000;
+    max = 7258114800000;
   }
 
   return isTimestamp(timestamp) && timestamp >= min && timestamp <= max ? true : false;

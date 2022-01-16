@@ -1,3 +1,9 @@
+# 2.17.2 (January 16th 2022)
+
+- Fix isValidTimestamp() method
+- Fix containsUpperCase() method
+- Fix containsLowerCase() method
+
 # 2.17.1 (November 21th 2021)
 
 - Fix isValidDate() method

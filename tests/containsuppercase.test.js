@@ -1,9 +1,24 @@
 import { containsUpperCase } from "../dist/ch";
 
-test("sends string with uppercase character to containsUpperCase", () => {
+test("sends salUt character to containsUpperCase", () => {
   expect(containsUpperCase('salUt')).toBe(true);
 });
 
+test("sends Salut character to containsUpperCase", () => {
+  expect(containsUpperCase('Salut')).toBe(true);
+});
+
+test("sends saluT character to containsUpperCase", () => {
+  expect(containsUpperCase('saluT')).toBe(true);
+});
+
+test("sends SAlut character to containsUpperCase", () => {
+  expect(containsUpperCase('SAlut')).toBe(true);
+});
+
+test("sends salUT character to containsUpperCase", () => {
+  expect(containsUpperCase('salUT')).toBe(true);
+});
 test("sends string without uppercase character to containsUpperCase", () => {
   expect(containsUpperCase('salut')).toBe(false);
 });

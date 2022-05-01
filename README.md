@@ -75,7 +75,7 @@ if (!ch.isArray(variable, 2)) {
 ### IIFE
 
 ```html
-<script src="node-modules/@dwtechs/checkhard/dist/ch.iife.min.js"></script>
+<script src="node_modules/@dwtechs/checkhard/dist/ch.iife.min.js"></script>
 ```
 
 ```javascript

@@ -1,3 +1,7 @@
+# 2.18.0 (May 9th 2022)
+
+- containsNumber() method now can take min and max parameters
+
 # 2.17.2 (January 16th 2022)
 
 - Fix isValidTimestamp() method

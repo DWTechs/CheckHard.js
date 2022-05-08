@@ -174,7 +174,7 @@ containsLowerCase(string: any): boolean {}
 
 containsSpecialCharacter(string: any): boolean {}
 
-containsNumber(string: any): boolean {}
+containsNumber(string: any, min?: number|null, max?: number|null): boolean {}
 
 ```
 

@@ -265,9 +265,33 @@ function isHexadecimal(string) {
 }
 
 var numberRegex = /\d/;
+var lengthRegex = /[^0-9]/g;
 
-function containsNumber(number) {
-  return numberRegex.test(number);
+function containsNumber(string, min, max) {
+  var containsNumber = numberRegex.test(string);
+
+  if (containsNumber) {
+    var isMin = true;
+    var isMax = true;
+
+    if (isString(string)) {
+      if (min) {
+        isMin = string.replace(lengthRegex, '').length >= min ? true : false;
+      }
+
+      if (max) {
+        isMax = string.replace(lengthRegex, '').length <= max ? true : false;
+      }
+    } else {
+      if (min) {
+        isMin = min <= 1 ? true : false;
+      }
+    }
+
+    return isMin && isMax;
+  } else {
+    return containsNumber;
+  }
 }
 
 function isHtmlElement(htmlElement) {

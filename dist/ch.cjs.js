@@ -175,8 +175,30 @@ function isHexadecimal(string) {
     return isString(string) ? hexadecimal.test(string) : false;
 }
 const numberRegex = /\d/;
-function containsNumber(number) {
-    return numberRegex.test(number);
+const lengthRegex = /[^0-9]/g;
+function containsNumber(string, min, max) {
+    const containsNumber = numberRegex.test(string);
+    if (containsNumber) {
+        let isMin = true;
+        let isMax = true;
+        if (isString(string)) {
+            if (min) {
+                isMin = string.replace(lengthRegex, '').length >= min ? true : false;
+            }
+            if (max) {
+                isMax = string.replace(lengthRegex, '').length <= max ? true : false;
+            }
+        }
+        else {
+            if (min) {
+                isMin = min <= 1 ? true : false;
+            }
+        }
+        return isMin && isMax;
+    }
+    else {
+        return containsNumber;
+    }
 }
 
 function isHtmlElement(htmlElement) {

@@ -54,7 +54,7 @@ declare function isHexadecimal(string: any): boolean;
 declare function containsUpperCase(string: any): boolean;
 declare function containsLowerCase(string: any): boolean;
 declare function containsSpecialCharacter(string: any): boolean;
-declare function containsNumber(number: any): boolean;
+declare function containsNumber(number: any, min?: number, max?: number): boolean;
 declare function isDate(date: any): boolean;
 declare function isValidDate(date: any, min?: Date, max?: Date): boolean;
 declare function isTimestamp(timestamp:any): boolean;

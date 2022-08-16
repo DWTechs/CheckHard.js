@@ -92,10 +92,6 @@ var operations = {
 };
 
 function isArray(array, operator, length) {
-  if (operator === void 0) {
-    operator = '=';
-  }
-
   return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? operations[operator](array.length, length) : true);
 }
 

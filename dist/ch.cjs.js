@@ -63,7 +63,7 @@ let operations = {
     '>=': (a, b) => a >= b
 };
 
-function isArray(array, operator = '=', length) {
+function isArray(array, operator, length) {
     return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? operations[operator](array.length, length) : true);
 }
 

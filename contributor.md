@@ -10,13 +10,13 @@
  
   ### build image : 
   ```bash
-  $ cd CheckHard/
+  $ cd CheckHard.js/
   $ docker-compose up -d
   ```
   
   ### build lib : 
   ```bash
-  $ cd CheckHard/
+  $ cd CheckHard.js/
   $ docker-compose run checkhard
   ```
   
@@ -25,7 +25,7 @@ OR
 ## Install project dependencies :
 
   ```bash
-  $ cd CheckHard/
+  $ cd CheckHard.js/
   $ npm i
   ```
 

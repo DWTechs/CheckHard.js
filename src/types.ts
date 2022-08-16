@@ -1,0 +1,6 @@
+
+type Operator = '='|'<'|'>'|'<='|'>=';
+
+export {
+  Operator
+};

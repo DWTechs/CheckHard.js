@@ -1,5 +1,7 @@
 import { isArray } from "../dist/ch";
 
+const s1 = Symbol();
+
 test("sends null to isArray", () => {
   expect(isArray(null)).toBe(false);
 });
@@ -8,7 +10,6 @@ test("sends undefined to isArray", () => {
   expect(isArray(undefined)).toBe(false);
 });
 
-const s1 = Symbol();
 test("sends symbol to isArray", () => {
   expect(isArray(s1)).toBe(false);
 });
@@ -66,15 +67,15 @@ test("sends array to isArray", () => {
 });
 
 test("sends array of length 3 to isArray(2)", () => {
-  expect(isArray(["white", "grey", "black"],2)).toBe(false);
+  expect(isArray(["white", "grey", "black"], '=', 2)).toBe(false);
 });
 
 test("sends array of length 3 to isArray(3)", () => {
-  expect(isArray(["white", "grey", "black"],3)).toBe(true);
+  expect(isArray(["white", "grey", "black"], '=', 3)).toBe(true);
 });
 
 test("sends array of length 3 to isArray(4)", () => {
-  expect(isArray(["white", "grey", "black"],4)).toBe(false);
+  expect(isArray(["white", "grey", "black"], '=', 4)).toBe(false);
 });
 
 var json = `{
@@ -128,3 +129,125 @@ test("sends node to isArray", () => {
 test("sends regex to isArray", () => {
   expect(isArray(/ab+c/i)).toBe(false);
 });
+
+
+
+// with length
+test("sends null to isArray with length test of 2", () => {
+  expect(isArray(null, '=', 2)).toBe(false);
+});
+
+test("sends undefined to isArray with length test of 2", () => {
+  expect(isArray(undefined, '=', 2)).toBe(false);
+});
+
+test("sends symbol to isArray with length test of 2", () => {
+  expect(isArray(s1, '=', 2)).toBe(false);
+});
+
+test("sends true to isArray with length test of 2", () => {
+  expect(isArray(true, '=', 2)).toBe(false);
+});
+
+test("sends false to isArray with length test of 2", () => {
+  expect(isArray(false, '=', 2)).toBe(false);
+});
+
+test("sends string to isArray with length test of 2", () => {
+  expect(isArray("string", '=', 2)).toBe(false);
+});
+
+test("sends positive even integer to isArray with length test of 2", () => {
+  expect(isArray(2, '=', 2)).toBe(false);
+});
+
+test("sends positive odd integer to isArray with length test of 2", () => {
+  expect(isArray(1, '=', 2)).toBe(false);
+});
+
+test("sends zero to isArray with length test of 2", () => {
+  expect(isArray(0, '=', 2)).toBe(false);
+});
+
+test("sends positive float to isArray with length test of 2", () => {
+  expect(isArray(1.1, '=', 2)).toBe(false);
+});
+
+test("sends negative odd integer to isArray with length test of 2", () => {
+  expect(isArray(-1, '=', 2)).toBe(false);
+});
+
+test("sends negative even integer to isArray with length test of 2", () => {
+  expect(isArray(-2, '=', 2)).toBe(false);
+});
+
+test("sends negative float to isArray with length test of 2", () => {
+  expect(isArray(-1.1, '=', 2)).toBe(false);
+});
+
+test("sends object to isArray with length test of 2", () => {
+  expect(isArray({}, '=', 2)).toBe(false);
+});
+
+test("sends empty array to isArray with length test of 2", () => {
+  expect(isArray([], '=', 2)).toBe(false);
+});
+
+test("sends array to isArray with length test of 3", () => {
+  expect(isArray(["white", "grey", "black"], '=', 3)).toBe(true);
+});
+
+test("sends array to isArray with length test greater than 3", () => {
+  expect(isArray(["white", "grey", "black"], '>', 2)).toBe(true);
+});
+
+test("sends array to isArray with length test greater than or equal to 3", () => {
+  expect(isArray(["white", "grey", "black"], '>=', 2)).toBe(true);
+});
+
+test("sends array to isArray with length test lower than 4", () => {
+  expect(isArray(["white", "grey", "black"], '<', 4)).toBe(true);
+});
+
+test("sends array to isArray with length test lower than or equal to 4", () => {
+  expect(isArray(["white", "grey", "black"], '<=', 4)).toBe(true);
+});
+
+
+test("sends array of length 3 to isArray with length test of 2", () => {
+  expect(isArray(["white", "grey", "black"], '=', 2)).toBe(false);
+});
+
+test("sends array of length 3 to isArray with length greater than 3", () => {
+  expect(isArray(["white", "grey", "black"], '>', 3)).toBe(false);
+});
+
+test("sends array of length 3 to isArray with length test of 4", () => {
+  expect(isArray(["white", "grey", "black"], '=', 4)).toBe(false);
+});
+
+test("sends json to isArray with length test of 2", () => {
+  expect(isArray(json, '=', 2)).toBe(false);
+});
+
+test("sends invalid json to isArray with length test of 2", () => {
+  expect(isArray(invalidjson, '=', 2)).toBe(false);
+});
+
+test("sends function to isArray with length test of 2", () => {
+  expect(isArray(testFunction, '=', 2)).toBe(false);
+});
+
+test("sends htmlElement to isArray with length test of 2", () => {
+  expect(isArray(para, '=', 2)).toBe(false);
+});
+
+test("sends node to isArray with length test of 2", () => {
+  expect(isArray(node, '=', 2)).toBe(false);
+});
+
+test("sends regex to isArray with length test of 2", () => {
+  expect(isArray(/ab+c/i, '=', 2)).toBe(false);
+});
+
+

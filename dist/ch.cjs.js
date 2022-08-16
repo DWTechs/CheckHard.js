@@ -45,10 +45,7 @@ function isString(string) {
     return typeof string === "string";
 }
 function isNumber(number, typeCheck = true) {
-    if (isSymbol(number)) {
-        return false;
-    }
-    return typeCheck ? Number(number) === number : isNumeric(number);
+    return isSymbol(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
 }
 function isValidNumber(number, min = -999999999, max = 999999999, typeCheck = true) {
     return isNumber(number, typeCheck) && number >= min && number <= max ? true : false;
@@ -58,8 +55,16 @@ function isSymbol(sym) {
     return type == 'symbol' || (type === 'object' && sym != null && getTag(sym) == '[object Symbol]');
 }
 
-function isArray(array, length) {
-    return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? array.length === length : true);
+let operations = {
+    '=': (a, b) => a == b,
+    '<': (a, b) => a < b,
+    '>': (a, b) => a > b,
+    '<=': (a, b) => a <= b,
+    '>=': (a, b) => a >= b
+};
+
+function isArray(array, operator = '=', length) {
+    return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? operations[operator](array.length, length) : true);
 }
 
 function isFunction(func) {

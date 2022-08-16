@@ -9,10 +9,7 @@ function isString(string: any): boolean {
 }
 
 function isNumber(number: any, typeCheck: boolean = true): boolean {
-  if (isSymbol(number)) {
-    return false;
-  }
-  return typeCheck ? Number(number) === number : isNumeric(number);
+  return isSymbol(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
 }
 
 function isValidNumber( number: any, 

@@ -90,6 +90,13 @@ if (!CH.isArray(variable, 2)) {
 
 ## API Reference
 
+### Types
+
+```javascript
+
+Operator = '='|'<'|'>'|'<='|'>=';
+
+```
 
 ### Primitive
 
@@ -99,7 +106,6 @@ isBoolean(bool: any): boolean {}
 
 isString(string: any): boolean {}
 
-// Check if a variable is a numeric value,
 // If typeCheck = false values like '8e4', '+true', '0x44' return true
 isNumber(number: any, typeCheck: boolean = true): boolean {}
 
@@ -198,10 +204,31 @@ isValidTimestamp(number: any, min: number = -2208989361000, max: number = 725811
 
 ```javascript
 
-// Check if 'array' is an array and if it is of length 'length'
-isArray(array: any, length?: number|null): boolean {}
+// Check if 'array' is an array and optionaly if it is of length =, <, >, <= or >= than 'length'
+isArray(array: any, operator: Operator = '=', length?: number|null): boolean {}
 
 ```
+
+example : 
+
+```javascript
+
+let ar = ['dog','cat','bird'];
+
+if (isArray(array)) {
+  // check if ar is an array
+}
+
+if (isArray(array, '=', 2)) {
+  // check if ar is an array of length 2
+}
+
+if (isArray(array, '>=', 1)) {
+  // check if ar is an array of length greater than or equal to 1
+}
+
+```
+
 
 ### Html
 

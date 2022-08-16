@@ -1,6 +1,6 @@
 # 2.19.0 (August 16th 2022)
 
-- isArray() method now checks if 'array' is an array and optionaly if it is of length =, <, >, <= or >= than x
+- isArray() method now checks if 'array' is an array and optionally if it is of length =, <, >, <= or >= than x
 
 # 2.18.0 (May 9th 2022)
 

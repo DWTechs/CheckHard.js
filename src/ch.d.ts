@@ -32,7 +32,7 @@ declare function isSymbol(sym: any): boolean;
 declare function isJson(str: any): boolean;
 declare function isFunction(func: any): boolean;
 declare function isObject(object: any): boolean;
-declare function isArray(array: any, comparator?: Comparator, length?: number|null): boolean;
+declare function isArray(array: any, comparator?: Comparator|null, length?: number|null): boolean;
 declare function isAscii(code: any, extended?: boolean): boolean;
 declare function isInteger(number: any, typeCheck?: boolean): boolean;
 declare function isFloat(number: any, typeCheck?: boolean): boolean;

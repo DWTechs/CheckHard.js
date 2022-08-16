@@ -205,7 +205,7 @@ isValidTimestamp(number: any, min: number = -2208989361000, max: number = 725811
 ```javascript
 
 // Check if 'array' is an array and optionaly if it is of length =, <, >, <= or >= than 'length'
-isArray(array: any, comparator?: Comparator, length?: number|null): boolean {}
+isArray(array: any, comparator?: Comparator|null, length?: number|null): boolean {}
 
 ```
 

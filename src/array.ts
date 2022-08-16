@@ -1,8 +1,8 @@
-import { Operator } from './types';
-import { operations } from './utils';
+import { Comparator } from './types';
+import { comparisons } from './utils';
 
-function isArray(array: any, operator?: Operator|null, length?: number|null): boolean {
-  return array?.constructor === Array && (length ? operations[operator as Operator](array.length, length) : true);
+function isArray(array: any, comparator?: Comparator|null, length?: number|null): boolean {
+  return array?.constructor === Array && (length ? comparisons[comparator as Comparator](array.length, length) : true);
 }
 
 export {

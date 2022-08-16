@@ -1,5 +1,5 @@
 
-let operations = {
+let comparisons = {
   '=' : (a:number, b: number) => a == b,
   '<' : (a:number, b: number) => a < b,
   '>' : (a:number, b: number) => a > b,
@@ -8,5 +8,5 @@ let operations = {
 };
 
 export {
-  operations
+  comparisons
 };

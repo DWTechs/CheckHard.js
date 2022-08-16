@@ -53,7 +53,7 @@ if (isFunction(variable)) {
   //variable is a function
 }
 
-if (!isArray(variable, 2)) {
+if (!isArray(variable, '=', 2)) {
   //variable is not an array of length 2
 }
 ```
@@ -67,7 +67,7 @@ if (ch.isFunction(variable)) {
   //variable is a function
 }
 
-if (!ch.isArray(variable, 2)) {
+if (!ch.isArray(variable, '=', 2)) {
   //variable is not an array of length 2
 }
 ```
@@ -83,7 +83,7 @@ if (CH.isFunction(variable)) {
   //variable is a function
 }
 
-if (!CH.isArray(variable, 2)) {
+if (!CH.isArray(variable, '=', 2)) {
   //variable is not an array of length 2
 }
 ```
@@ -94,7 +94,7 @@ if (!CH.isArray(variable, 2)) {
 
 ```javascript
 
-Operator = '='|'<'|'>'|'<='|'>=';
+Comparator = '='|'<'|'>'|'<='|'>=';
 
 ```
 
@@ -205,7 +205,7 @@ isValidTimestamp(number: any, min: number = -2208989361000, max: number = 725811
 ```javascript
 
 // Check if 'array' is an array and optionaly if it is of length =, <, >, <= or >= than 'length'
-isArray(array: any, operator?: Operator, length?: number|null): boolean {}
+isArray(array: any, comparator?: Comparator, length?: number|null): boolean {}
 
 ```
 

@@ -24,7 +24,7 @@ SOFTWARE.
 https://github.com/DWTechs/CheckHard.js
 */
 
-export declare type Operator = '='|'<'|'>'|'<='|'>=';
+export declare type Comparator = '='|'<'|'>'|'<='|'>=';
 
 declare function isBoolean(bool: any): boolean;
 declare function isNil(nil: any): boolean;
@@ -32,7 +32,7 @@ declare function isSymbol(sym: any): boolean;
 declare function isJson(str: any): boolean;
 declare function isFunction(func: any): boolean;
 declare function isObject(object: any): boolean;
-declare function isArray(array: any, operator?: Operator, length?: number|null): boolean;
+declare function isArray(array: any, comparator?: Comparator, length?: number|null): boolean;
 declare function isAscii(code: any, extended?: boolean): boolean;
 declare function isInteger(number: any, typeCheck?: boolean): boolean;
 declare function isFloat(number: any, typeCheck?: boolean): boolean;

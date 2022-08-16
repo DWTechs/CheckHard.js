@@ -76,7 +76,7 @@ var CH = (function (exports) {
       return type == 'symbol' || type === 'object' && sym != null && getTag(sym) == '[object Symbol]';
     }
 
-    var operations = {
+    var comparisons = {
       '=': function _(a, b) {
         return a == b;
       },
@@ -94,8 +94,8 @@ var CH = (function (exports) {
       }
     };
 
-    function isArray(array, operator, length) {
-      return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? operations[operator](array.length, length) : true);
+    function isArray(array, comparator, length) {
+      return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? comparisons[comparator](array.length, length) : true);
     }
 
     function isFunction(func) {

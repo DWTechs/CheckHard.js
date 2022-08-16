@@ -1,6 +1,6 @@
 
-type Operator = '='|'<'|'>'|'<='|'>=';
+type Comparator = '='|'<'|'>'|'<='|'>=';
 
 export {
-  Operator
+  Comparator
 };

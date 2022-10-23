@@ -426,7 +426,7 @@ function isValidDate(date, min, max) {
 
 function isTimestamp(timestamp) {
   if (isInteger(timestamp, false)) {
-    var newTimestamp = new Date(timestamp).getTime();
+    var newTimestamp = new Date(parseInt(timestamp)).getTime();
     return isNumeric(newTimestamp);
   }
 

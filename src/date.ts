@@ -13,7 +13,7 @@ function isValidDate(date: any, min: Date = minDate, max: Date = maxDate): boole
 
 function isTimestamp(timestamp:any): boolean {
   if (isInteger(timestamp, false)) {
-    const newTimestamp = new Date(timestamp).getTime();
+    const newTimestamp = new Date(parseInt(timestamp)).getTime();
     return isNumeric(newTimestamp);
   }
   return false;

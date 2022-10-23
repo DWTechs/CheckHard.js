@@ -319,7 +319,7 @@ function isValidDate(date, min = minDate, max = maxDate) {
 }
 function isTimestamp(timestamp) {
     if (isInteger(timestamp, false)) {
-        const newTimestamp = new Date(timestamp).getTime();
+        const newTimestamp = new Date(parseInt(timestamp)).getTime();
         return isNumeric(newTimestamp);
     }
     return false;

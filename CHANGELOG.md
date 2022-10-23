@@ -1,3 +1,7 @@
+# 2.19.1 (October 23th 2022)
+
+- Fix isTimestamp() issue with string values
+
 # 2.19.0 (August 16th 2022)
 
 - isArray() method now checks if 'array' is an array and optionally if it is of length =, <, >, <= or >= than x

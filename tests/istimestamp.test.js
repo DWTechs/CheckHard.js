@@ -38,6 +38,26 @@ test("sends string to isTimestamp", () => {
   expect(isTimestamp("string")).toBe(false);
 });
 
+test("sends valid timestamp to isTimestamp", () => {
+  expect(isTimestamp(7258114800001)).toBe(true);
+});
+
+test("sends valid timestamp as string to isTimestamp", () => {
+  expect(isTimestamp("7258114800001")).toBe(true);
+});
+
+test("sends positive string even integer to isTimestamp", () => {
+  expect(isTimestamp("2")).toBe(true);
+});
+
+test("sends positive string odd integer to isTimestamp", () => {
+  expect(isTimestamp("1")).toBe(true);
+});
+
+test("sends zero to isTimestamp", () => {
+  expect(isTimestamp("0")).toBe(true);
+});
+
 test("sends positive even integer to isTimestamp", () => {
   expect(isTimestamp(2)).toBe(true);
 });

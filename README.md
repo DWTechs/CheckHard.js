@@ -106,7 +106,7 @@ isBoolean(bool: any): boolean {}
 
 isString(string: any): boolean {}
 
-// If typeCheck = false values like '8e4', '+true', '0x44' return true
+// If typeCheck = false values like '4', '0', '8e4', '+true', '0x44' return true
 isNumber(number: any, typeCheck: boolean = true): boolean {}
 
 isValidNumber(number: any, 

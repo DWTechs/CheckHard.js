@@ -62,6 +62,22 @@ test("sends empty array to isArray", () => {
   expect(isArray([])).toBe(true);
 });
 
+test("sends array of 1 integer to isArray", () => {
+  expect(isArray([2])).toBe(true);
+});
+
+test("sends array of 2 integers to isArray", () => {
+  expect(isArray([2,1])).toBe(true);
+});
+
+test("sends array of 1 integer to isArray", () => {
+  expect(isArray([2.1])).toBe(true);
+});
+
+test("sends array of 2 integers to isArray", () => {
+  expect(isArray([2.1,1.1])).toBe(true);
+});
+
 test("sends array to isArray", () => {
   expect(isArray(["white", "grey", "black"])).toBe(true);
 });

@@ -61,6 +61,22 @@ test("sends empty array to isNil", () => {
   expect(isNil([])).toBe(false);
 });
 
+test("sends array of 1 integer to isNil", () => {
+  expect(isNil([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isNil", () => {
+  expect(isNil([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isNil", () => {
+  expect(isNil([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isNil", () => {
+  expect(isNil([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isNil", () => {
   expect(isNil(["white", "grey", "black"])).toBe(false);
 });

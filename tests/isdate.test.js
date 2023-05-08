@@ -70,6 +70,22 @@ test("sends empty array to isDate", () => {
   expect(isDate([])).toBe(false);
 });
 
+test("sends array of 1 integer to isDate", () => {
+  expect(isDate([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isDate", () => {
+  expect(isDate([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isDate", () => {
+  expect(isDate([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isDate", () => {
+  expect(isDate([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isDate", () => {
   expect(isDate(["white", "grey", "black"])).toBe(false);
 });

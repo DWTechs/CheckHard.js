@@ -126,6 +126,22 @@ test("sends empty array to containsNumber", () => {
   expect(containsNumber([])).toBe(false);
 });
 
+test("sends array of 1 integer to containsNumber", () => {
+  expect(containsNumber([2])).toBe(true);
+});
+
+test("sends array of 2 integers to containsNumber", () => {
+  expect(containsNumber([2,1])).toBe(true);
+});
+
+test("sends array of 1 integer to containsNumber", () => {
+  expect(containsNumber([2.1])).toBe(true);
+});
+
+test("sends array of 2 integers to containsNumber", () => {
+  expect(containsNumber([2.1,1.1])).toBe(true);
+});
+
 test("sends array to containsNumber", () => {
   expect(containsNumber(["white", "grey", "black"])).toBe(false);
 });

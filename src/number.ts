@@ -1,4 +1,5 @@
 import { isNumber, isSymbol } from './primitive';
+import { isArray } from './array';
 
 function isAscii(code: any, extended: boolean = true): boolean {
   if (isInteger(code, false)) {
@@ -8,7 +9,7 @@ function isAscii(code: any, extended: boolean = true): boolean {
 }
 
 function isInteger(number: any, typeCheck: boolean = true): boolean {
-  if (isSymbol(number)) {
+  if (isSymbol(number) || isArray(number)) {
     return false;
   }
   const int = parseInt(<string>number, 10);

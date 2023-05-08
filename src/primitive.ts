@@ -1,4 +1,5 @@
 import { isNumeric, getTag } from './internal';
+import { isArray } from './array';
 
 function isBoolean(bool: any): boolean {
   return typeof bool === "boolean";
@@ -9,7 +10,7 @@ function isString(string: any): boolean {
 }
 
 function isNumber(number: any, typeCheck: boolean = true): boolean {
-  return isSymbol(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
+  return isSymbol(number) || isArray(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
 }
 
 function isValidNumber( number: any, 

@@ -101,6 +101,22 @@ test("sends empty array to isValidTimestamp", () => {
   expect(isValidTimestamp([])).toBe(false);
 });
 
+test("sends array of 1 integer to isValidTimestamp", () => {
+  expect(isValidTimestamp([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isValidTimestamp", () => {
+  expect(isValidTimestamp([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isValidTimestamp", () => {
+  expect(isValidTimestamp([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isValidTimestamp", () => {
+  expect(isValidTimestamp([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isValidTimestamp", () => {
   expect(isValidTimestamp(["white", "grey", "black"])).toBe(false);
 });

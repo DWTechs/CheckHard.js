@@ -38,23 +38,6 @@ function getTag(tag) {
     return toString.call(tag);
 }
 
-function isBoolean(bool) {
-    return typeof bool === "boolean";
-}
-function isString(string) {
-    return typeof string === "string";
-}
-function isNumber(number, typeCheck = true) {
-    return isSymbol(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
-}
-function isValidNumber(number, min = -999999999, max = 999999999, typeCheck = true) {
-    return isNumber(number, typeCheck) && number >= min && number <= max ? true : false;
-}
-function isSymbol(sym) {
-    const type = typeof sym;
-    return type == 'symbol' || (type === 'object' && sym != null && getTag(sym) == '[object Symbol]');
-}
-
 let comparisons = {
     '=': (a, b) => a == b,
     '<': (a, b) => a < b,
@@ -65,6 +48,23 @@ let comparisons = {
 
 function isArray(array, comparator, length) {
     return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? comparisons[comparator](array.length, length) : true);
+}
+
+function isBoolean(bool) {
+    return typeof bool === "boolean";
+}
+function isString(string) {
+    return typeof string === "string";
+}
+function isNumber(number, typeCheck = true) {
+    return isSymbol(number) || isArray(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
+}
+function isValidNumber(number, min = -999999999, max = 999999999, typeCheck = true) {
+    return isNumber(number, typeCheck) && number >= min && number <= max ? true : false;
+}
+function isSymbol(sym) {
+    const type = typeof sym;
+    return type == 'symbol' || (type === 'object' && sym != null && getTag(sym) == '[object Symbol]');
 }
 
 function isFunction(func) {
@@ -87,7 +87,7 @@ function isAscii(code, extended = true) {
     return false;
 }
 function isInteger(number, typeCheck = true) {
-    if (isSymbol(number)) {
+    if (isSymbol(number) || isArray(number)) {
         return false;
     }
     const int = parseInt(number, 10);

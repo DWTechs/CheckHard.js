@@ -105,6 +105,22 @@ test("sends empty array to isValidDate", () => {
   expect(isValidDate([])).toBe(false);
 });
 
+test("sends array of 1 integer to isValidDate", () => {
+  expect(isValidDate([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isValidDate", () => {
+  expect(isValidDate([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isValidDate", () => {
+  expect(isValidDate([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isValidDate", () => {
+  expect(isValidDate([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isValidDate", () => {
   expect(isValidDate(["white", "grey", "black"])).toBe(false);
 });

@@ -39,6 +39,28 @@ var CH = (function (exports) {
       return toString.call(tag);
     }
 
+    var comparisons = {
+      '=': function _(a, b) {
+        return a == b;
+      },
+      '<': function _(a, b) {
+        return a < b;
+      },
+      '>': function _(a, b) {
+        return a > b;
+      },
+      '<=': function _(a, b) {
+        return a <= b;
+      },
+      '>=': function _(a, b) {
+        return a >= b;
+      }
+    };
+
+    function isArray(array, comparator, length) {
+      return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? comparisons[comparator](array.length, length) : true);
+    }
+
     function isBoolean(bool) {
       return typeof bool === "boolean";
     }
@@ -52,7 +74,7 @@ var CH = (function (exports) {
         typeCheck = true;
       }
 
-      return isSymbol(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
+      return isSymbol(number) || isArray(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
     }
 
     function isValidNumber(number, min, max, typeCheck) {
@@ -74,28 +96,6 @@ var CH = (function (exports) {
     function isSymbol(sym) {
       var type = typeof sym;
       return type == 'symbol' || type === 'object' && sym != null && getTag(sym) == '[object Symbol]';
-    }
-
-    var comparisons = {
-      '=': function _(a, b) {
-        return a == b;
-      },
-      '<': function _(a, b) {
-        return a < b;
-      },
-      '>': function _(a, b) {
-        return a > b;
-      },
-      '<=': function _(a, b) {
-        return a <= b;
-      },
-      '>=': function _(a, b) {
-        return a >= b;
-      }
-    };
-
-    function isArray(array, comparator, length) {
-      return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? comparisons[comparator](array.length, length) : true);
     }
 
     function isFunction(func) {
@@ -131,7 +131,7 @@ var CH = (function (exports) {
         typeCheck = true;
       }
 
-      if (isSymbol(number)) {
+      if (isSymbol(number) || isArray(number)) {
         return false;
       }
 

@@ -61,6 +61,22 @@ test("sends empty array to isRegex", () => {
   expect(isRegex([])).toBe(false);
 });
 
+test("sends array of 1 integer to isRegex", () => {
+  expect(isRegex([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isRegex", () => {
+  expect(isRegex([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isRegex", () => {
+  expect(isRegex([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isRegex", () => {
+  expect(isRegex([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isRegex", () => {
   expect(isRegex(["white", "grey", "black"])).toBe(false);
 });

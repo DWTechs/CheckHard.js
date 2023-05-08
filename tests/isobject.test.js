@@ -61,6 +61,22 @@ test("sends empty array to isObject", () => {
   expect(isObject([])).toBe(false);
 });
 
+test("sends array of 1 integer to isObject", () => {
+  expect(isObject([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isObject", () => {
+  expect(isObject([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isObject", () => {
+  expect(isObject([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isObject", () => {
+  expect(isObject([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isObject", () => {
   expect(isObject(["white", "grey", "black"])).toBe(false);
 });

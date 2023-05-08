@@ -84,6 +84,22 @@ test("sends empty array to containsUpperCase", () => {
   expect(containsUpperCase([])).toBe(false);
 });
 
+test("sends array of 1 integer to containsUpperCase", () => {
+  expect(containsUpperCase([2])).toBe(false);
+});
+
+test("sends array of 2 integers to containsUpperCase", () => {
+  expect(containsUpperCase([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to containsUpperCase", () => {
+  expect(containsUpperCase([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to containsUpperCase", () => {
+  expect(containsUpperCase([2.1,1.1])).toBe(false);
+});
+
 test("sends array to containsUpperCase", () => {
   expect(containsUpperCase(["white", "grey", "black"])).toBe(false);
 });

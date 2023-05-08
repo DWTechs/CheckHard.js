@@ -65,6 +65,22 @@ test("sends empty array to isPowerOfTwo", () => {
   expect(isPowerOfTwo([])).toBe(false);
 });
 
+test("sends array of 1 integer to isPowerOfTwo", () => {
+  expect(isPowerOfTwo([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isPowerOfTwo", () => {
+  expect(isPowerOfTwo([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isPowerOfTwo", () => {
+  expect(isPowerOfTwo([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isPowerOfTwo", () => {
+  expect(isPowerOfTwo([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isPowerOfTwo", () => {
   expect(isPowerOfTwo(["white", "grey", "black"])).toBe(false);
 });

@@ -61,6 +61,22 @@ test("sends empty array to isEven", () => {
   expect(isEven([])).toBe(false);
 });
 
+test("sends array of 1 integer to isEven", () => {
+  expect(isEven([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isEven", () => {
+  expect(isEven([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isEven", () => {
+  expect(isEven([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isEven", () => {
+  expect(isEven([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isEven", () => {
   expect(isEven(["white", "grey", "black"])).toBe(false);
 });

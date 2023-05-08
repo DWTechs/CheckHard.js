@@ -65,6 +65,22 @@ test("sends empty array to isSlug", () => {
   expect(isSlug([])).toBe(false);
 });
 
+test("sends array of 1 integer to isSlug", () => {
+  expect(isSlug([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isSlug", () => {
+  expect(isSlug([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isSlug", () => {
+  expect(isSlug([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isSlug", () => {
+  expect(isSlug([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isSlug", () => {
   expect(isSlug(["white", "grey", "black"])).toBe(false);
 });

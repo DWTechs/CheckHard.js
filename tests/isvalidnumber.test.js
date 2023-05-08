@@ -165,6 +165,22 @@ test("sends empty array to isValidNumber", () => {
   expect(isValidNumber([])).toBe(false);
 });
 
+test("sends array of 1 integer to isValidNumber", () => {
+  expect(isValidNumber([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isValidNumber", () => {
+  expect(isValidNumber([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isValidNumber", () => {
+  expect(isValidNumber([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isValidNumber", () => {
+  expect(isValidNumber([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isValidNumber", () => {
   expect(isValidNumber(["white", "grey", "black"])).toBe(false);
 });

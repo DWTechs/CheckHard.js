@@ -61,6 +61,22 @@ test("sends empty array to isJson", () => {
   expect(isJson([])).toBe(false);
 });
 
+test("sends array of 1 integer to isJson", () => {
+  expect(isJson([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isJson", () => {
+  expect(isJson([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isJson", () => {
+  expect(isJson([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isJson", () => {
+  expect(isJson([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isJson", () => {
   expect(isJson(["white", "grey", "black"])).toBe(false);
 });

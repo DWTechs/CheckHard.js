@@ -113,6 +113,22 @@ test("sends empty array to isAscii", () => {
   expect(isAscii([], false)).toBe(false);
 });
 
+test("sends array of 1 integer to isAscii", () => {
+  expect(isAscii([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isAscii", () => {
+  expect(isAscii([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isAscii", () => {
+  expect(isAscii([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isAscii", () => {
+  expect(isAscii([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isAscii not extended", () => {
   expect(isAscii(["white", "grey", "black"])).toBe(false);
 });

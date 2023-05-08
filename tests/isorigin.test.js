@@ -61,6 +61,22 @@ test("sends empty array to isOrigin", () => {
   expect(isOrigin([])).toBe(false);
 });
 
+test("sends array of 1 integer to isOrigin", () => {
+  expect(isOrigin([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isOrigin", () => {
+  expect(isOrigin([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isOrigin", () => {
+  expect(isOrigin([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isOrigin", () => {
+  expect(isOrigin([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isOrigin", () => {
   expect(isOrigin(["white", "grey", "black"])).toBe(false);
 });

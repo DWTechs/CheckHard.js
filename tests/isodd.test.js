@@ -61,6 +61,22 @@ test("sends empty array to isOdd", () => {
   expect(isOdd([])).toBe(false);
 });
 
+test("sends array of 1 integer to isOdd", () => {
+  expect(isOdd([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isOdd", () => {
+  expect(isOdd([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isOdd", () => {
+  expect(isOdd([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isOdd", () => {
+  expect(isOdd([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isOdd", () => {
   expect(isOdd(["white", "grey", "black"])).toBe(false);
 });

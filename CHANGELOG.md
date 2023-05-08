@@ -1,3 +1,8 @@
+# 2.19.2 (May 8th 2023)
+
+- Fix isNumber() & isTimestamp issue with array of length one
+- Add more tests with arrays
+
 # 2.19.1 (October 23th 2022)
 
 - Fix isTimestamp() issue with string values

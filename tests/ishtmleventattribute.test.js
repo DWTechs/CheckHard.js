@@ -69,6 +69,22 @@ test("sends empty array to isHtmlEventAttribute", () => {
   expect(isHtmlEventAttribute([])).toBe(false);
 });
 
+test("sends array of 1 integer to isHtmlEventAttribute", () => {
+  expect(isHtmlEventAttribute([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isHtmlEventAttribute", () => {
+  expect(isHtmlEventAttribute([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isHtmlEventAttribute", () => {
+  expect(isHtmlEventAttribute([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isHtmlEventAttribute", () => {
+  expect(isHtmlEventAttribute([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isHtmlEventAttribute", () => {
   expect(isHtmlEventAttribute(["white", "grey", "black"])).toBe(false);
 });

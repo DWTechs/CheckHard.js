@@ -61,6 +61,22 @@ test("sends empty array to isEmail", () => {
   expect(isEmail([])).toBe(false);
 });
 
+test("sends array of 1 integer to isEmail", () => {
+  expect(isEmail([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isEmail", () => {
+  expect(isEmail([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isEmail", () => {
+  expect(isEmail([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isEmail", () => {
+  expect(isEmail([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isEmail", () => {
   expect(isEmail(["white", "grey", "black"])).toBe(false);
 });

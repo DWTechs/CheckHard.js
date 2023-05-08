@@ -101,6 +101,22 @@ test("sends empty array to isInteger", () => {
   expect(isInteger([])).toBe(false);
 });
 
+test("sends array of 1 integer to isInteger", () => {
+  expect(isInteger([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isInteger", () => {
+  expect(isInteger([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isInteger", () => {
+  expect(isInteger([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isInteger", () => {
+  expect(isInteger([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isInteger", () => {
   expect(isInteger(["white", "grey", "black"])).toBe(false);
 });

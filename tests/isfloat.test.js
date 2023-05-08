@@ -101,6 +101,22 @@ test("sends empty array to isFloat", () => {
   expect(isFloat([])).toBe(false);
 });
 
+test("sends array of 1 integer to isFloat", () => {
+  expect(isFloat([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isFloat", () => {
+  expect(isFloat([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isFloat", () => {
+  expect(isFloat([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isFloat", () => {
+  expect(isFloat([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isFloat", () => {
   expect(isFloat(["white", "grey", "black"])).toBe(false);
 });

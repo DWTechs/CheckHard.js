@@ -69,6 +69,17 @@ test("sends negative float to isNumber", () => {
   expect(isNumber(-1.1)).toBe(true);
 });
 
+test("sends empty array to isNumber", () => {
+  expect(isNumber([])).toBe(false);
+});
+
+test("sends array of 1 integer to isNumber", () => {
+  expect(isNumber([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isNumber", () => {
+  expect(isNumber([2,1])).toBe(false);
+});
 
 test("sends positive even integer in string format to isNumber", () => {
   expect(isNumber('2')).toBe(false);
@@ -142,6 +153,26 @@ test("sends '0x44' without type checking to isNumber", () => {
   expect(isNumber('0x44', false)).toBe(true);
 });
 
+test("sends empty array without type checking to isNumber", () => {
+  expect(isNumber([], false)).toBe(false);
+});
+
+test("sends array of 1 integer without type checking to isNumber", () => {
+  expect(isNumber([2], false)).toBe(false);
+});
+
+test("sends array of 2 integers without type checking to isNumber", () => {
+  expect(isNumber([2,1], false)).toBe(false);
+});
+
+test("sends array of 1 integer to isNumber", () => {
+  expect(isNumber([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isNumber", () => {
+  expect(isNumber([2.1,1.1])).toBe(false);
+});
+
 test("sends 8e5 to isNumber", () => {
   expect(isNumber(8e5)).toBe(true);
 });
@@ -150,12 +181,9 @@ test("sends 0x44 to isNumber", () => {
   expect(isNumber(0x44)).toBe(true);
 });
 
+
 test("sends object to isNumber", () => {
   expect(isNumber({})).toBe(false);
-});
-
-test("sends empty array to isNumber", () => {
-  expect(isNumber([])).toBe(false);
 });
 
 test("sends array to isNumber", () => {

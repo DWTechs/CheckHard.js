@@ -61,6 +61,22 @@ test("sends empty array to isFunction", () => {
   expect(isFunction([])).toBe(false);
 });
 
+test("sends array of 1 integer to isFunction", () => {
+  expect(isFunction([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isFunction", () => {
+  expect(isFunction([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isFunction", () => {
+  expect(isFunction([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isFunction", () => {
+  expect(isFunction([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isFunction", () => {
   expect(isFunction(["white", "grey", "black"])).toBe(false);
 });

@@ -94,6 +94,22 @@ test("sends empty array to isTimestamp", () => {
   expect(isTimestamp([])).toBe(false);
 });
 
+test("sends array of 1 integer to isTimestamp", () => {
+  expect(isTimestamp([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isTimestamp", () => {
+  expect(isTimestamp([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isTimestamp", () => {
+  expect(isTimestamp([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isTimestamp", () => {
+  expect(isTimestamp([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isTimestamp", () => {
   expect(isTimestamp(["white", "grey", "black"])).toBe(false);
 });

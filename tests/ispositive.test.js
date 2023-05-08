@@ -61,6 +61,22 @@ test("sends empty array to isPositive", () => {
   expect(isPositive([])).toBe(false);
 });
 
+test("sends array of 1 integer to isPositive", () => {
+  expect(isPositive([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isPositive", () => {
+  expect(isPositive([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isPositive", () => {
+  expect(isPositive([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isPositive", () => {
+  expect(isPositive([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isPositive", () => {
   expect(isPositive(["white", "grey", "black"])).toBe(false);
 });

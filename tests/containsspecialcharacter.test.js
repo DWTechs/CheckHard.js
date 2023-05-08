@@ -73,6 +73,22 @@ test("sends empty array to containsSpecialCharacter", () => {
   expect(containsSpecialCharacter([])).toBe(false);
 });
 
+test("sends array of 1 integer to containsSpecialCharacter", () => {
+  expect(containsSpecialCharacter([2])).toBe(false);
+});
+
+test("sends array of 2 integers to containsSpecialCharacter", () => {
+  expect(containsSpecialCharacter([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to containsSpecialCharacter", () => {
+  expect(containsSpecialCharacter([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to containsSpecialCharacter", () => {
+  expect(containsSpecialCharacter([2.1,1.1])).toBe(false);
+});
+
 test("sends array to containsSpecialCharacter", () => {
   expect(containsSpecialCharacter(["white", "grey", "black"])).toBe(false);
 });

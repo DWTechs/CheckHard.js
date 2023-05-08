@@ -61,6 +61,22 @@ test("sends empty array to isNode", () => {
   expect(isNode([])).toBe(false);
 });
 
+test("sends array of 1 integer to isNode", () => {
+  expect(isNode([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isNode", () => {
+  expect(isNode([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isNode", () => {
+  expect(isNode([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isNode", () => {
+  expect(isNode([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isNode", () => {
   expect(isNode(["white", "grey", "black"])).toBe(false);
 });

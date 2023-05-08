@@ -61,6 +61,22 @@ test("sends empty array to isNegative", () => {
   expect(isNegative([])).toBe(false);
 });
 
+test("sends array of 1 integer to isNegative", () => {
+  expect(isNegative([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isNegative", () => {
+  expect(isNegative([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isNegative", () => {
+  expect(isNegative([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isNegative", () => {
+  expect(isNegative([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isNegative", () => {
   expect(isNegative(["white", "grey", "black"])).toBe(false);
 });

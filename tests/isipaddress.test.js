@@ -61,6 +61,22 @@ test("sends empty array to isIpAddress", () => {
   expect(isIpAddress([])).toBe(false);
 });
 
+test("sends array of 1 integer to isIpAddress", () => {
+  expect(isIpAddress([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isIpAddress", () => {
+  expect(isIpAddress([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isIpAddress", () => {
+  expect(isIpAddress([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isIpAddress", () => {
+  expect(isIpAddress([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isIpAddress", () => {
   expect(isIpAddress(["white", "grey", "black"])).toBe(false);
 });

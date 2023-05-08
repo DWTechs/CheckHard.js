@@ -74,6 +74,22 @@ test("sends empty array to isHexadecimal", () => {
   expect(isHexadecimal([])).toBe(false);
 });
 
+test("sends array of 1 integer to isHexadecimal", () => {
+  expect(isHexadecimal([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isHexadecimal", () => {
+  expect(isHexadecimal([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isHexadecimal", () => {
+  expect(isHexadecimal([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isHexadecimal", () => {
+  expect(isHexadecimal([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isHexadecimal", () => {
   expect(isHexadecimal(["white", "grey", "black"])).toBe(false);
 });

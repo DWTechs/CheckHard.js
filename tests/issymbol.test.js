@@ -61,6 +61,22 @@ test("sends empty array to isSymbol", () => {
   expect(isSymbol([])).toBe(false);
 });
 
+test("sends array of 1 integer to isSymmbol", () => {
+  expect(isSymbol([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isSymmbol", () => {
+  expect(isSymbol([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isSymbol", () => {
+  expect(isSymbol([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isSymbol", () => {
+  expect(isSymbol([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isSymbol", () => {
   expect(isSymbol(["white", "grey", "black"])).toBe(false);
 });

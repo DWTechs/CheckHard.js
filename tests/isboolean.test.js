@@ -61,6 +61,22 @@ test("sends empty array to isBoolean", () => {
   expect(isBoolean([])).toBe(false);
 });
 
+test("sends array of 1 integer to isBoolean", () => {
+  expect(isBoolean([2])).toBe(false);
+});
+
+test("sends array of 2 integers to isBoolean", () => {
+  expect(isBoolean([2,1])).toBe(false);
+});
+
+test("sends array of 1 integer to isBoolean", () => {
+  expect(isBoolean([2.1])).toBe(false);
+});
+
+test("sends array of 2 integers to isBoolean", () => {
+  expect(isBoolean([2.1,1.1])).toBe(false);
+});
+
 test("sends array to isBoolean", () => {
   expect(isBoolean(["white", "grey", "black"])).toBe(false);
 });

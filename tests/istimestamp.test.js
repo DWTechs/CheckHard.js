@@ -1,7 +1,11 @@
 import { isTimestamp } from "../dist/ch";
 
-test("sends date in string format to isTimestamp", () => {
+test("sends old date in string format to isTimestamp", () => {
   expect(isTimestamp('1/1/1900')).toBe(false);
+});
+
+test("sends recent date in string format to isTimestamp", () => {
+  expect(isTimestamp('12/25/1965')).toBe(false);
 });
 
 const date = new Date('1/1/1900');
@@ -43,19 +47,35 @@ test("sends valid timestamp to isTimestamp", () => {
 });
 
 test("sends valid timestamp as string to isTimestamp", () => {
-  expect(isTimestamp("7258114800001")).toBe(true);
+  expect(isTimestamp("7258114800001")).toBe(false);
+});
+
+test("sends valid timestamp as string to isTimestamp, no type checking", () => {
+  expect(isTimestamp("7258114800001", false)).toBe(true);
 });
 
 test("sends positive string even integer to isTimestamp", () => {
-  expect(isTimestamp("2")).toBe(true);
+  expect(isTimestamp("2")).toBe(false);
+});
+
+test("sends positive string even integer to isTimestamp, no type check", () => {
+  expect(isTimestamp("2", false)).toBe(true);
 });
 
 test("sends positive string odd integer to isTimestamp", () => {
-  expect(isTimestamp("1")).toBe(true);
+  expect(isTimestamp("1")).toBe(false);
+});
+
+test("sends positive string odd integer to isTimestamp, no type check", () => {
+  expect(isTimestamp("1", false)).toBe(true);
 });
 
 test("sends zero to isTimestamp", () => {
-  expect(isTimestamp("0")).toBe(true);
+  expect(isTimestamp("0")).toBe(false);
+});
+
+test("sends zero to isTimestamp, no type chack", () => {
+  expect(isTimestamp("0", false)).toBe(true);
 });
 
 test("sends positive even integer to isTimestamp", () => {

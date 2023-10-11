@@ -1,5 +1,5 @@
 
-function isHtmlElement(htmlElement: any): boolean {
+function isHtmlElement(htmlElement: any): htmlElement is HTMLElement {
   if (htmlElement) {
     return typeof HTMLElement === "object"
       ? htmlElement instanceof HTMLElement
@@ -12,7 +12,7 @@ function isHtmlElement(htmlElement: any): boolean {
   return false;
 }
 
-function isHtmlEventAttribute(htmlEventAttribute: any): boolean {
+function isHtmlEventAttribute(htmlEventAttribute: any): htmlEventAttribute is string {
   switch (htmlEventAttribute) {
     case "onafterprint": // run after the document is printed
     case "onbeforeprint": // run before the document is printed
@@ -92,7 +92,7 @@ function isHtmlEventAttribute(htmlEventAttribute: any): boolean {
   }
 }
 
-function isNode(node: any): boolean {
+function isNode(node: any): node is Node {
   if (node) {
     return typeof Node === "object"
       ? node instanceof Node

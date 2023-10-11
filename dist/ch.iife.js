@@ -27,15 +27,11 @@ https://github.com/DWTechs/CheckHard.js
 var CH = (function (exports) {
     'use strict';
 
-    function isNumeric(number) {
-      return !isNaN(number - parseFloat(number));
+    function isNumeric(num) {
+      return !isNaN(num - parseFloat(num));
     }
-
     function getTag(tag) {
-      if (tag == null) {
-        return tag === undefined ? '[object Undefined]' : '[object Null]';
-      }
-
+      if (tag == null) return tag === undefined ? '[object Undefined]' : '[object Null]';
       return toString.call(tag);
     }
 
@@ -57,59 +53,46 @@ var CH = (function (exports) {
       }
     };
 
-    function isArray(array, comparator, length) {
-      return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? comparisons[comparator](array.length, length) : true);
+    function isArray(ar, comparator, length) {
+      return (ar === null || ar === void 0 ? void 0 : ar.constructor) === Array && (length ? comparisons[comparator](ar.length, length) : true);
     }
 
     function isBoolean(bool) {
       return typeof bool === "boolean";
     }
-
-    function isString(string) {
-      return typeof string === "string";
+    function isString(str) {
+      return typeof str === "string";
     }
-
-    function isNumber(number, typeCheck) {
+    function isNumber(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return isSymbol(number) || isArray(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
+      return isSymbol(num) || isArray(num) ? false : typeCheck ? Number(num) === num : isNumeric(num);
     }
-
-    function isValidNumber(number, min, max, typeCheck) {
+    function isValidNumber(num, min, max, typeCheck) {
       if (min === void 0) {
         min = -999999999;
       }
-
       if (max === void 0) {
         max = 999999999;
       }
-
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return isNumber(number, typeCheck) && number >= min && number <= max ? true : false;
+      return isNumber(num, typeCheck) && num >= min && num <= max ? true : false;
     }
-
     function isSymbol(sym) {
       var type = typeof sym;
       return type == 'symbol' || type === 'object' && sym != null && getTag(sym) == '[object Symbol]';
     }
 
     function isFunction(func) {
-      if (func) {
-        return func && getTag(func) === "[object Function]";
-      }
-
+      if (func) return func && getTag(func) === "[object Function]";
       return false;
     }
-
-    function isObject(object) {
-      return object !== null && typeof object === "object" && !isArray(object);
+    function isObject(obj) {
+      return obj !== null && typeof obj === "object" && !isArray(obj);
     }
-
     function isNil(nil) {
       return nil == null;
     }
@@ -118,207 +101,133 @@ var CH = (function (exports) {
       if (extended === void 0) {
         extended = true;
       }
-
-      if (isInteger(code, false)) {
-        return extended && code >= 0 && code <= 255 || code >= 0 && code <= 127;
-      }
-
+      if (isInteger(code, false)) return extended && code >= 0 && code <= 255 || code >= 0 && code <= 127;
       return false;
     }
-
-    function isInteger(number, typeCheck) {
+    function isInteger(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      if (isSymbol(number) || isArray(number)) {
-        return false;
-      }
-
-      var _int = parseInt(number, 10);
-
-      return typeCheck ? number === _int : number == _int;
+      if (isSymbol(num) || isArray(num)) return false;
+      var _int = parseInt(num, 10);
+      return typeCheck ? num === _int : num == _int;
     }
-
-    function isFloat(number, typeCheck) {
+    function isFloat(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      if (isSymbol(number)) {
-        return false;
-      }
-
-      var moduloCheck = number % 1 !== 0;
-      return typeCheck ? Number(number) === number && moduloCheck : Number(number) == number && moduloCheck;
+      if (isSymbol(num)) return false;
+      var moduloCheck = num % 1 !== 0;
+      return typeCheck ? Number(num) === num && moduloCheck : Number(num) == num && moduloCheck;
     }
-
-    function isEven(number, typeCheck) {
+    function isEven(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return isInteger(number, typeCheck) && !(number & 1);
+      return isInteger(num, typeCheck) && !(num & 1);
     }
-
-    function isOdd(number, typeCheck) {
+    function isOdd(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return isInteger(number, typeCheck) && number & 1 ? true : false;
+      return isInteger(num, typeCheck) && num & 1 ? true : false;
     }
-
-    function isOrigin(number, typeCheck) {
+    function isOrigin(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return typeCheck ? number === 0 ? true : false : number == 0 ? true : false;
+      return typeCheck ? num === 0 ? true : false : num == 0 ? true : false;
     }
-
-    function isPositive(number, typeCheck) {
+    function isPositive(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return isNumber(number, typeCheck) && number > 0 ? true : false;
+      return isNumber(num, typeCheck) && num > 0 ? true : false;
     }
-
-    function isNegative(number, typeCheck) {
+    function isNegative(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return isNumber(number, typeCheck) && number < 0 ? true : false;
+      return isNumber(num, typeCheck) && num < 0 ? true : false;
     }
-
-    function isPowerOfTwo(number, typeCheck) {
+    function isPowerOfTwo(num, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      return isInteger(number, typeCheck) && !isOrigin(number, typeCheck) && (number & number - 1) === 0;
+      return isInteger(num, typeCheck) && !isOrigin(num, typeCheck) && (num & num - 1) === 0;
     }
 
     function isJson(str) {
-      if (!isString(str)) {
-        return false;
-      }
-
+      if (!isString(str)) return false;
       try {
         JSON.parse(str);
       } catch (e) {
         return false;
       }
-
       return true;
     }
-
     function isRegex(regex, typeCheck) {
       if (typeCheck === void 0) {
         typeCheck = true;
       }
-
-      if (typeCheck) {
-        return regex instanceof RegExp ? true : false;
-      } else {
-        try {
-          new RegExp(regex);
-        } catch (e) {
-          return false;
-        }
-
-        return true;
-      }
-    }
-
-    function isEmail(email) {
-      if (isSymbol(email)) {
+      if (typeCheck) return regex instanceof RegExp ? true : false;else try {
+        new RegExp(regex);
+      } catch (e) {
         return false;
       }
-
+      return true;
+    }
+    function isEmail(email) {
+      if (isSymbol(email)) return false;
       var regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
       return regex.test(String(email).toLowerCase());
     }
-
     function isIpAddress(ipAddress) {
-      if (isSymbol(ipAddress)) {
-        return false;
-      }
-
+      if (isSymbol(ipAddress)) return false;
       var regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
       return regex.test(ipAddress);
     }
-
     var slugRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
-
     function isSlug(slug) {
       return isString(slug) ? slugRegex.test(slug) : false;
     }
-
     var upperCaseRegex = /[A-Z]+/;
-
-    function containsUpperCase(string) {
-      return isString(string) ? upperCaseRegex.test(string) : false;
+    function containsUpperCase(str) {
+      return isString(str) ? upperCaseRegex.test(str) : false;
     }
-
     var lowerCaseRegex = /[a-z]+/;
-
-    function containsLowerCase(string) {
-      return isString(string) ? lowerCaseRegex.test(string) : false;
+    function containsLowerCase(str) {
+      return isString(str) ? lowerCaseRegex.test(str) : false;
     }
-
     var specialRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?°`€£§]+/;
-
-    function containsSpecialCharacter(string) {
-      return isString(string) ? specialRegex.test(string) : false;
+    function containsSpecialCharacter(str) {
+      return isString(str) ? specialRegex.test(str) : false;
     }
-
     var hexadecimal = /^(#|0x|0h)?[0-9A-F]+$/i;
-
-    function isHexadecimal(string) {
-      return isString(string) ? hexadecimal.test(string) : false;
+    function isHexadecimal(str) {
+      return isString(str) ? hexadecimal.test(str) : false;
     }
-
     var numberRegex = /\d/;
     var lengthRegex = /[^0-9]/g;
-
-    function containsNumber(string, min, max) {
-      var containsNumber = numberRegex.test(string);
-
-      if (containsNumber) {
+    function containsNumber(str, min, max) {
+      if (numberRegex.test(str)) {
         var isMin = true;
         var isMax = true;
-
-        if (isString(string)) {
-          if (min) {
-            isMin = string.replace(lengthRegex, '').length >= min ? true : false;
-          }
-
-          if (max) {
-            isMax = string.replace(lengthRegex, '').length <= max ? true : false;
-          }
-        } else {
-          if (min) {
-            isMin = min <= 1 ? true : false;
-          }
-        }
-
+        if (isString(str)) {
+          if (min) isMin = str.replace(lengthRegex, '').length >= min ? true : false;
+          if (max) isMax = str.replace(lengthRegex, '').length <= max ? true : false;
+        } else if (min) isMin = min <= 1 ? true : false;
         return isMin && isMax;
-      } else {
-        return containsNumber;
       }
+      return false;
     }
 
     function isHtmlElement(htmlElement) {
       if (htmlElement) {
         return typeof HTMLElement === "object" ? htmlElement instanceof HTMLElement : htmlElement && typeof htmlElement === "object" && htmlElement !== null && htmlElement.nodeType === 1 && typeof htmlElement.nodeName === "string";
       }
-
       return false;
     }
-
     function isHtmlEventAttribute(htmlEventAttribute) {
       switch (htmlEventAttribute) {
         case "onafterprint":
@@ -394,58 +303,48 @@ var CH = (function (exports) {
         case "onwaiting":
         case "ontoggle":
           return true;
-
         default:
           return false;
       }
     }
-
     function isNode(node) {
       if (node) {
         return typeof Node === "object" ? node instanceof Node : node && typeof node === "object" && typeof node.nodeType === "number" && typeof node.nodeName === "string";
       }
-
       return false;
     }
 
     function isDate(date) {
       return !isNaN(date) && date instanceof Date;
     }
-
     var minDate = new Date('1/1/1900');
     var maxDate = new Date('1/1/2200');
-
     function isValidDate(date, min, max) {
       if (min === void 0) {
         min = minDate;
       }
-
       if (max === void 0) {
         max = maxDate;
       }
-
       return isDate(date) && date >= min && date <= max ? true : false;
     }
-
-    function isTimestamp(timestamp) {
-      if (isInteger(timestamp, false)) {
-        var newTimestamp = new Date(parseInt(timestamp)).getTime();
-        return isNumeric(newTimestamp);
+    function isTimestamp(ts, typeCheck) {
+      if (typeCheck === void 0) {
+        typeCheck = true;
       }
-
-      return false;
+      if (isInteger(ts, typeCheck)) return isNumeric(new Date(parseInt(ts + '')).getTime());else return false;
     }
-
-    function isValidTimestamp(timestamp, min, max) {
+    function isValidTimestamp(ts, min, max, typeCheck) {
       if (min === void 0) {
         min = -2208989361000;
       }
-
       if (max === void 0) {
         max = 7258114800000;
       }
-
-      return isTimestamp(timestamp) && timestamp >= min && timestamp <= max ? true : false;
+      if (typeCheck === void 0) {
+        typeCheck = true;
+      }
+      return isTimestamp(ts, typeCheck) && ts >= min && ts <= max ? true : false;
     }
 
     exports.containsLowerCase = containsLowerCase;

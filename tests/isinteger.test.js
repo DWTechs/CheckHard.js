@@ -65,6 +65,14 @@ test("sends float in string to isInteger without typeCheck", () => {
   expect(isInteger("8.9rt", false)).toBe(false);
 });
 
+test("sends valid timestamp as string to isinteger", () => {
+  expect(isInteger("7258114800001")).toBe(false);
+});
+
+test("sends valid timestamp as string to isinteger, no type check", () => {
+  expect(isInteger("7258114800001", false)).toBe(true);
+});
+
 test("sends positive even integer to isInteger", () => {
   expect(isInteger(2)).toBe(true);
 });

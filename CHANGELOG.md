@@ -1,3 +1,8 @@
+# 2.20.0 (Oct 11th 2023)
+
+- Add typeCheck parameter to isTimestamp() and isValidTimestamp() methods
+- Improve types using "type predicates" for ease of use with Typescript
+
 # 2.19.2 (May 8th 2023)
 
 - Fix isNumber() & isTimestamp issue with array of length one

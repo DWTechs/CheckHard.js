@@ -11,18 +11,17 @@ function isValidDate(date: any, min: Date = minDate, max: Date = maxDate): date 
   return isDate(date) && date >= min && date <= max ? true : false;
 }
 
-function isTimestamp(ts:any): ts is number {
-  if (isInteger(ts, false)) {
-    const newTimestamp = new Date(parseInt(ts)).getTime();
-    return isNumeric(newTimestamp);
-  }
-  return false;
+function isTimestamp(ts:any, typeCheck = true): ts is number {
+  if (isInteger(ts, typeCheck))
+    return isNumeric(new Date(parseInt(ts+'')).getTime());
+  else
+    return false;
 }
 
 // default min = 1/1/1900 (month/day/year)
 // default max = 1/1/2200 (month/day/year)
-function isValidTimestamp(ts: any, min = -2208989361000, max = 7258114800000): ts is number {
-  return isTimestamp(ts) && ts >= min && ts <= max ? true : false;
+function isValidTimestamp(ts: any, min = -2208989361000, max = 7258114800000, typeCheck = true): ts is number {
+  return isTimestamp(ts, typeCheck) && ts >= min && ts <= max ? true : false;
 }
 
 export {

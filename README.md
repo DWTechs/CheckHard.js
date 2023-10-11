@@ -192,11 +192,11 @@ isDate(date: any): boolean {}
 
 isValidDate(date: any, min: Date = new Date('1/1/1900'), max: Date = new Date('1/1/2200')): boolean {}
 
-isTimestamp(number: any): boolean {}
+isTimestamp(number: any, typeCheck: boolean = true): boolean {}
 
 // default min = 1/1/1900 (month/day/year)
 // default max = 1/1/2200 (month/day/year)
-isValidTimestamp(number: any, min: number = -2208989361000, max: number = 7258114800000): boolean {}
+isValidTimestamp(number: any, min: number = -2208989361000, max: number = 7258114800000, typeCheck: boolean = true): boolean {}
 
 ```
 

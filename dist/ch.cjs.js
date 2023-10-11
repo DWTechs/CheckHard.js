@@ -28,17 +28,16 @@ https://github.com/DWTechs/CheckHard.js
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function isNumeric(number) {
-    return !isNaN(number - parseFloat(number));
+function isNumeric(num) {
+    return !isNaN(num - parseFloat(num));
 }
 function getTag(tag) {
-    if (tag == null) {
+    if (tag == null)
         return tag === undefined ? '[object Undefined]' : '[object Null]';
-    }
     return toString.call(tag);
 }
 
-let comparisons = {
+const comparisons = {
     '=': (a, b) => a == b,
     '<': (a, b) => a < b,
     '>': (a, b) => a > b,
@@ -46,21 +45,21 @@ let comparisons = {
     '>=': (a, b) => a >= b
 };
 
-function isArray(array, comparator, length) {
-    return (array === null || array === void 0 ? void 0 : array.constructor) === Array && (length ? comparisons[comparator](array.length, length) : true);
+function isArray(ar, comparator, length) {
+    return (ar === null || ar === void 0 ? void 0 : ar.constructor) === Array && (length ? comparisons[comparator](ar.length, length) : true);
 }
 
 function isBoolean(bool) {
     return typeof bool === "boolean";
 }
-function isString(string) {
-    return typeof string === "string";
+function isString(str) {
+    return typeof str === "string";
 }
-function isNumber(number, typeCheck = true) {
-    return isSymbol(number) || isArray(number) ? false : typeCheck ? Number(number) === number : isNumeric(number);
+function isNumber(num, typeCheck = true) {
+    return isSymbol(num) || isArray(num) ? false : typeCheck ? Number(num) === num : isNumeric(num);
 }
-function isValidNumber(number, min = -999999999, max = 999999999, typeCheck = true) {
-    return isNumber(number, typeCheck) && number >= min && number <= max ? true : false;
+function isValidNumber(num, min = -999999999, max = 999999999, typeCheck = true) {
+    return isNumber(num, typeCheck) && num >= min && num <= max ? true : false;
 }
 function isSymbol(sym) {
     const type = typeof sym;
@@ -68,61 +67,56 @@ function isSymbol(sym) {
 }
 
 function isFunction(func) {
-    if (func) {
+    if (func)
         return func && getTag(func) === "[object Function]";
-    }
     return false;
 }
-function isObject(object) {
-    return object !== null && typeof object === "object" && !isArray(object);
+function isObject(obj) {
+    return obj !== null && typeof obj === "object" && !isArray(obj);
 }
 function isNil(nil) {
     return nil == null;
 }
 
 function isAscii(code, extended = true) {
-    if (isInteger(code, false)) {
+    if (isInteger(code, false))
         return (extended && code >= 0 && code <= 255) || (code >= 0 && code <= 127);
-    }
     return false;
 }
-function isInteger(number, typeCheck = true) {
-    if (isSymbol(number) || isArray(number)) {
+function isInteger(num, typeCheck = true) {
+    if (isSymbol(num) || isArray(num))
         return false;
-    }
-    const int = parseInt(number, 10);
-    return typeCheck ? number === int : number == int;
+    const int = parseInt(num, 10);
+    return typeCheck ? num === int : num == int;
 }
-function isFloat(number, typeCheck = true) {
-    if (isSymbol(number)) {
+function isFloat(num, typeCheck = true) {
+    if (isSymbol(num))
         return false;
-    }
-    const moduloCheck = number % 1 !== 0;
-    return typeCheck ? (Number(number) === number && moduloCheck) : (Number(number) == number && moduloCheck);
+    const moduloCheck = num % 1 !== 0;
+    return typeCheck ? (Number(num) === num && moduloCheck) : (Number(num) == num && moduloCheck);
 }
-function isEven(number, typeCheck = true) {
-    return isInteger(number, typeCheck) && !(number & 1);
+function isEven(num, typeCheck = true) {
+    return isInteger(num, typeCheck) && !(num & 1);
 }
-function isOdd(number, typeCheck = true) {
-    return isInteger(number, typeCheck) && number & 1 ? true : false;
+function isOdd(num, typeCheck = true) {
+    return isInteger(num, typeCheck) && num & 1 ? true : false;
 }
-function isOrigin(number, typeCheck = true) {
-    return typeCheck ? (number === 0 ? true : false) : (number == 0 ? true : false);
+function isOrigin(num, typeCheck = true) {
+    return typeCheck ? (num === 0 ? true : false) : (num == 0 ? true : false);
 }
-function isPositive(number, typeCheck = true) {
-    return isNumber(number, typeCheck) && number > 0 ? true : false;
+function isPositive(num, typeCheck = true) {
+    return isNumber(num, typeCheck) && num > 0 ? true : false;
 }
-function isNegative(number, typeCheck = true) {
-    return isNumber(number, typeCheck) && number < 0 ? true : false;
+function isNegative(num, typeCheck = true) {
+    return isNumber(num, typeCheck) && num < 0 ? true : false;
 }
-function isPowerOfTwo(number, typeCheck = true) {
-    return isInteger(number, typeCheck) && !isOrigin(number, typeCheck) && (number & (number - 1)) === 0;
+function isPowerOfTwo(num, typeCheck = true) {
+    return isInteger(num, typeCheck) && !isOrigin(num, typeCheck) && (num & (num - 1)) === 0;
 }
 
 function isJson(str) {
-    if (!isString(str)) {
+    if (!isString(str))
         return false;
-    }
     try {
         JSON.parse(str);
     }
@@ -132,30 +126,26 @@ function isJson(str) {
     return true;
 }
 function isRegex(regex, typeCheck = true) {
-    if (typeCheck) {
+    if (typeCheck)
         return regex instanceof RegExp ? true : false;
-    }
-    else {
+    else
         try {
             new RegExp(regex);
         }
         catch (e) {
             return false;
         }
-        return true;
-    }
+    return true;
 }
 function isEmail(email) {
-    if (isSymbol(email)) {
+    if (isSymbol(email))
         return false;
-    }
     const regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     return regex.test(String(email).toLowerCase());
 }
 function isIpAddress(ipAddress) {
-    if (isSymbol(ipAddress)) {
+    if (isSymbol(ipAddress))
         return false;
-    }
     const regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
     return regex.test(ipAddress);
 }
@@ -164,46 +154,38 @@ function isSlug(slug) {
     return isString(slug) ? slugRegex.test(slug) : false;
 }
 const upperCaseRegex = /[A-Z]+/;
-function containsUpperCase(string) {
-    return isString(string) ? upperCaseRegex.test(string) : false;
+function containsUpperCase(str) {
+    return isString(str) ? upperCaseRegex.test(str) : false;
 }
 const lowerCaseRegex = /[a-z]+/;
-function containsLowerCase(string) {
-    return isString(string) ? lowerCaseRegex.test(string) : false;
+function containsLowerCase(str) {
+    return isString(str) ? lowerCaseRegex.test(str) : false;
 }
 const specialRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?°`€£§]+/;
-function containsSpecialCharacter(string) {
-    return isString(string) ? specialRegex.test(string) : false;
+function containsSpecialCharacter(str) {
+    return isString(str) ? specialRegex.test(str) : false;
 }
 const hexadecimal = /^(#|0x|0h)?[0-9A-F]+$/i;
-function isHexadecimal(string) {
-    return isString(string) ? hexadecimal.test(string) : false;
+function isHexadecimal(str) {
+    return isString(str) ? hexadecimal.test(str) : false;
 }
 const numberRegex = /\d/;
 const lengthRegex = /[^0-9]/g;
-function containsNumber(string, min, max) {
-    const containsNumber = numberRegex.test(string);
-    if (containsNumber) {
+function containsNumber(str, min, max) {
+    if (numberRegex.test(str)) {
         let isMin = true;
         let isMax = true;
-        if (isString(string)) {
-            if (min) {
-                isMin = string.replace(lengthRegex, '').length >= min ? true : false;
-            }
-            if (max) {
-                isMax = string.replace(lengthRegex, '').length <= max ? true : false;
-            }
+        if (isString(str)) {
+            if (min)
+                isMin = str.replace(lengthRegex, '').length >= min ? true : false;
+            if (max)
+                isMax = str.replace(lengthRegex, '').length <= max ? true : false;
         }
-        else {
-            if (min) {
-                isMin = min <= 1 ? true : false;
-            }
-        }
+        else if (min)
+            isMin = min <= 1 ? true : false;
         return isMin && isMax;
     }
-    else {
-        return containsNumber;
-    }
+    return false;
 }
 
 function isHtmlElement(htmlElement) {
@@ -317,15 +299,14 @@ const maxDate = new Date('1/1/2200');
 function isValidDate(date, min = minDate, max = maxDate) {
     return isDate(date) && date >= min && date <= max ? true : false;
 }
-function isTimestamp(timestamp) {
-    if (isInteger(timestamp, false)) {
-        const newTimestamp = new Date(parseInt(timestamp)).getTime();
-        return isNumeric(newTimestamp);
-    }
-    return false;
+function isTimestamp(ts, typeCheck = true) {
+    if (isInteger(ts, typeCheck))
+        return isNumeric(new Date(parseInt(ts + '')).getTime());
+    else
+        return false;
 }
-function isValidTimestamp(timestamp, min = -2208989361000, max = 7258114800000) {
-    return isTimestamp(timestamp) && timestamp >= min && timestamp <= max ? true : false;
+function isValidTimestamp(ts, min = -2208989361000, max = 7258114800000, typeCheck = true) {
+    return isTimestamp(ts, typeCheck) && ts >= min && ts <= max ? true : false;
 }
 
 exports.containsLowerCase = containsLowerCase;

@@ -12,7 +12,7 @@ function isInteger(num: any, typeCheck = true): num is number {
   if (isSymbol(num) || isArray(num))
     return false;
   
-  const int = parseInt(<string>num, 10);
+  const int = parseInt(num, 10);
   return typeCheck ? num === int : num == int;
 }
 

@@ -82,23 +82,22 @@ function isHexadecimal(str: any): str is string {
 const numberRegex = /\d/;
 const lengthRegex = /[^0-9]/g;
 function containsNumber(str: any, min?: number|null, max?: number|null): str is string {
-  const containsNumber = numberRegex.test(str);
-  if (containsNumber) {
+  if (numberRegex.test(str)) {
     let isMin = true;
     let isMax = true;
-    if (isString(str))
+    if (isString(str)) {
       if (min)
         isMin = str.replace(lengthRegex, '').length >= min ? true : false;
       if (max)
         isMax = str.replace(lengthRegex, '').length <= max ? true : false;
-    else
+    } else
       if (min)
         isMin = min <= 1 ? true : false;
 
     return isMin && isMax;
   }
     
-  return containsNumber; 
+  return false; 
   
 }
 

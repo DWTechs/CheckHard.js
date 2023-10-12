@@ -1,51 +1,48 @@
 import { isNumber, isSymbol } from './primitive';
 import { isArray } from './array';
 
-function isAscii(code: any, extended = true): code is number {
-  if (isInteger(code, false))
-    return (extended && code >= 0 && code <= 255) || (code >= 0 && code <= 127);
-  
-  return false;
+function isAscii(c: any, ext = true): c is number {
+  return isInteger(c, false) && ((ext && c >= 0 && c <= 255) || (c >= 0 && c <= 127));
 }
 
-function isInteger(num: any, typeCheck = true): num is number {
-  if (isSymbol(num) || isArray(num))
+function isInteger(n: any, check = true): n is number {
+  if (isSymbol(n) || isArray(n))
     return false;
   
-  const int = parseInt(num, 10);
-  return typeCheck ? num === int : num == int;
+  const int = parseInt(n, 10);
+  return check ? n === int : n == int;
 }
 
-function isFloat(num: any, typeCheck = true): num is number {
-  if (isSymbol(num))
+function isFloat(n: any, type = true): n is number {
+  if (isSymbol(n))
     return false;
   
-  const moduloCheck = num % 1 !== 0;
-  return typeCheck ? (Number(num) === num && moduloCheck) : (Number(num) == num && moduloCheck);
+  const modulo = n % 1 !== 0;
+  return type ? (Number(n) === n && modulo) : (Number(n) == n && modulo);
 }
 
-function isEven(num: any, typeCheck = true): num is number {
-  return isInteger(num, typeCheck) && !(num & 1);
+function isEven(n: any, type = true): n is number {
+  return isInteger(n, type) && !(n & 1);
 }
 
-function isOdd(num: any, typeCheck = true): num is number {
-  return isInteger(num, typeCheck) && num & 1 ? true : false;
+function isOdd(n: any, type = true): n is number {
+  return isInteger(n, type) && Boolean(n & 1);
 }
 
-function isOrigin(num: any, typeCheck = true): num is number {
-  return typeCheck ? (num === 0 ? true : false) : (num == 0 ? true : false);
+function isOrigin(n: any, type = true): n is number {
+  return type ? n === 0 : n == 0;
 }
 
-function isPositive(num: any, typeCheck = true): num is number {
-  return isNumber(num, typeCheck) && num > 0 ? true : false;
+function isPositive(n: any, type = true): n is number {
+  return isNumber(n, type) && n > 0;
 }
 
-function isNegative(num: any, typeCheck = true): num is number {
-  return isNumber(num, typeCheck) && num < 0 ? true : false;
+function isNegative(n: any, type = true): n is number {
+  return isNumber(n, type) && n < 0;
 }
 
-function isPowerOfTwo(num: any, typeCheck = true): num is number {
-  return isInteger(num, typeCheck) && !isOrigin(num, typeCheck) && (num & (num - 1)) === 0;
+function isPowerOfTwo(n: any, type = true): n is number {
+  return isInteger(n, type) && !isOrigin(n, type) && (n & (n - 1)) === 0;
 }
 
 export {

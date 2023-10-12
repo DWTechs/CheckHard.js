@@ -1,19 +1,15 @@
 
-function isHtmlElement(htmlElement: any): htmlElement is HTMLElement {
-  if (htmlElement)
-    return typeof HTMLElement === "object"
-      ? htmlElement instanceof HTMLElement
-      : htmlElement &&
-          typeof htmlElement === "object" &&
-          htmlElement !== null &&
-          htmlElement.nodeType === 1 &&
-          typeof htmlElement.nodeName === "string"; //DOM2
-  
-  return false;
+function isHtmlElement(h: any): h is HTMLElement {
+  return Boolean(typeof HTMLElement === "object"
+    ? h instanceof HTMLElement
+    : h &&
+      typeof h === "object" &&
+      h.nodeType === 1 &&
+      typeof h.nodeName === "string"); //DOM2
 }
 
-function isHtmlEventAttribute(htmlEventAttribute: any): htmlEventAttribute is string {
-  switch (htmlEventAttribute) {
+function isHtmlEventAttribute(h: any): h is string {
+  switch (h) {
     case "onafterprint": // run after the document is printed
     case "onbeforeprint": // run before the document is printed
     case "onbeforeunload": // run when the document is about to be unloaded
@@ -92,16 +88,13 @@ function isHtmlEventAttribute(htmlEventAttribute: any): htmlEventAttribute is st
   }
 }
 
-function isNode(node: any): node is Node {
-  if (node) {
-    return typeof Node === "object"
-      ? node instanceof Node
-      : node &&
-          typeof node === "object" &&
-          typeof node.nodeType === "number" &&
-          typeof node.nodeName === "string";
-  }
-  return false;
+function isNode(n: any): n is Node {
+    return Boolean(typeof Node === "object"
+      ? n instanceof Node
+      : n &&
+        typeof n === "object" &&
+        typeof n.nodeType === "number" &&
+        typeof n.nodeName === "string");
 }
 
 export {

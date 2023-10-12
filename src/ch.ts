@@ -4,8 +4,9 @@ export {  isBoolean,
           isSymbol,
           isValidNumber } from './primitive';
 
-export {  isFunction,
-          isObject, 
+export {  isFunction } from './function';
+
+export {  isObject, 
           isNil } from './structural';
 
 export {  isArray } from './array';

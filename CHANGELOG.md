@@ -1,7 +1,9 @@
-# 2.20.1 (Oct 11th 2023)
+# 2.21.0 (Oct 11th 2023)
 
+- Improve isArray() method
 - Update build tools
 - Code cleanup for lighter library
+- Add more unit tests
 
 # 2.20.0 (Oct 11th 2023)
 
@@ -11,7 +13,7 @@
 # 2.19.2 (May 8th 2023)
 
 - Fix isNumber() & isTimestamp() issue with array of length one
-- Add more tests with arrays
+- Add more unit tests with arrays
 
 # 2.19.1 (October 23th 2022)
 

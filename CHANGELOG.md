@@ -1,6 +1,6 @@
 # 2.20.1 (Oct 11th 2023)
 
-- Update build process
+- Update build tools
 - Code cleanup for lighter library
 
 # 2.20.0 (Oct 11th 2023)

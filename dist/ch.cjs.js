@@ -26,8 +26,6 @@ https://github.com/DWTechs/CheckHard.js
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 function isNumeric(num) {
     return !isNaN(num - parseFloat(num));
 }
@@ -128,13 +126,12 @@ function isJson(str) {
 function isRegex(regex, typeCheck = true) {
     if (typeCheck)
         return regex instanceof RegExp ? true : false;
-    else
-        try {
-            new RegExp(regex);
-        }
-        catch (e) {
-            return false;
-        }
+    try {
+        new RegExp(regex);
+    }
+    catch (e) {
+        return false;
+    }
     return true;
 }
 function isEmail(email) {
@@ -189,7 +186,7 @@ function containsNumber(str, min, max) {
 }
 
 function isHtmlElement(htmlElement) {
-    if (htmlElement) {
+    if (htmlElement)
         return typeof HTMLElement === "object"
             ? htmlElement instanceof HTMLElement
             : htmlElement &&
@@ -197,7 +194,6 @@ function isHtmlElement(htmlElement) {
                 htmlElement !== null &&
                 htmlElement.nodeType === 1 &&
                 typeof htmlElement.nodeName === "string";
-    }
     return false;
 }
 function isHtmlEventAttribute(htmlEventAttribute) {
@@ -302,8 +298,7 @@ function isValidDate(date, min = minDate, max = maxDate) {
 function isTimestamp(ts, typeCheck = true) {
     if (isInteger(ts, typeCheck))
         return isNumeric(new Date(parseInt(ts + '')).getTime());
-    else
-        return false;
+    return false;
 }
 function isValidTimestamp(ts, min = -2208989361000, max = 7258114800000, typeCheck = true) {
     return isTimestamp(ts, typeCheck) && ts >= min && ts <= max ? true : false;

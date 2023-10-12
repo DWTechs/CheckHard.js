@@ -5,6 +5,7 @@
 [![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/checkhard?color=brightgreen)](https://www.npmjs.com/package/@dwtechs/checkhard)
 
 - [Synopsis](#synopsis)
+- [Browsers](#browsers)
 - [Installation](#installation)
 - [Usage](#usage)
   - [ES6](#es6)
@@ -24,7 +25,22 @@ Function, object, ascii, boolean, integer, string, json, email...)
 - Very lightweight
 - Thoroughly tested
 - Works in browsers and Node.js
-- Old browsers support (IE9)
+- Old browsers support
+
+
+## Browsers
+
+- android: 2.2,
+- chrome: 34,
+- edge: 12,
+- firefox: 11,
+- ie: 9,
+- ios: 4.2,
+- opera: 28,
+- safari: 5.1,
+- samsung: 4
+
+Those are the oldest targeted versions. The library should work properly on older devices but we do not support it officially.  
 
 ## Installation
 

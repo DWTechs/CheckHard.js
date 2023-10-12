@@ -167,7 +167,8 @@ function isRegex(regex, typeCheck) {
   if (typeCheck === void 0) {
     typeCheck = true;
   }
-  if (typeCheck) return regex instanceof RegExp ? true : false;else try {
+  if (typeCheck) return regex instanceof RegExp ? true : false;
+  try {
     new RegExp(regex);
   } catch (e) {
     return false;
@@ -220,9 +221,7 @@ function containsNumber(str, min, max) {
 }
 
 function isHtmlElement(htmlElement) {
-  if (htmlElement) {
-    return typeof HTMLElement === "object" ? htmlElement instanceof HTMLElement : htmlElement && typeof htmlElement === "object" && htmlElement !== null && htmlElement.nodeType === 1 && typeof htmlElement.nodeName === "string";
-  }
+  if (htmlElement) return typeof HTMLElement === "object" ? htmlElement instanceof HTMLElement : htmlElement && typeof htmlElement === "object" && htmlElement !== null && htmlElement.nodeType === 1 && typeof htmlElement.nodeName === "string";
   return false;
 }
 function isHtmlEventAttribute(htmlEventAttribute) {
@@ -329,7 +328,8 @@ function isTimestamp(ts, typeCheck) {
   if (typeCheck === void 0) {
     typeCheck = true;
   }
-  if (isInteger(ts, typeCheck)) return isNumeric(new Date(parseInt(ts + '')).getTime());else return false;
+  if (isInteger(ts, typeCheck)) return isNumeric(new Date(parseInt(ts + '')).getTime());
+  return false;
 }
 function isValidTimestamp(ts, min, max, typeCheck) {
   if (min === void 0) {

@@ -44,9 +44,28 @@ function isIpAddress(i: any): i is string {
   return !isSymbol(i) && ipReg.test(i);
 }
 
-// function isJWT(jwt: any): boolean {
+const b64Reg = /^[A-Za-z0-9\-_]+={0,2}$/;
+function isJWT(t: any): t is string {
+  if (!isString(t))
+    return false;
 
-// }
+  const p = t.split('.');
+  if (p.length !== 3)
+    return false;
+
+  const header = p[0];
+  const payload = p[1];
+  const signature = p[3];
+    
+  if (b64Reg.test(header) && b64Reg.test(payload) && b64Reg.test(signature)) {
+    try {
+      return isJson(atob(header)) && isJson(atob(payload));
+    } catch (e) {
+      return false;
+    }
+  }
+  return false;
+}
 
 const slugReg = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
 function isSlug(s: any): s is string {
@@ -100,6 +119,7 @@ export {
   isRegex,
   isEmail,
   isIpAddress,
+  isJWT,
   isSlug,
   isHexadecimal,
   containsUpperCase,

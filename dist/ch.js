@@ -181,6 +181,23 @@ var ipReg = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4]
 function isIpAddress(i) {
   return !isSymbol(i) && ipReg.test(i);
 }
+var b64Reg = /^[A-Za-z0-9\-_]+={0,2}$/;
+function isJWT(t) {
+  if (!isString(t)) return false;
+  var p = t.split('.');
+  if (p.length !== 3) return false;
+  var header = p[0];
+  var payload = p[1];
+  var signature = p[3];
+  if (b64Reg.test(header) && b64Reg.test(payload) && b64Reg.test(signature)) {
+    try {
+      return isJson(atob(header)) && isJson(atob(payload));
+    } catch (error) {
+      return false;
+    }
+  }
+  return false;
+}
 var slugReg = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
 function isSlug(s) {
   return isString(s) && slugReg.test(s);
@@ -335,4 +352,4 @@ function isValidTimestamp(t, min, max, type) {
   return isTimestamp(t, type) && t >= min && t <= max;
 }
 
-export { containsLowerCase, containsNumber, containsSpecialCharacter, containsUpperCase, isArray, isAscii, isBoolean, isDate, isEmail, isEven, isFloat, isFunction, isHexadecimal, isHtmlElement, isHtmlEventAttribute, isInteger, isIpAddress, isJson, isNegative, isNil, isNode, isNumber, isObject, isOdd, isOrigin, isPositive, isPowerOfTwo, isRegex, isSlug, isString, isSymbol, isTimestamp, isValidDate, isValidNumber, isValidTimestamp };
+export { containsLowerCase, containsNumber, containsSpecialCharacter, containsUpperCase, isArray, isAscii, isBoolean, isDate, isEmail, isEven, isFloat, isFunction, isHexadecimal, isHtmlElement, isHtmlEventAttribute, isInteger, isIpAddress, isJWT, isJson, isNegative, isNil, isNode, isNumber, isObject, isOdd, isOrigin, isPositive, isPowerOfTwo, isRegex, isSlug, isString, isSymbol, isTimestamp, isValidDate, isValidNumber, isValidTimestamp };

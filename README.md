@@ -176,6 +176,8 @@ isEmail(email: any): boolean {}
 
 isIpAddress(ipAddress: any): boolean {}
 
+isJWT(t: any): boolean {}
+
 isSlug(slug: any): boolean {}
 
 isHexadecimal(string: any): boolean {}

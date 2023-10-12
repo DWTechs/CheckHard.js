@@ -1,5 +1,6 @@
-# 2.21.0 (Oct 11th 2023)
+# 2.21.0 (Oct 12th 2023)
 
+- Add isJWT() method
 - Improve isArray() method
 - Update build tools
 - Code cleanup for lighter library

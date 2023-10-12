@@ -137,6 +137,26 @@ const ipReg = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-
 function isIpAddress(i) {
     return !isSymbol(i) && ipReg.test(i);
 }
+const b64Reg = /^[A-Za-z0-9\-_]+={0,2}$/;
+function isJWT(t) {
+    if (!isString(t))
+        return false;
+    const p = t.split('.');
+    if (p.length !== 3)
+        return false;
+    const header = p[0];
+    const payload = p[1];
+    const signature = p[3];
+    if (b64Reg.test(header) && b64Reg.test(payload) && b64Reg.test(signature)) {
+        try {
+            return isJson(atob(header)) && isJson(atob(payload));
+        }
+        catch (error) {
+            return false;
+        }
+    }
+    return false;
+}
 const slugReg = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
 function isSlug(s) {
     return isString(s) && slugReg.test(s);
@@ -304,6 +324,7 @@ exports.isHtmlElement = isHtmlElement;
 exports.isHtmlEventAttribute = isHtmlEventAttribute;
 exports.isInteger = isInteger;
 exports.isIpAddress = isIpAddress;
+exports.isJWT = isJWT;
 exports.isJson = isJson;
 exports.isNegative = isNegative;
 exports.isNil = isNil;

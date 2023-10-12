@@ -6,8 +6,6 @@
 
 - [Synopsis](#synopsis)
 - [Installation](#installation)
-  - [npm](#npm)
-  - [Yarn](#yarn)
 - [Usage](#usage)
   - [ES6](#es6)
   - [CommonJS](#commonjs)
@@ -29,8 +27,6 @@ Function, object, ascii, boolean, integer, string, json, email...)
 - Old browsers support (IE9)
 
 ## Installation
-
-### npm
 
 ```bash
 $ npm i @dwtechs/checkhard

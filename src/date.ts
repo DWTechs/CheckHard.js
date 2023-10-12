@@ -14,8 +14,8 @@ function isValidDate(date: any, min: Date = minDate, max: Date = maxDate): date 
 function isTimestamp(ts:any, typeCheck = true): ts is number {
   if (isInteger(ts, typeCheck))
     return isNumeric(new Date(parseInt(ts+'')).getTime());
-  else
-    return false;
+
+  return false;
 }
 
 // default min = 1/1/1900 (month/day/year)

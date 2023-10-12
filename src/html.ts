@@ -1,6 +1,6 @@
 
 function isHtmlElement(htmlElement: any): htmlElement is HTMLElement {
-  if (htmlElement) {
+  if (htmlElement)
     return typeof HTMLElement === "object"
       ? htmlElement instanceof HTMLElement
       : htmlElement &&
@@ -8,7 +8,7 @@ function isHtmlElement(htmlElement: any): htmlElement is HTMLElement {
           htmlElement !== null &&
           htmlElement.nodeType === 1 &&
           typeof htmlElement.nodeName === "string"; //DOM2
-  }
+  
   return false;
 }
 

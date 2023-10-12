@@ -16,13 +16,13 @@ function isJson(str: any): str is JSON /*Object|SyntaxError|TypeError*/ {
 function isRegex(regex: any, typeCheck = true): regex is RegExp {
   if (typeCheck)
     return regex instanceof RegExp ? true : false;
-  else
-    try {
-      new RegExp(regex);
-    } catch (e) {
-      return false;
-    }
-    return true;
+  
+  try {
+    new RegExp(regex);
+  } catch (e) {
+    return false;
+  }
+  return true;
   
 }
 

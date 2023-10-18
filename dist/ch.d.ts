@@ -52,6 +52,7 @@ declare function isNegative(num: any, typeCheck?: boolean): num is number;
 declare function isPowerOfTwo(num: any, typeCheck?: boolean): num is number;
 declare function isEmail(email: any): email is string;
 declare function isIpAddress(ipAddress: any): ipAddress is string;
+declare function isJWT(t: any): t is string;
 declare function isSlug(slug: any): slug is string;
 declare function isHexadecimal(str: any): str is string;
 declare function containsUpperCase(str: any): str is string;
@@ -89,6 +90,7 @@ export { isBoolean,
          isRegex,
          isEmail,
          isIpAddress,
+         isJWT,
          isSlug,
          isHexadecimal,
          containsUpperCase,

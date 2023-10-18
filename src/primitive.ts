@@ -1,28 +1,28 @@
 import { isNumeric, getTag } from './internal';
 import { isArray } from './array';
 
-function isBoolean(bool: any): bool is boolean {
-  return typeof bool === "boolean";
+function isBoolean(b: any): b is boolean {
+  return typeof b === "boolean";
 }
 
-function isString(str: any): str is string {
-  return typeof str === "string";
+function isString(s: any): s is string {
+  return typeof s === "string";
 }
 
-function isNumber(num: any, typeCheck = true): num is number {
-  return isSymbol(num) || isArray(num) ? false : typeCheck ? Number(num) === num : isNumeric(num);
+function isNumber(n: any, type = true): n is number {
+  return !isSymbol(n) && !isArray(n) && (type ? Number(n) === n : isNumeric(n));
 }
 
-function isValidNumber( num: any, 
+function isValidNumber( n: any, 
                         min = -999999999, 
                         max = 999999999,
-                        typeCheck = true ): num is number {
-  return isNumber(num, typeCheck) && num >= min && num <= max ? true : false;
+                        type = true ): n is number {
+  return isNumber(n, type) && n >= min && n <= max;
 }
 
-function isSymbol(sym: any): sym is Symbol {
-  const type = typeof sym;
-  return type == 'symbol' || (type === 'object' && sym != null && getTag(sym) == '[object Symbol]');
+function isSymbol(s: any): s is Symbol {
+  const type = typeof s;
+  return type == 'symbol' || (type === 'object' && s != null && getTag(s) == '[object Symbol]');
 }
 
 

@@ -1,27 +1,24 @@
 import { isNumeric } from './internal';
 import { isInteger } from './number';
 
-function isDate(date: any): date is Date {
-  return !isNaN(date) && date instanceof Date;
+function isDate(d: any): d is Date {
+  return !isNaN(d) && d instanceof Date;
 }
 
 const minDate = new Date('1/1/1900');
 const maxDate = new Date('1/1/2200');
-function isValidDate(date: any, min: Date = minDate, max: Date = maxDate): date is Date {
-  return isDate(date) && date >= min && date <= max ? true : false;
+function isValidDate(d: any, min: Date = minDate, max: Date = maxDate): d is Date {
+  return isDate(d) && d >= min && d <= max;
 }
 
-function isTimestamp(ts:any, typeCheck = true): ts is number {
-  if (isInteger(ts, typeCheck))
-    return isNumeric(new Date(parseInt(ts+'')).getTime());
-  else
-    return false;
+function isTimestamp(t:any, type = true): t is number {
+  return isInteger(t, type) && isNumeric(new Date(parseInt(t+'')).getTime());
 }
 
 // default min = 1/1/1900 (month/day/year)
 // default max = 1/1/2200 (month/day/year)
-function isValidTimestamp(ts: any, min = -2208989361000, max = 7258114800000, typeCheck = true): ts is number {
-  return isTimestamp(ts, typeCheck) && ts >= min && ts <= max ? true : false;
+function isValidTimestamp(t: any, min = -2208989361000, max = 7258114800000, type = true): t is number {
+  return isTimestamp(t, type) && t >= min && t <= max;
 }
 
 export {

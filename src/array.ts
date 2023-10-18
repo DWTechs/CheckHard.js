@@ -1,8 +1,8 @@
 import { Comparator } from './types';
 import { comparisons } from './utils';
 
-function isArray<T = any>(ar: any, comparator?: Comparator|null, length?: number|null): ar is Array<T> {
-  return ar?.constructor === Array && (length ? comparisons[comparator as Comparator](ar.length, length) : true);
+function isArray<T = any>(a: any, comp?: Comparator|null, len?: number|null): a is Array<T> {
+  return a?.constructor === Array && (comp && len && comparisons.hasOwnProperty(comp) ? comparisons[comp](a.length, len) : true);
 }
 
 // typing test : 

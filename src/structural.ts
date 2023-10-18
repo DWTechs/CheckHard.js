@@ -1,15 +1,7 @@
-import { getTag } from './internal';
 import { isArray } from './array';
 
-function isFunction(func: any): func is Function {
-  if (func)
-    return func && getTag(func) === "[object Function]";
-  
-  return false;
-}
-
-function isObject<T = any>(obj: any): obj is object & T {
-  return obj !== null && typeof obj === "object" && !isArray(obj);
+function isObject<T = any>(o: any): o is object & T {
+  return o !== null && typeof o === "object" && !isArray(o);
 }
 
 
@@ -26,12 +18,11 @@ function isObject<T = any>(obj: any): obj is object & T {
 // }
 
 
-function isNil(nil: any): nil is null | undefined {
-  return nil == null;
+function isNil(n: any): n is null | undefined {
+  return n == null;
 }
 
 export {
   isNil,
-  isFunction,
   isObject
 };

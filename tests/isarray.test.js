@@ -266,4 +266,8 @@ test("sends regex to isArray with length test of 2", () => {
   expect(isArray(/ab+c/i, '=', 2)).toBe(false);
 });
 
+test("sends wrong comparator to isArray with length test of 2", () => {
+  expect(isArray([2,4], '+', 2)).toBe(true);
+});
+
 

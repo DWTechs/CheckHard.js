@@ -1,37 +1,34 @@
 
 import { isString, isSymbol } from './primitive';
 
-function isJson(str: any): str is JSON /*Object|SyntaxError|TypeError*/ {
-  if (!isString(str))
+function isJson(s: any): s is JSON {
+  if (!isString(s))
     return false;
 
   try {
-    JSON.parse(str);
+    JSON.parse(s);
   } catch (e) {
     return false;
   }
   return true;
 }
 
-function isRegex(regex: any, typeCheck = true): regex is RegExp {
-  if (typeCheck)
-    return regex instanceof RegExp ? true : false;
-  else
-    try {
-      new RegExp(regex);
-    } catch (e) {
-      return false;
-    }
-    return true;
+function isRegex(r: any, type = true): r is RegExp {
+  if (type)
+    return r instanceof RegExp;
+  
+  try {
+    new RegExp(r);
+  } catch (e) {
+    return false;
+  }
+  return true;
   
 }
 
-function isEmail(email: any): email is string {
-  if (isSymbol(email))
-    return false;
-  
-  const regex = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-  return regex.test(String(email).toLowerCase());
+const emailReg = /^(?=[a-z0-9@.!$%&'*+\/=?^_‘{|}~-]{6,254}$)(?=[a-z0-9.!#$%&'*+\/=?^_‘{|}~-]{1,64}@)[a-z0-9!#$%&'*+\/=?^‘{|}~]+(?:[\._-][a-z0-9!#$%&'*+\/=?^‘{|}~]+)*@(?:(?=[a-z0-9-]{1,63}\.)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?=[a-z0-9-]{2,63}$)[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+function isEmail(e: any): e is string {
+  return !isSymbol(e) && emailReg.test(String(e).toLowerCase());
 }
 
 // function isURL(url: any): boolean {
@@ -42,57 +39,73 @@ function isEmail(email: any): email is string {
 
 // }
 
-function isIpAddress(ipAddress: any): ipAddress is string {
-  if (isSymbol(ipAddress))
+const ipReg = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+function isIpAddress(i: any): i is string {
+  return !isSymbol(i) && ipReg.test(i);
+}
+
+const b64Reg = /^[A-Za-z0-9\-_]+={0,2}$/;
+function isJWT(t: any): t is string {
+  if (!isString(t))
     return false;
-  
-  const regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-  return regex.test(ipAddress);
+
+  const p = t.split('.');
+  if (p.length !== 3)
+    return false;
+
+  const header = p[0];
+  const payload = p[1];
+  const signature = p[3];
+    
+  if (b64Reg.test(header) && b64Reg.test(payload) && b64Reg.test(signature)) {
+    try {
+      return isJson(atob(header)) && isJson(atob(payload));
+    } catch (e) {
+      return false;
+    }
+  }
+  return false;
 }
 
-// function isJWT(jwt: any): boolean {
-
-// }
-
-const slugRegex = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
-function isSlug(slug: any): slug is string {
-  return isString(slug) ? slugRegex.test(slug) : false;
+const slugReg = /^[^\s-_](?!.*?[-_]{2,})[a-z0-9-\\][^\s]*[^-_\s]$/;
+function isSlug(s: any): s is string {
+  return isString(s) && slugReg.test(s);
 }
 
-const upperCaseRegex = /[A-Z]+/;
-function containsUpperCase(str: any): str is string {
-  return isString(str) ? upperCaseRegex.test(str) : false;
+const upperCaseReg = /[A-Z]+/;
+function containsUpperCase(s: any): s is string {
+  return isString(s) && upperCaseReg.test(s);
 }
 
-const lowerCaseRegex = /[a-z]+/;
-function containsLowerCase(str: any): str is string {
-  return isString(str) ? lowerCaseRegex.test(str) : false;
+const lowerCaseReg = /[a-z]+/;
+function containsLowerCase(s: any): s is string {
+  return isString(s) && lowerCaseReg.test(s);
 }
 
-const specialRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?°`€£§]+/;
-function containsSpecialCharacter(str: any): str is string {
-  return isString(str) ? specialRegex.test(str) : false;
+const specialReg = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?°`€£§]+/;
+function containsSpecialCharacter(s: any): s is string {
+  return isString(s) && specialReg.test(s);
 }
 
 const hexadecimal = /^(#|0x|0h)?[0-9A-F]+$/i;
-function isHexadecimal(str: any): str is string {
-  return isString(str) ? hexadecimal.test(str) : false;
+function isHexadecimal(s: any): s is string {
+  return isString(s) && hexadecimal.test(s);
 }
 
-const numberRegex = /\d/;
-const lengthRegex = /[^0-9]/g;
-function containsNumber(str: any, min?: number|null, max?: number|null): str is string {
-  if (numberRegex.test(str)) {
+const numberReg = /\d/;
+const lengthReg = /[^0-9]/g;
+function containsNumber(s: any, min?: number|null, max?: number|null): s is string {
+  if (numberReg.test(s)) {
     let isMin = true;
     let isMax = true;
-    if (isString(str)) {
+    if (isString(s)) {
       if (min)
-        isMin = str.replace(lengthRegex, '').length >= min ? true : false;
+        isMin = s.replace(lengthReg, '').length >= min;
       if (max)
-        isMax = str.replace(lengthRegex, '').length <= max ? true : false;
+        isMax = s.replace(lengthReg, '').length <= max;
     } else
       if (min)
-        isMin = min <= 1 ? true : false;
+        isMin = min <= 1;
 
     return isMin && isMax;
   }
@@ -106,6 +119,7 @@ export {
   isRegex,
   isEmail,
   isIpAddress,
+  isJWT,
   isSlug,
   isHexadecimal,
   containsUpperCase,

@@ -5,9 +5,8 @@
 [![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/checkhard?color=brightgreen)](https://www.npmjs.com/package/@dwtechs/checkhard)
 
 - [Synopsis](#synopsis)
+- [Browsers](#browsers)
 - [Installation](#installation)
-  - [npm](#npm)
-  - [Yarn](#yarn)
 - [Usage](#usage)
   - [ES6](#es6)
   - [CommonJS](#commonjs)
@@ -19,27 +18,34 @@
 
 ## Synopsis
 
-**[CheckHard.js](https://github.com/DWTechs/CheckHard.js)** is an open source dynamic type checking library for Javascript and Node.js to test if a given variable is what it is supposed to be.\
-Function, object, ascii, boolean, integer, string, json, email...\
+**[CheckHard.js](https://github.com/DWTechs/CheckHard.js)** is an open source dynamic type checking library for Javascript and Node.js to test if a given variable is what it is supposed to be (
+Function, object, ascii, boolean, integer, string, json, email...)
 
 - No dependency
 - Very lightweight
 - Thoroughly tested
 - Works in browsers and Node.js
-- Old browsers support (IE9)
+- Old browsers support
+
+
+## Browsers
+
+- android: 2.2,
+- chrome: 34,
+- edge: 12,
+- firefox: 11,
+- ie: 9,
+- ios: 4.2,
+- opera: 28,
+- safari: 5.1,
+- samsung: 4
+
+Those are the oldest targeted versions. The library should work properly on older devices but we do not support it officially.  
 
 ## Installation
 
-### npm
-
 ```bash
 $ npm i @dwtechs/checkhard
-```
-
-### Yarn
-
-```bash
-$ yarn add @dwtechs/checkhard
 ```
 
 ## Usage
@@ -169,6 +175,8 @@ isRegex(regex: any, typeCheck: boolean = true): boolean {}
 isEmail(email: any): boolean {}
 
 isIpAddress(ipAddress: any): boolean {}
+
+isJWT(t: any): boolean {}
 
 isSlug(slug: any): boolean {}
 

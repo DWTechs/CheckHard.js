@@ -1,3 +1,7 @@
+# 2.22.0 (Dec 29th 2023)
+
+- Add emptyCheck parameter to isString() method. Which default to true
+
 # 2.21.0 (Oct 18th 2023)
 
 - Add isJWT() method

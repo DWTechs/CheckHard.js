@@ -110,7 +110,7 @@ Comparator = '='|'<'|'>'|'<='|'>=';
 
 isBoolean(bool: any): boolean {}
 
-isString(string: any): boolean {}
+isString(string: any, emptyCheck: boolean): boolean {}
 
 // If typeCheck = false values like '4', '0', '8e4', '+true', '0x44' return true
 isNumber(number: any, typeCheck: boolean = true): boolean {}

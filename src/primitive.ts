@@ -5,8 +5,8 @@ function isBoolean(b: any): b is boolean {
   return typeof b === "boolean";
 }
 
-function isString(s: any): s is string {
-  return typeof s === "string";
+function isString(s: any, empty = false): s is string {
+  return typeof s === "string" && (empty ? !!s : true);
 }
 
 function isNumber(n: any, type = true): n is number {

@@ -56,8 +56,11 @@ function isArray(a, comp, len) {
 function isBoolean(b) {
   return typeof b === "boolean";
 }
-function isString(s) {
-  return typeof s === "string";
+function isString(s, empty) {
+  if (empty === void 0) {
+    empty = false;
+  }
+  return typeof s === "string" && (empty ? !!s : true);
 }
 function isNumber(n, type) {
   if (type === void 0) {
@@ -192,7 +195,7 @@ function isJWT(t) {
   if (b64Reg.test(header) && b64Reg.test(payload) && b64Reg.test(signature)) {
     try {
       return isJson(atob(header)) && isJson(atob(payload));
-    } catch (error) {
+    } catch (e) {
       return false;
     }
   }

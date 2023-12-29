@@ -17,12 +17,24 @@ test("sends true to isString", () => {
   expect(isString(true)).toBe(false);
 });
 
+test("sends empty string to isString", () => {
+  expect(isString("")).toBe(true);
+});
+
+test("sends empty string to isString with empty check", () => {
+  expect(isString("", true)).toBe(false);
+});
+
 test("sends false to isString", () => {
   expect(isString(false)).toBe(false);
 });
 
 test("sends string to isString", () => {
   expect(isString("string")).toBe(true);
+});
+
+test("sends string to isString with empty check", () => {
+  expect(isString("string", true)).toBe(true);
 });
 
 test("sends positive even integer to isString", () => {
@@ -81,6 +93,10 @@ test("sends array to isString", () => {
   expect(isString(["white", "grey", "black"])).toBe(false);
 });
 
+test("sends array to isString with empty check", () => {
+  expect(isString(["white", "grey", "black"], true)).toBe(false);
+});
+
 var json = `{
   "actor": {
     "name": "Tom Cruise",
@@ -95,6 +111,10 @@ test("sends json to isString", () => {
   expect(isString(json)).toBe(true);
 });
 
+test("sends json to isString with empty check", () => {
+  expect(isString(json, true)).toBe(true);
+});
+
 var invalidjson = `{
   "actor: {
     "name": "Tom Cruise",
@@ -107,6 +127,10 @@ var invalidjson = `{
 
 test("sends invalid json to isString", () => {
   expect(isString(invalidjson)).toBe(true);
+});
+
+test("sends invalid json to isString with empty check", () => {
+  expect(isString(invalidjson, true)).toBe(true);
 });
 
 function testFunction() {

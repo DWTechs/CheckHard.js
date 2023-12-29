@@ -39,7 +39,7 @@ declare function isInteger(num: any, typeCheck?: boolean): num is number;
 declare function isFloat(num: any, typeCheck?: boolean): num is number;
 declare function isNumber(num: any, typeCheck?: boolean): num is number;
 declare function isValidNumber( num: any, min?: number, max?: number, typeCheck?: boolean): num is number;
-declare function isString(str: any): str is string;
+declare function isString(str: any, emptyCheck?: boolean): str is string;
 declare function isHtmlElement(htmlElement: any): htmlElement is HTMLElement;
 declare function isHtmlEventAttribute(htmlEventAttribute: any): htmlEventAttribute is string;
 declare function isNode(node: any): node is Node;

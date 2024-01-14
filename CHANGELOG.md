@@ -1,6 +1,6 @@
 # 2.23.0 (Jan 14th 2024)
 
-- Add isStringOflength() method
+- Add isStringOfLength() method
 
 # 2.22.0 (Dec 29th 2023)
 

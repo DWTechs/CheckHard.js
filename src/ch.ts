@@ -21,7 +21,8 @@ export {  isAscii,
           isNegative,
           isPowerOfTwo } from './number';
 
-export {  isJson,
+export {  isStringOfLength,
+          isJson,
           isRegex,
           isEmail,
           isIpAddress,

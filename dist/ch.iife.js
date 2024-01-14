@@ -158,6 +158,17 @@ var CH = (function (exports) {
       return isInteger(n, type) && !isOrigin(n, type) && (n & n - 1) === 0;
     }
 
+    function isStringOfLength(s, min, max) {
+      if (min === void 0) {
+        min = 0;
+      }
+      if (max === void 0) {
+        max = 999999999;
+      }
+      if (!isString(s, false)) return false;
+      var l = s.length;
+      return l >= min && l <= max;
+    }
     function isJson(s) {
       if (!isString(s)) return false;
       try {
@@ -389,6 +400,7 @@ var CH = (function (exports) {
     exports.isRegex = isRegex;
     exports.isSlug = isSlug;
     exports.isString = isString;
+    exports.isStringOfLength = isStringOfLength;
     exports.isSymbol = isSymbol;
     exports.isTimestamp = isTimestamp;
     exports.isValidDate = isValidDate;

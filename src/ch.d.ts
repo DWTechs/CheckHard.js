@@ -14,6 +14,7 @@ declare function isFloat(num: any, typeCheck?: boolean): num is number;
 declare function isNumber(num: any, typeCheck?: boolean): num is number;
 declare function isValidNumber( num: any, min?: number, max?: number, typeCheck?: boolean): num is number;
 declare function isString(str: any, emptyCheck?: boolean): str is string;
+declare function isStringOfLength(str: any, min?: number, max?: number,): str is string;
 declare function isHtmlElement(htmlElement: any): htmlElement is HTMLElement;
 declare function isHtmlEventAttribute(htmlEventAttribute: any): htmlEventAttribute is string;
 declare function isNode(node: any): node is Node;
@@ -52,6 +53,7 @@ export { isBoolean,
          isNumber,
          isValidNumber,
          isString,
+         isStringOfLength,
          isHtmlElement,
          isHtmlEventAttribute,
          isNode,

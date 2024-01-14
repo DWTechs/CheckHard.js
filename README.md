@@ -168,6 +168,10 @@ isAscii(code: any, extended: boolean = false): boolean {}
 
 ```javascript
 
+isStringOfLength( string: any, 
+                  min: number = 0, 
+                  max: number = 999999999 ): boolean {}
+
 isJson(string: any): boolean {}
 
 isRegex(regex: any, typeCheck: boolean = true): boolean {}

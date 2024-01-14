@@ -1,3 +1,7 @@
+# 2.23.0 (Jan 14th 2024)
+
+- Add isStringOflength() method
+
 # 2.22.0 (Dec 29th 2023)
 
 - Add emptyCheck parameter to isString() method. Which default to true

@@ -155,6 +155,17 @@ function isPowerOfTwo(n, type) {
   return isInteger(n, type) && !isOrigin(n, type) && (n & n - 1) === 0;
 }
 
+function isStringOfLength(s, min, max) {
+  if (min === void 0) {
+    min = 0;
+  }
+  if (max === void 0) {
+    max = 999999999;
+  }
+  if (!isString(s, false)) return false;
+  var l = s.length;
+  return l >= min && l <= max;
+}
 function isJson(s) {
   if (!isString(s)) return false;
   try {
@@ -355,4 +366,4 @@ function isValidTimestamp(t, min, max, type) {
   return isTimestamp(t, type) && t >= min && t <= max;
 }
 
-export { containsLowerCase, containsNumber, containsSpecialCharacter, containsUpperCase, isArray, isAscii, isBoolean, isDate, isEmail, isEven, isFloat, isFunction, isHexadecimal, isHtmlElement, isHtmlEventAttribute, isInteger, isIpAddress, isJWT, isJson, isNegative, isNil, isNode, isNumber, isObject, isOdd, isOrigin, isPositive, isPowerOfTwo, isRegex, isSlug, isString, isSymbol, isTimestamp, isValidDate, isValidNumber, isValidTimestamp };
+export { containsLowerCase, containsNumber, containsSpecialCharacter, containsUpperCase, isArray, isAscii, isBoolean, isDate, isEmail, isEven, isFloat, isFunction, isHexadecimal, isHtmlElement, isHtmlEventAttribute, isInteger, isIpAddress, isJWT, isJson, isNegative, isNil, isNode, isNumber, isObject, isOdd, isOrigin, isPositive, isPowerOfTwo, isRegex, isSlug, isString, isStringOfLength, isSymbol, isTimestamp, isValidDate, isValidNumber, isValidTimestamp };

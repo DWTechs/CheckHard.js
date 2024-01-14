@@ -107,6 +107,12 @@ function isPowerOfTwo(n, type = true) {
     return isInteger(n, type) && !isOrigin(n, type) && (n & (n - 1)) === 0;
 }
 
+function isStringOfLength(s, min = 0, max = 999999999) {
+    if (!isString(s, false))
+        return false;
+    const l = s.length;
+    return l >= min && l <= max;
+}
 function isJson(s) {
     if (!isString(s))
         return false;
@@ -338,6 +344,7 @@ exports.isPowerOfTwo = isPowerOfTwo;
 exports.isRegex = isRegex;
 exports.isSlug = isSlug;
 exports.isString = isString;
+exports.isStringOfLength = isStringOfLength;
 exports.isSymbol = isSymbol;
 exports.isTimestamp = isTimestamp;
 exports.isValidDate = isValidDate;

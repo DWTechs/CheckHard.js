@@ -66,8 +66,8 @@ function isFunction(func) {
     return Boolean(func && getTag(func) === "[object Function]");
 }
 
-function isObject(o) {
-    return o !== null && typeof o === "object" && !isArray(o);
+function isObject(o, empty = false) {
+    return o !== null && typeof o === "object" && !isArray(o) && (empty ? !!Object.keys(o).length : true);
 }
 function isNil(n) {
     return n == null;

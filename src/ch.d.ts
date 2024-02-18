@@ -6,7 +6,7 @@ declare function isNil(nil: any): nil is null | undefined;
 declare function isSymbol(sym: any): sym is Symbol;
 declare function isJson(str: any): str is JSON;
 declare function isFunction(func: any): func is Function;
-declare function isObject<T = any>(obj: any): obj is object & T;
+declare function isObject<T = any>(obj: any, emptyCheck?: boolean): obj is object & T;
 declare function isArray<T = any>(ar: any, comparator?: Comparator|null, length?: number|null): ar is Array<T>;
 declare function isAscii(code: any, extended?: boolean): code is number;
 declare function isInteger(num: any, typeCheck?: boolean): num is number;

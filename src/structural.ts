@@ -1,9 +1,8 @@
 import { isArray } from './array';
 
-function isObject<T = any>(o: any): o is object & T {
-  return o !== null && typeof o === "object" && !isArray(o);
+function isObject<T = any>(o: any, empty = false): o is object & T {
+  return o !== null && typeof o === "object" && !isArray(o) && (empty ? !!Object.keys(o).length : true);
 }
-
 
 // typing test : 
 

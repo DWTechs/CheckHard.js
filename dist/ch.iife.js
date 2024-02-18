@@ -92,8 +92,11 @@ var CH = (function (exports) {
       return Boolean(func && getTag(func) === "[object Function]");
     }
 
-    function isObject(o) {
-      return o !== null && typeof o === "object" && !isArray(o);
+    function isObject(o, empty) {
+      if (empty === void 0) {
+        empty = false;
+      }
+      return o !== null && typeof o === "object" && !isArray(o) && (empty ? !!Object.keys(o).length : true);
     }
     function isNil(n) {
       return n == null;

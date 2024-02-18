@@ -1,10 +1,14 @@
+# 2.24.0 (Feb 18th 2024)
+
+- Add emptyCheck parameter to isObject() method. Which default to false
+
 # 2.23.0 (Jan 14th 2024)
 
 - Add isStringOfLength() method
 
 # 2.22.0 (Dec 29th 2023)
 
-- Add emptyCheck parameter to isString() method. Which default to true
+- Add emptyCheck parameter to isString() method. Which default to false
 
 # 2.21.0 (Oct 18th 2023)
 

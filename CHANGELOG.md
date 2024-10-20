@@ -1,3 +1,24 @@
+# 2.25.0 (Oct 21th 2024)
+
+- CheckHard.js becomes Checkard.js 
+- Add isValidInteger() method
+- Add isValidFloat() method
+- Fix isArray() method when len param is equal to zero
+- Add more unit tests for isArray() method
+- Improve isInteger() method
+
+# 2.24.0 (Feb 18th 2024)
+
+- Add emptyCheck parameter to isObject() method. Which default to false
+
+# 2.23.0 (Jan 14th 2024)
+
+- Add isStringOfLength() method
+
+# 2.22.0 (Dec 29th 2023)
+
+- Add emptyCheck parameter to isString() method. Which default to false
+
 # 2.21.0 (Oct 18th 2023)
 
 - Add isJWT() method
@@ -26,7 +47,7 @@
 
 # 2.18.0 (May 9th 2022)
 
-- containsNumber() method now can take min and max parameters
+- ContainsNumber() method now can take min and max parameters
 
 # 2.17.2 (January 16th 2022)
 
@@ -212,7 +233,7 @@
 
 ### Features
 
-- **isboolean:** added Is.boolean() method ([250b9cf](https://github.com/LCluber/Ch.js/commit/250b9cf))
+- Added Is.boolean() method ([250b9cf](https://github.com/LCluber/Ch.js/commit/250b9cf))
 
 # 1.1.0 (June 19th 2019)
 
@@ -238,8 +259,8 @@
 
 # 0.1.1 (February 17th 2019)
 
-- added Is.array() check
-- added Is.float() check
+- Added Is.array() method
+- Added Is.float() method
 
 # 0.1.0 (December 23th 2018)
 

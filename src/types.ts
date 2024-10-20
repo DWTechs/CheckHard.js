@@ -1,6 +1,6 @@
 
 type Comparator = '='|'<'|'>'|'<='|'>=';
 
-export {
+export type {
   Comparator
 };

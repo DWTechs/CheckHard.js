@@ -1,3 +1,8 @@
+### This project is now called [Checkard.js](https://github.com/DWTechs/Checkard.js).
+### Thus it has been transferred to [@dwtechs/checkard](https://github.com/DWTechs/Checkard.js).
+### Please update your project dependencies as this one will not be updated anymore.
+
+
 [![License: MIT](https://img.shields.io/npm/l/@dwtechs/checkhard.svg?color=brightgreen)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/%40dwtechs%2Fcheckhard.svg)](https://www.npmjs.com/package/@dwtechs/checkhard)
 [![last version release date](https://img.shields.io/github/release-date/DWTechs/CheckHard.js)](https://www.npmjs.com/package/@dwtechs/checkhard)
@@ -115,11 +120,6 @@ isString(string: any): boolean {}
 // If typeCheck = false values like '4', '0', '8e4', '+true', '0x44' return true
 isNumber(number: any, typeCheck: boolean = true): boolean {}
 
-isValidNumber(number: any, 
-              min: number = -999999999, 
-              max: number = 999999999, 
-              typeCheck: boolean = true ): boolean {}
-
 isSymbol(sym: any): boolean {}
 
 ```
@@ -163,6 +163,26 @@ isAscii(code: any, extended: boolean = false): boolean {}
 
 ```
 
+### Valid number
+
+```javascript
+
+isValidNumber(number: any, 
+              min: number = -999999999, 
+              max: number = 999999999, 
+              typeCheck: boolean = true ): boolean {}
+
+isValidInteger(number: any, 
+               min: number = -999999999, 
+               max: number = 999999999, 
+               typeCheck: boolean = true ): boolean {}
+
+isValidFloat( number: any, 
+              min: number = -999999999.9, 
+              max: number = 999999999.9, 
+              typeCheck: boolean = true ): boolean {}
+
+```
 
 ### String
 

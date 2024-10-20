@@ -1,16 +1,15 @@
 import { isNumber, isSymbol } from './primitive';
-import { isArray } from './array';
 
 function isAscii(c: any, ext = true): c is number {
   return isInteger(c, false) && ((ext && c >= 0 && c <= 255) || (c >= 0 && c <= 127));
 }
 
-function isInteger(n: any, check = true): n is number {
-  if (isSymbol(n) || isArray(n))
+function isInteger(n: any, type = true): n is number {
+  if (!isNumber(n, type))
     return false;
   
-  const int = parseInt(n, 10);
-  return check ? n === int : n == int;
+  const int = Number.parseInt(String(n), 10);
+  return type ? n === int : n == int;
 }
 
 function isFloat(n: any, type = true): n is number {

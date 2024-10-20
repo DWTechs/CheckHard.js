@@ -10,7 +10,9 @@ declare function isObject<T = any>(obj: any): obj is object & T;
 declare function isArray<T = any>(ar: any, comparator?: Comparator|null, length?: number|null): ar is Array<T>;
 declare function isAscii(code: any, extended?: boolean): code is number;
 declare function isInteger(num: any, typeCheck?: boolean): num is number;
+declare function isValidInteger( num: any, min?: number, max?: number, typeCheck?: boolean): num is number;
 declare function isFloat(num: any, typeCheck?: boolean): num is number;
+declare function isValidFloat( num: any, min?: number, max?: number, typeCheck?: boolean): num is number;
 declare function isNumber(num: any, typeCheck?: boolean): num is number;
 declare function isValidNumber( num: any, min?: number, max?: number, typeCheck?: boolean): num is number;
 declare function isString(str: any): str is string;
@@ -48,7 +50,9 @@ export { isBoolean,
          isArray,
          isAscii,
          isInteger,
+         isValidInteger,
          isFloat,
+         isValidFloat,
          isNumber,
          isValidNumber,
          isString,

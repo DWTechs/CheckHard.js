@@ -1,8 +1,7 @@
 export {  isBoolean,
           isNumber,
           isString,
-          isSymbol,
-          isValidNumber } from './primitive';
+          isSymbol } from './primitive';
 
 export {  isFunction } from './function';
 
@@ -20,6 +19,10 @@ export {  isAscii,
           isPositive,
           isNegative,
           isPowerOfTwo } from './number';
+
+export {  isValidNumber,
+          isValidInteger,
+          isValidFloat } from './validnumber';
 
 export {  isJson,
           isRegex,

@@ -1,6 +1,15 @@
 
 import { isString, isSymbol } from './primitive';
 
+function isStringOfLength( s: any,
+    min = 0, 
+    max = 999999999 ): s is string {
+  if (!isString(s,false))
+    return false;
+  const l = s.length;
+  return l >= min && l <= max;
+}
+
 function isJson(s: any): s is JSON {
   if (!isString(s))
     return false;
@@ -115,6 +124,7 @@ function containsNumber(s: any, min?: number|null, max?: number|null): s is stri
 }
 
 export {
+  isStringOfLength,
   isJson,
   isRegex,
   isEmail,

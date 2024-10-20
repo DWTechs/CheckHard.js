@@ -115,7 +115,7 @@ Comparator = '='|'<'|'>'|'<='|'>=';
 
 isBoolean(bool: any): boolean {}
 
-isString(string: any): boolean {}
+isString(string: any, emptyCheck: boolean = false): boolean {}
 
 // If typeCheck = false values like '4', '0', '8e4', '+true', '0x44' return true
 isNumber(number: any, typeCheck: boolean = true): boolean {}
@@ -131,7 +131,7 @@ isSymbol(sym: any): boolean {}
 
 isFunction(func: any): boolean {}
 
-isObject(obj: any): boolean {}
+isObject(obj: any, emptyCheck: boolean = false): boolean {}
 
 //Check whether val is null or undefined
 isNil(val: any): boolean {}
@@ -187,6 +187,10 @@ isValidFloat( number: any,
 ### String
 
 ```javascript
+
+isStringOfLength( string: any, 
+                  min: number = 0, 
+                  max: number = 999999999 ): boolean {}
 
 isJson(string: any): boolean {}
 

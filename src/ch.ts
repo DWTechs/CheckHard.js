@@ -24,7 +24,8 @@ export {  isValidNumber,
           isValidInteger,
           isValidFloat } from './validnumber';
 
-export {  isJson,
+export {  isStringOfLength,
+          isJson,
           isRegex,
           isEmail,
           isIpAddress,

@@ -1,4 +1,4 @@
-# 2.25.0 (Oct 21th 2024)
+# 2.25.0 (Oct 22th 2024)
 
 - CheckHard.js becomes Checkard.js 
 - Add isValidInteger() method

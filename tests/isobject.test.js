@@ -119,7 +119,7 @@ test("sends array to isObject", () => {
   expect(isObject(["white", "grey", "black"])).toBe(false);
 });
 
-var json = `{
+const json = `{
   "actor": {
     "name": "Tom Cruise",
     "age": 56,
@@ -133,7 +133,7 @@ test("sends json to isObject", () => {
   expect(isObject(json)).toBe(false);
 });
 
-var invalidjson = `{
+const invalidjson = `{
   "actor: {
     "name": "Tom Cruise",
     "age": 56

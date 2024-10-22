@@ -33,6 +33,24 @@ function getTag(t) {
     return t == null ? t === undefined ? '[object Undefined]' : '[object Null]' : toString.call(t);
 }
 
+function isBoolean(b) {
+    return typeof b === "boolean";
+}
+function isString(s, empty = false) {
+    return typeof s === "string" && (empty ? !!s : true);
+}
+function isNumber(n, type = true) {
+    return !isSymbol(n) && !((n === null || n === void 0 ? void 0 : n.constructor) === Array) && (type ? Number(n) === n : isNumeric(n));
+}
+function isSymbol(s) {
+    const type = typeof s;
+    return type === 'symbol' || (type === 'object' && s != null && getTag(s) === '[object Symbol]');
+}
+
+function isFunction(func) {
+    return Boolean(func && getTag(func) === "[object Function]");
+}
+
 const comparisons = {
     '=': (a, b) => a == b,
     '<': (a, b) => a < b,
@@ -41,46 +59,14 @@ const comparisons = {
     '>=': (a, b) => a >= b
 };
 
-function isArray(a, comp, len) {
-    return (a === null || a === void 0 ? void 0 : a.constructor) === Array && (comp && len && comparisons.hasOwnProperty(comp) ? comparisons[comp](a.length, len) : true);
-}
-
-function isBoolean(b) {
-    return typeof b === "boolean";
-}
-function isString(s, empty = false) {
-    return typeof s === "string" && (empty ? !!s : true);
-}
-function isNumber(n, type = true) {
-    return !isSymbol(n) && !isArray(n) && (type ? Number(n) === n : isNumeric(n));
-}
-function isValidNumber(n, min = -999999999, max = 999999999, type = true) {
-    return isNumber(n, type) && n >= min && n <= max;
-}
-function isSymbol(s) {
-    const type = typeof s;
-    return type == 'symbol' || (type === 'object' && s != null && getTag(s) == '[object Symbol]');
-}
-
-function isFunction(func) {
-    return Boolean(func && getTag(func) === "[object Function]");
-}
-
-function isObject(o, empty = false) {
-    return o !== null && typeof o === "object" && !isArray(o) && (empty ? !!Object.keys(o).length : true);
-}
-function isNil(n) {
-    return n == null;
-}
-
 function isAscii(c, ext = true) {
     return isInteger(c, false) && ((ext && c >= 0 && c <= 255) || (c >= 0 && c <= 127));
 }
-function isInteger(n, check = true) {
-    if (isSymbol(n) || isArray(n))
+function isInteger(n, type = true) {
+    if (!isNumber(n, type))
         return false;
-    const int = parseInt(n, 10);
-    return check ? n === int : n == int;
+    const int = Number.parseInt(String(n), 10);
+    return type ? n === int : n == int;
 }
 function isFloat(n, type = true) {
     if (isSymbol(n))
@@ -105,6 +91,27 @@ function isNegative(n, type = true) {
 }
 function isPowerOfTwo(n, type = true) {
     return isInteger(n, type) && !isOrigin(n, type) && (n & (n - 1)) === 0;
+}
+
+function isValidNumber(n, min = -999999999, max = 999999999, type = true) {
+    return isNumber(n, type) && n >= min && n <= max;
+}
+function isValidInteger(n, min = -999999999, max = 999999999, type = true) {
+    return isInteger(n, type) && n >= min && n <= max;
+}
+function isValidFloat(n, min = -999999999.9, max = 999999999.9, type = true) {
+    return isFloat(n, type) && n >= min && n <= max;
+}
+
+function isArray(a, comp, len) {
+    return (a === null || a === void 0 ? void 0 : a.constructor) === Array ? (comp && isValidInteger(len, 0, 999999999)) ? comparisons.hasOwnProperty(comp) ? comparisons[comp](a.length, len) : false : true : false;
+}
+
+function isObject(o, empty = false) {
+    return o !== null && typeof o === "object" && !isArray(o) && (empty ? !!Object.keys(o).length : true);
+}
+function isNil(n) {
+    return n == null;
 }
 
 function isStringOfLength(s, min = 0, max = 999999999) {
@@ -348,5 +355,7 @@ exports.isStringOfLength = isStringOfLength;
 exports.isSymbol = isSymbol;
 exports.isTimestamp = isTimestamp;
 exports.isValidDate = isValidDate;
+exports.isValidFloat = isValidFloat;
+exports.isValidInteger = isValidInteger;
 exports.isValidNumber = isValidNumber;
 exports.isValidTimestamp = isValidTimestamp;

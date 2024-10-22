@@ -267,7 +267,53 @@ test("sends regex to isArray with length test of 2", () => {
 });
 
 test("sends wrong comparator to isArray with length test of 2", () => {
-  expect(isArray([2,4], '+', 2)).toBe(true);
+  expect(isArray([2,4], '+', 2)).toBe(false);
 });
 
+test("sends empty array of length 0 to isArray with wrong comparator", () => {
+  expect(isArray([], '<>', 0)).toBe(false);
+});
 
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray([], '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray(new Array(), '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray(Array.of(), '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray(Array.from([]), '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray(Array.from({}), '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray([...[]], '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray(Object.values({}), '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater than 0", () => {
+  expect(isArray(Object.keys({}), '>', 0)).toBe(false);
+});
+
+test("sends empty array to isArray with length test greater or equal to 1", () => {
+  expect(isArray([], '>=', 1)).toBe(false);
+});
+
+test("sends empty array of length 1 to isArray with length test greater than 1", () => {
+  expect(isArray(['R'], '>', 1)).toBe(false);
+});
+
+test("sends empty array of length 1 to isArray with length test greater or equal to 1", () => {
+  expect(isArray(['R'], '>=', 1)).toBe(true);
+});
